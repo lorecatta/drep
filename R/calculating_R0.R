@@ -1,3 +1,29 @@
+#' Calculate the probability of acquiring a primary dengue infection
+#' given a force of infection and the population age structure.
+#'
+#' @title Calculate probability of primary dengue infection.
+#'
+#' @param FOI The force of infection value. Numeric.
+#'
+#' @param l_lim A numeric vector of the lower age limits of the population age
+#'  groups.
+#'
+#' @param u_lim A numeric vector of the upper age limits of the population age
+#'  groups.
+#'
+#' @return Numeric.
+#'
+#' @examples
+#'
+#' #a FOI value
+#' a_FOI <- 0.031
+#' # the lower limits of the 0-5 and the 5-10 age groups
+#' a <- c(0, 5)
+#' # the upper limits of the 0-5 and the 5-10 age groups
+#' b <- c(5, 10)
+#' calculate_primary_infection_prob(a_FOI, a, b)
+#'
+#' @export
 calculate_primary_infection_prob <- function(FOI, l_lim, u_lim) {
 
   exp(-4 * FOI * l_lim) - exp(-4 * FOI * u_lim)
@@ -43,9 +69,9 @@ calculate_case_number <- function(incidence, n_j) {
 calculate_R0 <- function(FOI, N, n_j, l_lim, u_lim, vec_phis) {
 
   prob_funs <- list("calculate_primary_infection_prob",
-                   "calculate_secondary_infection_prob",
-                   "calculate_tertiary_infection_prob",
-                   "calculate_quaternary_infection_prob")
+                    "calculate_secondary_infection_prob",
+                    "calculate_tertiary_infection_prob",
+                    "calculate_quaternary_infection_prob")
 
   infec_probs <- lapply(prob_funs, do.call, list(FOI, l_lim, u_lim))
 
