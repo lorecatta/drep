@@ -1,0 +1,15 @@
+Package: drep
+Type: Package
+Title: Dengue reproduction number calculation
+Version: 0.1.0
+Authors@R: person("Lorenzo", "Cattarino", email = "l.cattarino@gmail.com",
+                  role = c("aut", "cre"))
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: The package provides a set of functions to calculate the 
+    reproduction number (R0) of Dengue. The calculation uses the force 
+    of infection, the age structure of the population and the
+    number of primary, secondary, tertiary and quaternary dengue 
+    infections at endemic equilibrium. 
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
