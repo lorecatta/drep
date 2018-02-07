@@ -49,7 +49,10 @@ calculate_R0 <- function(FOI, N, n_j, l_lim, u_lim, vec_phis) {
 
   infec_probs <- lapply(prob_funs, do.call, list(FOI, l_lim, u_lim))
 
-  infec_incid <- lapply(infec_probs, calculate_average_infection_prob, u_lim, l_lim)
+  infec_incid <- lapply(infec_probs,
+                        calculate_average_infection_prob,
+                        u_lim,
+                        l_lim)
 
   infec_num_j <- lapply(infec_incid, calculate_case_number, n_j)
 
