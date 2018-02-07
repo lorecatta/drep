@@ -42,12 +42,12 @@ calculate_case_number <- function(incidence, n_j) {
 
 calculate_R0 <- function(FOI, N, n_j, l_lim, u_lim, vec_phis) {
 
-  prob_fun <- list("calculate_primary_infection_prob",
+  prob_funs <- list("calculate_primary_infection_prob",
                    "calculate_secondary_infection_prob",
                    "calculate_tertiary_infection_prob",
                    "calculate_quaternary_infection_prob")
 
-  infec_probs <- lapply(prob_fun, do.call, list(FOI, l_lim, u_lim))
+  infec_probs <- lapply(prob_funs, do.call, list(FOI, l_lim, u_lim))
 
   infec_incid <- lapply(infec_probs, calculate_average_infection_prob, u_lim, l_lim)
 
