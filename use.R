@@ -28,7 +28,4 @@ infs <- calculate_infections(FOI, l_lim, u_lim, n_j)
 
 R0 <- calculate_R0(FOI, infs, phis)
 
-foi <- read.csv("All_FOI_estimates_linear_env_var_area.csv")
-foi <- foi[,setdiff(names(foi), c("R0_1", "R0_2", "R0_3"))]
-devtools::use_data(foi, foi, overwrite = TRUE)
-devtools::document()
+R0
