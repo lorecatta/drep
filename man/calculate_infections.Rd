@@ -2,40 +2,29 @@
 % Please edit documentation in R/calculating_R0.R
 \name{calculate_infections}
 \alias{calculate_infections}
-\title{Calculate probability of dengue infections in a population.}
+\title{Calculate the number of primary, secondary, tertiary and quaternary
+ dengue infections.}
 \usage{
-calculate_infections(FOI, l_lim, u_lim, n_j)
+calculate_infections(incidences, n_j, N)
 }
 \arguments{
-\item{FOI}{The force of infection value. Numeric.}
-
-\item{l_lim}{A numeric vector of the lower age limits of the population age
-groups.}
-
-\item{u_lim}{A numeric vector of the upper age limits of the population age
-groups.}
+\item{incidences}{A numeric vector of incidence of primary, secondary,
+tertiary and quaternary dengue infections.}
 
 \item{n_j}{A numeric vector of the proportions of individuals in each age
-group}
+group.}
+
+\item{N}{Population size. Numeric}
 }
 \value{
 Numeric.
 }
 \description{
-Calculate the total number of individuals (in a population) infected
-with dengue for their first, second, third or fourth time,
-during their lifetime.
+Calculate the number of primary, secondary, tertiary and quaternary
+ dengue infections in a population.
 }
 \examples{
-#Assumes population is divided in 5-year age groups
-
-age_groups <- 20
-# a force of infection value
-a_FOI <- 0.031
-# the lower limits of the age groups
-a <- seq(0, 95, length.out = age_groups)
-# the upper limits of the age groups
-b <- seq(5, 100, length.out = age_groups)
+incidences <- c(0.0035, 0.002, 0.00123, 0.00569)
 # simulate age structure
 x <- sample(1:50, age_groups, replace = TRUE)
 n_j <- x / sum(x)

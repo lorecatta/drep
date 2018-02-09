@@ -2,9 +2,9 @@
 % Please edit documentation in R/calculating_R0.R
 \name{calculate_R0}
 \alias{calculate_R0}
-\title{Calculate dengue reproduction number (R0).}
+\title{Calculate the Dengue reproduction number (R0).}
 \usage{
-calculate_R0(FOI, infections, phis)
+calculate_R0(FOI, N, infections, phis)
 }
 \arguments{
 \item{FOI}{The force of infection value. Numeric.}
@@ -19,9 +19,9 @@ of each dengue infection}
 Numeric.
 }
 \description{
-Calculate the dengue reproduction number (R0) using the
-at-equilibrium total number of primary, secondary, tertiary and
-quaternary infections in a population and their realtive infectiousness.
+Calculate the dengue reproduction number using the at-equilibrium number of
+primary, secondary, tertiary and quaternary infections in a population and
+their relative infectiousness.
 }
 \examples{
 # a force of infection value
