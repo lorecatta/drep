@@ -1,8 +1,10 @@
-#' Calculate the total number of individuals (in a population) infected
-#' with dengue for their first, second, third or fourth time,
-#' during their lifetime.
+#' Calculate the incidence of primary, secondary, tertiary and quaternary dengue
+#' infections in a population, for a given force of infection. \emph{Incidence}
+#' is the probability that someone has a primary (or secondary, etc..) dengue
+#' infection in a particular age group.
 #'
-#' @title Calculate probability of dengue infections in a population.
+#' @title Calculate the incidence of primary, secondary, tertiary and quaternary
+#'  dengue infections.
 #'
 #' @param FOI The force of infection value. Numeric.
 #'
@@ -11,9 +13,6 @@
 #'
 #' @param u_lim A numeric vector of the upper age limits of the population age
 #'  groups.
-#'
-#' @param n_j A numeric vector of the proportions of individuals in each age
-#'  group
 #'
 #' @return Numeric.
 #'
@@ -27,20 +26,15 @@
 #' a <- seq(0, 95, length.out = age_groups)
 #' # the upper limits of the age groups
 #' b <- seq(5, 100, length.out = age_groups)
-#' # simulate age structure
-#' x <- sample(1:50, age_groups, replace = TRUE)
-#' n_j <- x / sum(x)
 #' # run
-#' calculate_infections(FOI, a, b, n_j)
+#' calculate_incidences(FOI, a, b)
 #'
 #' @export
-calculate_infections <- function(FOI, l_lim, u_lim, n_j) {
+calculate_incidences <- function(FOI, l_lim, u_lim) {
 
-  repeat_routine <- function(infec_prob, u_lim, l_lim, n_j) {
+  get_incidences <- function(infec_prob, u_lim, l_lim) {
 
-    infec_incid <- (infec_prob / 4) / (u_lim - l_lim)
-    infec_num_j <- infec_incid * n_j
-    sum(infec_num_j)
+    (infec_prob / 4) / (u_lim - l_lim)
 
   }
 
@@ -58,22 +52,99 @@ calculate_infections <- function(FOI, l_lim, u_lim, n_j) {
     6 * (exp(-2 * FOI * u_lim) - exp(-2 * FOI * l_lim)) +
     (exp(-4 * FOI * u_lim) - exp(-4 * FOI * l_lim))
 
-  ret <- list(p_I1, p_I2, p_I3, p_I4)
+  all_probs <- list(p_I1, p_I2, p_I3, p_I4)
 
-  vapply(ret,
-         repeat_routine,
-         numeric(1),
+  lapply(all_probs,
+         get_incidences,
          u_lim,
-         l_lim,
-         n_j)
+         l_lim)
 
 }
 
-#' Calculate the dengue reproduction number (R0) using the
-#' at-equilibrium total number of primary, secondary, tertiary and
-#' quaternary infections in a population and their realtive infectiousness.
+
+# -----------------------------------------------------------------------------
+
+
+#' Calculate the \emph{number} of people (infected or displaying disease symptoms)
+#' from \emph{incidence} estimates.
 #'
-#' @title Calculate dengue reproduction number (R0).
+#' @title Convert incidences into numbers.
+#'
+#' @param incidences A numeric vector of the incidence of primary, secondary,
+#' tertiary and quaternary dengue infections.
+#'
+#' @param n_j A numeric vector of the proportions of individuals in each age
+#'  group.
+#'
+#' @param N Population size. Numeric.
+#'
+#' @return Numeric.
+#'
+#' @export
+incidences_to_numbers <- function(incidences, n_j, N) {
+
+  if(!is.numeric(n_j)){
+
+    n_j <- as.numeric(n_j)
+
+  }
+
+  incidences * n_j * N * 4
+
+}
+
+
+# -----------------------------------------------------------------------------
+
+
+#' Calculate the number of primary, secondary, tertiary and quaternary
+#'  dengue infections in a population.
+#'
+#' @title Calculate the number of primary, secondary, tertiary and quaternary
+#'  dengue infections.
+#'
+#' @param incidences A numeric vector of incidence of primary, secondary,
+#' tertiary and quaternary dengue infections.
+#'
+#' @param n_j A numeric vector of the proportions of individuals in each age
+#'  group.
+#'
+#' @param N Population size. Numeric
+#'
+#' @return Numeric.
+#'
+#' @examples
+#' incidences <- c(0.0035, 0.002, 0.00123, 0.00569)
+#' # simulate age structure
+#' x <- sample(1:50, age_groups, replace = TRUE)
+#' n_j <- x / sum(x)
+#' # run
+#' calculate_infections(FOI, a, b, n_j)
+#'
+#' @export
+calculate_infections <- function(incidences, n_j, N) {
+
+  n <- length(n_j)
+
+  infection_numbers_j <- lapply(incidences,
+                                incidences_to_numbers,
+                                n_j,
+                                N)
+
+  vapply(infection_numbers_j,
+         sum,
+         numeric(1))
+}
+
+
+# -----------------------------------------------------------------------------
+
+
+#' Calculate the dengue reproduction number using the at-equilibrium number of
+#' primary, secondary, tertiary and quaternary infections in a population and
+#' their relative infectiousness.
+#'
+#' @title Calculate the Dengue reproduction number (R0).
 #'
 #' @param FOI The force of infection value. Numeric.
 #'
@@ -96,74 +167,43 @@ calculate_infections <- function(FOI, l_lim, u_lim, n_j) {
 #' calculate_R0(a_Foi, vec_infections, vec_phis)
 #'
 #' @export
-calculate_R0 <- function(FOI, infections, phis) {
+calculate_R0 <- function(FOI, N, infections, phis) {
 
-  FOI / (sum(infections * phis))
+  FOI * N * 4 / (sum(infections * phis))
 
 }
 
-# calculate_primary_infection_prob <- function(FOI, l_lim, u_lim) {
-#
-#   exp(-4 * FOI * l_lim) - exp(-4 * FOI * u_lim)
-#
-# }
-#
-# calculate_secondary_infection_prob <- function(FOI, l_lim, u_lim) {
-#
-#   4 * (exp(-3 * FOI * l_lim) - exp(-3 * FOI * u_lim)) -
-#     3 * (exp(-4 * FOI * l_lim) - exp(-4 * FOI * u_lim))
-#
-# }
-#
-# calculate_tertiary_infection_prob <- function(FOI, l_lim, u_lim) {
-#
-#   6 * (exp(-2 * FOI * l_lim) - exp(-2 * FOI * u_lim)) +
-#     8 * (exp(-3 * FOI * u_lim) - exp(-3 * FOI * l_lim)) +
-#     3 * (exp(-4 * FOI * l_lim) - exp(-4 * FOI * u_lim))
-#
-# }
-#
-# calculate_quaternary_infection_prob <- function(FOI, l_lim, u_lim) {
-#
-#   4 * (exp(-FOI * l_lim) - exp(-FOI * u_lim) +
-#          exp(-3 * FOI * l_lim) - exp(-3 * FOI * u_lim)) +
-#     6 * (exp(-2 * FOI * u_lim) - exp(-2 * FOI * l_lim)) +
-#     (exp(-4 * FOI * u_lim) - exp(-4 * FOI * l_lim))
-#
-# }
-#
-# calculate_infection_incidence <- function(infect_prob, u_lim, l_lim) {
-#
-#   (infect_prob / 4) / (u_lim - l_lim)
-#
-# }
-#
-# calculate_infection_number <- function(incidence, n_j) {
-#
-#   incidence * n_j
-#
-# }
-#
-# calculate_R0 <- function(FOI, n_j, l_lim, u_lim, vec_phis) {
-#
-#   prob_funs <- list("calculate_primary_infection_prob",
-#                     "calculate_secondary_infection_prob",
-#                     "calculate_tertiary_infection_prob",
-#                     "calculate_quaternary_infection_prob")
-#
-#   infec_probs <- lapply(prob_funs, do.call, list(FOI, l_lim, u_lim))
-#
-#   infec_incid <- lapply(infec_probs,
-#                         calculate_infection_incidence,
-#                         u_lim,
-#                         l_lim)
-#
-#   infec_num_j <- lapply(infec_incid, calculate_infection_number, n_j)
-#
-#   infec_num <- vapply(infec_num_j, sum, numeric(1))
-#
-#   N <- 1
-#
-#   FOI * N / (sum(infec_num * vec_phis))
-#
-# }
+
+# -----------------------------------------------------------------------------
+
+
+#' Calculate the number of primary, secondary, tertiary and quaternary
+#'  dengue symptomatic cases in a population.
+#'
+#' @title Calculate the number of primary, secondary, tertiary and quaternary
+#'  dengue cases.
+#'
+#' @param incidences A numeric vector of incidence of primary, secondary,
+#'  tertiary and quaternary dengue infections.
+#'
+#' @param sym_to_asym_ratios A list of the proportion of symptomatic primary,
+#'  secondary, tertiary and quaternary cases (in this order).
+#'
+#' @param ... Additional arguments to pass to \code{incidence_to_numbers()}
+#'
+#' @return Numeric.
+#'
+#' @export
+calculate_cases <- function(incidences, sym_to_asym_ratios, ...) {
+
+  ret1 <- Map("*", incidences, sym_to_asym_ratios)
+
+  case_numbers_j <- lapply(ret1,
+                           incidences_to_numbers,
+                           ...)
+
+  vapply(case_numbers_j,
+         sum,
+         numeric(1))
+
+}
