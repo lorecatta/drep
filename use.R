@@ -1,3 +1,7 @@
+install.packages(c("devtools", "roxygen2", "testthat", "knitr", "kableExtra"))
+
+
+
 devtools::load_all()
 
 
@@ -80,3 +84,24 @@ cases <- calculate_cases(incids, sym_to_asym_ratios, n_j, pop)
 
 sum(infs)
 sum(cases)
+
+### add datasets
+dat <- read.csv("All_FOI_estimates_linear_env_var_area.csv")
+foi <- dat[,c(1:8)]
+foi$population <- dat$population
+devtools::use_data(foi, foi, overwrite = TRUE)
+
+write.csv(foi, file.path("vignettes", "foi.csv"),
+          row.names = FALSE) # for vignettes
+
+dat2 <- read.csv("country_age_structure.csv")
+age_structure <- dat2[setdiff(names(dat2), c("country", "Reference_date", "band_80_99", "band_85_99"))]
+devtools::use_data(age_structure, age_structure, overwrite = TRUE)
+
+write.csv(age_structure, file.path("vignettes", "age_structure.csv"),
+          row.names = FALSE) # for vignettes
+
+### create vignette
+
+devtools::use_vignette("my-vignette")
+
