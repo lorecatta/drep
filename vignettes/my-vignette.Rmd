@@ -93,7 +93,6 @@ You need the `ID_0` of the selected point (`one_foi`) from the `foi` dataset to 
 
 ```{r include = TRUE, eval = FALSE}
 FOI_id0 <- foi[4, "ID_0"]
-
 pop <- foi[4, "population"]
 ```
 
