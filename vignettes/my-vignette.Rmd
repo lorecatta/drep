@@ -25,6 +25,8 @@ Accurate estimates of transmission intensity of Dengue are needed to quantify th
 3. Force of infection is constant through time
 4. Four dengue serotypes in circulation 
 
+<br>
+
 # Getting started
 
 ## Installation
@@ -43,38 +45,77 @@ devtools::install_github("mrc-ide/drep", ref = "mrc-branch")
 library(drep)
 ```
 
-We will start with a simple example. The `foi` dataset contains force of infection estimates for different locations in the world. It looks like this
+We will start with a simple example. The `foi` dataset contains force of infection estimates for different locations in the world. Load the dataset with
+
+```{r include = TRUE}
+foi <- read.csv("foi.csv", stringsAsFactors = FALSE)
+```
+
+The dataset contains nine variables:
+
+* `data_id` is an integer which represents the data point unique identifier 
+* `type` is a character string describing wheather the data was collected through a serology study (`serology`) or a case surveillance system (`caseReport`).
+* `longitude` and `latitude` are the numeric geographic coordinates of the data points.
+* `ISO` is a character string describing the ISO **3166-1 alpha-3** country code.
+* `ID_0` and `ID_1` are integers representing the GADM administrative units unique identifiers [http://gadm.org/]. 
+* `FOI` is the force of infection estimate
+* `population` is the Level 1 administrative unit population according to 2015 Landscan data [http://web.ornl.gov/sci/landscan/]
+
+<br>
 
 ```{r, echo = FALSE, results = 'asis'}
-knitr::kable(head(mtcars, 10))
+knitr::kable(head(foi, 10), row.names = FALSE)
 ```
 
-## Figures
+<br>
 
-The figure sizes have been customised so that you can easily put two images side-by-side. 
+For the purpose of this example, we pick the fourth data point, i.e. a `caseReport` estimate from Brazil
 
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+```{r}
+one_foi <- foi[4, "FOI"] # a point from Brazil
 ```
 
-You can enable figure captions by `fig_caption: yes` in YAML:
+To be able to convert force of infection into reproduction number, we are also going to need information on the demographic structure of the population to which `FOI` refers. We will use country-level demographic information, , as reported by the United Nation Department of Economic and Social Affairs. The `age_structure` data set contains the proportion of individuals in 20 5-year age groups (0-99) in 2015 Load the dataset. The other important variable is `ID_0`, which represents the country unique identifier.
 
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
-
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(foi, 10))
+```{r include = TRUE}
+age_structure <- read.csv("age_structure.csv", stringsAsFactors = FALSE)
 ```
 
-Also a quote using `>`:
+The `age_structure` dataset looks like this:
 
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+```{r, echo = FALSE, results = 'asis'}
+knitr::kable(head(age_structure, 10), row.names = FALSE)
+```
+
+<br>
+
+You need the `ID_0` of the selected point (`one_foi`) from the `foi` dataset to be able to look up the correct demographic structure from the `age_structure` dataset. The `population` of the data point will also be needed to convert *proportions* to *numbers* 
+
+```{r include = TRUE, eval = FALSE}
+FOI_id0 <- foi[4, "ID_0"]
+
+pop <- foi[4, "population"]
+```
+
+Now you can extract the country age structure 
+
+```{r include = TRUE, eval = FALSE}
+n_j <- age_structure[age_structure$ID_0 == FOI_id0, 2:ncol(age_structure)]
+```
+
+Last thing to do is to define the limits fo the age groups of the demographic data. The `l_lim` and `u_lim` objects are two vectors of the lower and upper age limits of each of the 20 age groups defining the country demographic structure 
+
+```{r include = TRUE, eval = FALSE}
+l_lim <- seq.int(0, 95, 5)
+u_lim <- seq.int(5, 100, 5)
+```
+
+Now you have all the information you need to compute the **R~0~** from the given force of infection (**$\lambda$**). First, calculate the incidence of primary, secondary, tertiary and quaternary dengue infections in the population. *Incidence* is the probability that someone has a primary (or secondary, etc..) dengue infection in a particular age group.
+
+```{r, include = TRUE, eval = FALSE}
+incidences <- calculate_incidences(one_foi, l_lim, u_lim)
+```
+
+infs <- calculate_infections(incids, n_j, pop)
+R0 <- calculate_R0(FOI, pop, infs, phis)
+R0
