@@ -14,7 +14,8 @@
 #' @param u_lim A numeric vector of the upper age limits of the population age
 #'  groups.
 #'
-#' @return Numeric.
+#' @return A list containing four different numeric vectors with the incidence
+#'  of primary, secondary, tertiary and quaternary infections in each age group.
 #'
 #' @examples
 #' #Assumes population is divided in 5-year age groups
@@ -30,9 +31,9 @@
 #' calculate_incidences(FOI, a, b)
 #'
 #' @export
-calculate_incidences <- function(FOI, l_lim, u_lim) {
+calculate_incidences <- function(FOI, u_lim, l_lim) {
 
-  get_incidences <- function(infec_prob, u_lim, l_lim) {
+  get_incidences <- function(infec_prob) {
 
     (infec_prob / 4) / (u_lim - l_lim)
 
@@ -41,23 +42,20 @@ calculate_incidences <- function(FOI, l_lim, u_lim) {
   p_I1 <- exp(-4 * FOI * l_lim) - exp(-4 * FOI * u_lim)
 
   p_I2 <- 4 * (exp(-3 * FOI * l_lim) - exp(-3 * FOI * u_lim)) -
-    3 * (exp(-4 * FOI * l_lim) - exp(-4 * FOI * u_lim))
+          3 * (exp(-4 * FOI * l_lim) - exp(-4 * FOI * u_lim))
 
   p_I3 <- 6 * (exp(-2 * FOI * l_lim) - exp(-2 * FOI * u_lim)) +
-    8 * (exp(-3 * FOI * u_lim) - exp(-3 * FOI * l_lim)) +
-    3 * (exp(-4 * FOI * l_lim) - exp(-4 * FOI * u_lim))
+          8 * (exp(-3 * FOI * u_lim) - exp(-3 * FOI * l_lim)) +
+          3 * (exp(-4 * FOI * l_lim) - exp(-4 * FOI * u_lim))
 
   p_I4 <- 4 * (exp(-FOI * l_lim) - exp(-FOI * u_lim) +
-                 exp(-3 * FOI * l_lim) - exp(-3 * FOI * u_lim)) +
-    6 * (exp(-2 * FOI * u_lim) - exp(-2 * FOI * l_lim)) +
-    (exp(-4 * FOI * u_lim) - exp(-4 * FOI * l_lim))
+               exp(-3 * FOI * l_lim) - exp(-3 * FOI * u_lim)) +
+          6 * (exp(-2 * FOI * u_lim) - exp(-2 * FOI * l_lim)) +
+              (exp(-4 * FOI * u_lim) - exp(-4 * FOI * l_lim))
 
   all_probs <- list(p_I1, p_I2, p_I3, p_I4)
 
-  lapply(all_probs,
-         get_incidences,
-         u_lim,
-         l_lim)
+  lapply(all_probs, get_incidences)
 
 }
 
@@ -83,57 +81,10 @@ calculate_incidences <- function(FOI, l_lim, u_lim) {
 #' @export
 incidences_to_numbers <- function(incidences, n_j, N) {
 
-  if(!is.numeric(n_j)){
+  ret <- incidences * n_j * N * 4
 
-    n_j <- as.numeric(n_j)
+  sum(ret)
 
-  }
-
-  incidences * n_j * N * 4
-
-}
-
-
-# -----------------------------------------------------------------------------
-
-
-#' Calculate the number of primary, secondary, tertiary and quaternary
-#'  dengue infections in a population.
-#'
-#' @title Calculate the number of primary, secondary, tertiary and quaternary
-#'  dengue infections.
-#'
-#' @param incidences A numeric vector of incidence of primary, secondary,
-#' tertiary and quaternary dengue infections.
-#'
-#' @param n_j A numeric vector of the proportions of individuals in each age
-#'  group.
-#'
-#' @param N Population size. Numeric
-#'
-#' @return Numeric.
-#'
-#' @examples
-#' incidences <- c(0.0035, 0.002, 0.00123, 0.00569)
-#' # simulate age structure
-#' x <- sample(1:50, age_groups, replace = TRUE)
-#' n_j <- x / sum(x)
-#' # run
-#' calculate_infections(FOI, a, b, n_j)
-#'
-#' @export
-calculate_infections <- function(incidences, n_j, N) {
-
-  n <- length(n_j)
-
-  infection_numbers_j <- lapply(incidences,
-                                incidences_to_numbers,
-                                n_j,
-                                N)
-
-  vapply(infection_numbers_j,
-         sum,
-         numeric(1))
 }
 
 
@@ -149,10 +100,10 @@ calculate_infections <- function(incidences, n_j, N) {
 #' @param FOI The force of infection value. Numeric.
 #'
 #' @param infections A numeric vector of the number of primary, secondary,
-#'  tertiary and quaternary infections
+#'  tertiary and quaternary infections.
 #'
 #' @param phis A numeric vector of the relative infectiousness
-#'   of each dengue infection
+#'   of each dengue infection.
 #'
 #' @return Numeric.
 #'
@@ -194,16 +145,10 @@ calculate_R0 <- function(FOI, N, infections, phis) {
 #' @return Numeric.
 #'
 #' @export
-calculate_cases <- function(incidences, sym_to_asym_ratios, ...) {
+calculate_cases <- function(incidences, sym_to_asym_ratios, n_j, N) {
 
-  ret1 <- Map("*", incidences, sym_to_asym_ratios)
+  ret <- Map("*", incidences, sym_to_asym_ratios)
 
-  case_numbers_j <- lapply(ret1,
-                           incidences_to_numbers,
-                           ...)
-
-  vapply(case_numbers_j,
-         sum,
-         numeric(1))
+  vapply(ret, incidences_to_numbers, numeric(1), n_j, N)
 
 }
