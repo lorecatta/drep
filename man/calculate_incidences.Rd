@@ -5,19 +5,20 @@
 \title{Calculate the incidence of primary, secondary, tertiary and quaternary
  dengue infections.}
 \usage{
-calculate_incidences(FOI, l_lim, u_lim)
+calculate_incidences(FOI, u_lim, l_lim)
 }
 \arguments{
 \item{FOI}{The force of infection value. Numeric.}
 
-\item{l_lim}{A numeric vector of the lower age limits of the population age
+\item{u_lim}{A numeric vector of the upper age limits of the population age
 groups.}
 
-\item{u_lim}{A numeric vector of the upper age limits of the population age
+\item{l_lim}{A numeric vector of the lower age limits of the population age
 groups.}
 }
 \value{
-Numeric.
+A list containing four different numeric vectors with the incidence
+ of primary, secondary, tertiary and quaternary infections in each age group.
 }
 \description{
 Calculate the incidence of primary, secondary, tertiary and quaternary dengue

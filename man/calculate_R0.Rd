@@ -10,10 +10,10 @@ calculate_R0(FOI, N, infections, phis)
 \item{FOI}{The force of infection value. Numeric.}
 
 \item{infections}{A numeric vector of the number of primary, secondary,
-tertiary and quaternary infections}
+tertiary and quaternary infections.}
 
 \item{phis}{A numeric vector of the relative infectiousness
-of each dengue infection}
+of each dengue infection.}
 }
 \value{
 Numeric.

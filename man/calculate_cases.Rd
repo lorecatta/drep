@@ -5,7 +5,7 @@
 \title{Calculate the number of primary, secondary, tertiary and quaternary
  dengue cases.}
 \usage{
-calculate_cases(incidences, sym_to_asym_ratios, ...)
+calculate_cases(incidences, sym_to_asym_ratios, n_j, N)
 }
 \arguments{
 \item{incidences}{A numeric vector of incidence of primary, secondary,
