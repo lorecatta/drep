@@ -18,9 +18,9 @@ phis <- c(1, 1, 1, 1)
 # Run a test ------------------------------------------------------------------
 
 
-incids <- calculate_incidences(FOI, l_lim, u_lim)
+incids <- calculate_incidences(FOI, u_lim, l_lim)
 
-infs <- calculate_infections(incids, n_j, pop)
+infs <- vapply(incids, incidences_to_numbers, numeric(1), n_j, pop)
 
 R0 <- calculate_R0(FOI, pop, infs, phis)
 
@@ -34,13 +34,13 @@ FOI <- foi[4, "FOI"] # a point in Brazil
 
 FOI_id0 <- foi[4, "ID_0"]
 
-n_j <- age_structure[age_structure$ID_0 == FOI_id0, 4:ncol(age_structure)]
+n_j <- age_structure[age_structure$ID_0 == FOI_id0, 2:ncol(age_structure)]
 
 pop <- foi[4, "population"]
 
-incids <- calculate_incidences(FOI, l_lim, u_lim)
+incids <- calculate_incidences(FOI, u_lim, l_lim)
 
-infs <- calculate_infections(incids, n_j, pop)
+infs <- vapply(incids, incidences_to_numbers, numeric(1), n_j, pop)
 
 R0 <- calculate_R0(FOI, pop, infs, phis)
 
@@ -50,17 +50,17 @@ R0
 # ------------------------------------
 
 
-# table1 <- readRDS("R0_r_all_squares_2.rds")
-# table1[table1[, "cell"] == 300000,"1"]
-#
-# table2 <- readRDS("C_num_all_squares_2.rds")
-# table2[table2[, "cell"] == 300000,"1"]
-#
-# table3 <- readRDS("I_num_all_squares_2.rds")
-# table3[table3[, "cell"] == 300000,"1"]
+table1 <- readRDS("R0_r_all_squares_2.rds")
+table1[table1[, "cell"] == 300000,"1"]
+
+table2 <- readRDS("C_num_all_squares_2.rds")
+table2[table2[, "cell"] == 300000,"1"]
+
+table3 <- readRDS("I_num_all_squares_2.rds")
+table3[table3[, "cell"] == 300000,"1"]
 
 FOI <- 0.01995189
-n_j <- age_structure[age_structure$ID_0 == 185, 4:ncol(age_structure)]
+n_j <- age_structure[age_structure$ID_0 == 185, 2:ncol(age_structure)]
 pop <- 432
 gamma_1 <- 0.45
 rho <- 0.85
@@ -68,9 +68,9 @@ gamma_3 <- 0.15
 
 sym_to_asym_ratios <- list(gamma_1, rho, gamma_3, gamma_3)
 
-incids <- calculate_incidences(FOI, l_lim, u_lim)
+incids <- calculate_incidences(FOI, u_lim, l_lim)
 
-infs <- calculate_infections(incids, n_j, pop)
+infs <- vapply(incids, incidences_to_numbers, numeric(1), n_j, pop)
 
 R0 <- calculate_R0(FOI, pop, infs, phis)
 
