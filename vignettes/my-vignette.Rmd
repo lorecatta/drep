@@ -51,13 +51,19 @@ library(drep)
 
 <br>
 
-# Data
+# Datasets
 
-The `foi` dataset contains force of infection estimates for different locations in the world. Load the dataset.
+The `foi` dataset contains force of infection estimates for different locations in the world.
 
-```{r include = TRUE}
+```{r include = FALSE}
 foi <- read.csv("foi.csv", stringsAsFactors = FALSE)
 ```
+
+```{r, echo = FALSE, results = 'asis'}
+knitr::kable(head(foi, 10), row.names = FALSE)
+```
+
+<br>
 
 The dataset contains nine variables.
 
@@ -69,21 +75,11 @@ The dataset contains nine variables.
 * `FOI` is the force of infection estimate
 * `population` is the Level 1 administrative unit population according to 2015 Landscan data [http://web.ornl.gov/sci/landscan/]
 
-<br>
-
-```{r, echo = FALSE, results = 'asis'}
-knitr::kable(head(foi, 10), row.names = FALSE)
-```
-
-<br>
-
-Information on the demographic structure of the population to which the original force of infection estimate refers is needed to convert force of infection into reproduction number. The `age_structure` data set contains the country-level proportion of individuals in 20 5-year age groups (0-99) from 2015, sourced from the United Nation Department of Economic and Social Affairs. Each age group proportion is a different variable. The other important variable is `ID_0`, which represents the country unique identifier. 
+Information on the demographic structure of the population to which the original force of infection estimate refers is needed to convert force of infection into reproduction number. The `age_structure` dataset contains the country-level proportion of individuals in 20 5-year age groups (0-99) from 2015, sourced from the United Nation Department of Economic and Social Affairs. Each age group proportion is a different variable. The other important variable is `ID_0`, which represents the country unique identifier. 
 
 ```{r, include = FALSE}
 age_structure <- read.csv("age_structure.csv", stringsAsFactors = FALSE)
 ```
-
-The `age_structure` dataset looks like this:
 
 ```{r, echo = FALSE, results = 'asis'}
 knitr::kable(head(age_structure, 10), row.names = FALSE)
@@ -119,7 +115,7 @@ l_lim <- seq.int(0, 95, 5)
 u_lim <- seq.int(5, 100, 5)
 ```
 
-While the package assumed that all four dengue serotypes are in circulation, **R~0~** calculation depends on the relative infectiousness of each dengue infection, defined in the object `phis` (below). As a starting point, each infection is assumed to equally infectious.  
+While the package assumed that all four dengue serotypes are in circulation, **R~0~** calculation depends on the relative infectiousness of each dengue infection, defined in the object `phis` (below). As a starting point, each infection is assumed to be equally infectious.  
 
 ```{r}
 phis <- rep(1, times = 4)

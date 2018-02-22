@@ -4,16 +4,16 @@
 \alias{incidences_to_numbers}
 \title{Convert incidences into numbers.}
 \usage{
-incidences_to_numbers(incidences, n_j, N)
+incidences_to_numbers(incidences, N, n_j)
 }
 \arguments{
 \item{incidences}{A numeric vector of the incidence of primary, secondary,
 tertiary and quaternary dengue infections.}
 
+\item{N}{Population size. Numeric.}
+
 \item{n_j}{A numeric vector of the proportions of individuals in each age
 group.}
-
-\item{N}{Population size. Numeric.}
 }
 \value{
 Numeric.
