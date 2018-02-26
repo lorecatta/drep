@@ -159,4 +159,4 @@ write.csv(age_structure, file.path("vignettes", "age_structure.csv"),
 ### create vignette
 
 devtools::use_vignette("my-vignette")
-
+devtools::build_vignettes()
