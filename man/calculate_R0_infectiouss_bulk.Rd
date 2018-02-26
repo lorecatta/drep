@@ -4,13 +4,24 @@
 \alias{calculate_R0_infectiouss_bulk}
 \title{Calculate R0 for multiple infectiousness combinations.}
 \usage{
-calculate_R0_infectiouss_bulk(phi_combs, ...)
+calculate_R0_infectiouss_bulk(phi_combs, FOI, N, n_j, u_lim, l_lim)
 }
 \arguments{
-\item{phi_combs}{A list with the different combinations of infectiousness
+\item{phi_combs}{A list with different combinations of infectiousness
 of the four dengue infection.}
 
-\item{...}{Additional arguments to pass to \code{calculate_R0()}.}
+\item{FOI}{The force of infection value. Numeric.}
+
+\item{N}{Population size. Numeric.}
+
+\item{n_j}{A numeric vector of the proportions of individuals in each age
+group.}
+
+\item{u_lim}{A numeric vector of the upper age limits of the population age
+groups.}
+
+\item{l_lim}{A numeric vector of the lower age limits of the population age
+groups.}
 }
 \value{
 A numeric vector.

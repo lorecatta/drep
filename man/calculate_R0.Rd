@@ -2,7 +2,7 @@
 % Please edit documentation in R/calculating_R0.R
 \name{calculate_R0}
 \alias{calculate_R0}
-\title{Calculate the Dengue reproduction number (R0).}
+\title{Calculate the Dengue reproduction number (\eqn{R_0})}
 \usage{
 calculate_R0(FOI, N, n_j, u_lim, l_lim, phis)
 }
@@ -21,7 +21,7 @@ groups.}
 groups.}
 
 \item{phis}{A numeric vector of the relative infectiousness
-of each dengue infection.}
+of each of the four dengue infections.}
 }
 \value{
 Numeric.

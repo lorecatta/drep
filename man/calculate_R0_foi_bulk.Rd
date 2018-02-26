@@ -33,11 +33,11 @@ groups.}
 \item{l_lim}{A numeric vector of the lower age limits of the population age
 groups.}
 
-\item{phis}{A numeric vector of the relative infectiousness of each dengue
-infection.}
+\item{phis}{A numeric vector of the relative infectiousness
+of each of the four dengue infections.}
 }
 \value{
-A numeric vector.
+A numeric vector of length equals \code{nrow(foi_data)}.
 }
 \description{
 Wrapper for repeating calculation of the dengue reproduction number over

@@ -9,11 +9,12 @@ calculate_R0_foi_and_infectiouss_bulk(foi_data, phi_combs, age_data, id_0_field,
   foi_field, pop_field, u_lim, l_lim)
 }
 \arguments{
-\item{foi_data}{A matrix with the force of infection (FOI) estimates in one
-column. The other columns contain other attributes related to the location
-of the force of infection data point (e.g. longitude, latitude, population etc.).}
+\item{foi_data}{A matrix with three columns. One contains the GADM adm 0
+unique identifier for the country of the force of infection data point. One
+contains the force of infection estimates. One contains the values of population
+size for the location to which the force of infection refers.}
 
-\item{phi_combs}{A list with the different combinations of infectiousness
+\item{phi_combs}{A list with different combinations of infectiousness
 of the four dengue infection.}
 
 \item{age_data}{A matrix with the age structure of the different force of
