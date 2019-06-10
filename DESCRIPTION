@@ -9,10 +9,10 @@ Description: The package provides a set of functions to calculate the
     of infection, the age structure of the population and the
     number of primary, secondary, tertiary and quaternary dengue 
     infections at endemic equilibrium. 
-License: What license is it under?
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: TRUE
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 Suggests: 
     knitr,
     rmarkdown
