@@ -19,6 +19,6 @@ group.}
 Numeric.
 }
 \description{
-Calculate the \emph{number} of people (infected or displaying disease symptoms)
-from \emph{incidence} estimates.
+\code{incidences_to_numbers} calculates the \emph{number} of people
+(infected or displaying disease symptoms) from \emph{incidence} estimates.
 }

@@ -27,7 +27,7 @@ of each of the four dengue infections.}
 Numeric.
 }
 \description{
-Calculate the dengue reproduction number using the at-equilibrium number of
-primary, secondary, tertiary and quaternary infections in a population and
-their relative infectiousness.
+\code{calculate_R0} calculates the dengue reproduction number using the
+at-equilibrium number of primary, secondary, tertiary and quaternary infections
+in a population and their relative infectiousness.
 }

@@ -5,20 +5,18 @@
 \title{Calculate infectiousness when symptomatic infections are twice as
  infectious as asymptomatic ones.}
 \usage{
-calculate_infectiousness_sym_2x_asym(w_1, w_2, w_3)
+calculate_infectiousness_sym_2x_asym(prop_sym_parms)
 }
 \arguments{
-\item{w_1}{proportions of primary infections which are symptomatic.}
-
-\item{w_2}{proportions of secondary infections which are symptomatic.}
-
-\item{w_3}{proportions of tertiary and quaternary infections which are symptomatic.}
+\item{prop_sym_parms}{numeric vector of proportions of primary, secondary and
+tertiary/quaternary infections which are symptomatic.}
 }
 \value{
 Numeric.
 }
 \description{
-Calculate the infectiousness of primary, secondary, tertiary and quaternary
-assuming that symptomatic infections are twice as infecious as asymptomatic
-ones. Infectiousness of secondary infectious is 1.
+\code{calculate_infectiousness_sym_2x_asym} calculates the infectiousness of
+primary, secondary, tertiary and quaternary assuming that symptomatic infections
+are twice as infecious as asymptomatic ones.
+Infectiousness of secondary infectious is 1.
 }
