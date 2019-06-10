@@ -77,10 +77,6 @@ phis <- c(1, 1, 1, 1)
 
 The `foi` dataset contains force of infection estimates for different locations in the world.
 
-```{r include = FALSE}
-foi <- read.csv("foi.csv", stringsAsFactors = FALSE)
-```
-
 ```{r, echo = FALSE, results = 'asis'}
 knitr::kable(head(foi, 10), row.names = FALSE)
 ```
@@ -98,10 +94,6 @@ The dataset contains nine variables.
 * `population` is the Level 1 administrative unit population according to 2015 Landscan data [http://web.ornl.gov/sci/landscan/]
 
 Information on the demographic structure of the population to which the original force of infection estimate refers is needed to convert force of infection into reproduction number. The `age_structure` dataset contains the country-level proportion of individuals in 20 5-year age groups (0-99) from 2015, sourced from the United Nation Department of Economic and Social Affairs. Each age group proportion is a different variable. The other important variable is `ID_0`, which represents the country unique identifier. 
-
-```{r, include = FALSE}
-age_structure <- read.csv("age_structure.csv", stringsAsFactors = FALSE)
-```
 
 ```{r, echo = FALSE, results = 'asis'}
 knitr::kable(head(age_structure, 10), row.names = FALSE)
