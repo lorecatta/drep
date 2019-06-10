@@ -1,21 +1,21 @@
 ---
-title: "Estimating reproduction number and burden of Dengue"
-author: "Lorenzo Cattarino"
-date: "`r Sys.Date()`"
-output: 
-  html_vignette:
-    toc: true
+title: "drep_examples"
+output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Estimating reproduction number and burden of Dengue}
+  %\VignetteIndexEntry{drep_examples}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include = FALSE}
+```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+```
+
+```{r setup}
+library(drep)
 ```
 
 # Introduction
@@ -148,55 +148,6 @@ Now to compute the **R~0~** from a given force of infection (**$\lambda$**), fir
 * `FOI`: the force of infection estimate
 * `l_lim`: the lower limits of the age groups
 * `u_lim`: the upper limits of the age groups
-
-```{r, include = FALSE}
-calculate_incidences <- function(FOI, u_lim, l_lim) {
-
-  get_incidences <- function(infec_prob) {
-
-    (infec_prob / 4) / (u_lim - l_lim)
-
-  }
-
-  p_I1 <- exp(-4 * FOI * l_lim) - exp(-4 * FOI * u_lim)
-
-  p_I2 <- 4 * (exp(-3 * FOI * l_lim) - exp(-3 * FOI * u_lim)) -
-          3 * (exp(-4 * FOI * l_lim) - exp(-4 * FOI * u_lim))
-
-  p_I3 <- 6 * (exp(-2 * FOI * l_lim) - exp(-2 * FOI * u_lim)) +
-          8 * (exp(-3 * FOI * u_lim) - exp(-3 * FOI * l_lim)) +
-          3 * (exp(-4 * FOI * l_lim) - exp(-4 * FOI * u_lim))
-
-  p_I4 <- 4 * (exp(-FOI * l_lim) - exp(-FOI * u_lim) +
-               exp(-3 * FOI * l_lim) - exp(-3 * FOI * u_lim)) +
-          6 * (exp(-2 * FOI * u_lim) - exp(-2 * FOI * l_lim)) +
-              (exp(-4 * FOI * u_lim) - exp(-4 * FOI * l_lim))
-
-  all_probs <- list(p_I1, p_I2, p_I3, p_I4)
-
-  lapply(all_probs, get_incidences)
-
-}
-incidences_to_numbers <- function(incidences, n_j, N) {
-
-  ret <- incidences * n_j * N * 4
-
-  sum(ret)
-
-}
-calculate_R0 <- function(FOI, N, infections, phis) {
-
-  FOI * N * 4 / (sum(infections * phis))
-
-}
-calculate_cases <- function(incidences, sym_to_asym_ratios, n_j, N) {
-
-  ret <- Map("*", incidences, sym_to_asym_ratios)
-
-  vapply(ret, incidences_to_numbers, numeric(1), n_j, N)
-
-}
-```
 
 ```{r}
 incidences <- calculate_incidences(lambda, l_lim, u_lim)
