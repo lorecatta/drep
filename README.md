@@ -29,34 +29,35 @@ library(drep)
 
 Define some parameters
 
--   lower and upper age limits (`l_lim` and `u_lim`) of the country age groups
+-   number of age groups in the country human population (`n_age_groups`)
+-   total human population of the country (`pop`)
+-   the Force of Infection estimate (`FOI`)
 -   relative infectiousness of the four dengue infections (`phis`)
 
 ``` r
-l_lim <- seq(0, 95, 5)
-u_lim <- seq(5, 100, 5)
+n_age_groups <- 20
+pop <- 500000
+FOI <- 0.0235
 phis <- c(1, 1, 1, 1)
 ```
 
 Simulate some data
 
--   number of age groups in the human population (`age_groups`)
--   proportion of individuals in eah age gorup (`n_j`)
--   total human population of the country (`pop`)
--   the Force of Infection estimate (`FOI`)
+-   lower and upper age limits (`l_lim` and `u_lim`) of the country age groups
+-   number of individuals in each age group (`n_j`)
+-   proportion of individuals in each age gorup (`f_j`)
 
 ``` r
-age_groups <- 20
-x <- sample(1:50, age_groups, replace = TRUE)
-n_j <- x / sum(x)
-pop <- 500000
-FOI <- 0.0235
+l_lim <- seq(0, 95, length.out = n_age_groups)
+u_lim <- seq(5, 100, length.out = n_age_groups)
+n_j <- sample(1:50, n_age_groups, replace = TRUE)
+f_j <- n_j / sum(n_j)
 ```
 
 Calculate the *R*<sub>0</sub>
 
 ``` r
-R0 <- calculate_R0(FOI, pop, n_j, u_lim, l_lim, phis)
+R0 <- calculate_R0(FOI, pop, f_j, u_lim, l_lim, phis)
 R0
-#> [1] 2.692759
+#> [1] 2.800158
 ```
