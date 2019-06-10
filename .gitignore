@@ -4,4 +4,5 @@
 .Ruserdata
 inst/doc
 /data
+/data-raw
 *.rds
