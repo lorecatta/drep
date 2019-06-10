@@ -1,8 +1,5 @@
+
 devtools::load_all()
-
-# load packages
-
-#library(dplyr)
 
 
 # Define parameters -----------------------------------------------------------
@@ -48,63 +45,35 @@ R0 <- calculate_R0(FOI, pop, n_j, u_lim, l_lim, phis)
 R0
 
 
-# with multiple FOI values ----------------------------------------------------
+# -----------------------------------------------------------------------------
+
+# now we assume that only primary and secondary infections are infectious and therefore contribute to transmission.
+# This assumptions implies that if a tertiary or a secondary infections are not infectious.
 
 
-# FOI equals zero is not allowed in R0 calculation
-foi_pos <- foi[foi[, "type"] != "pseudoAbsence", ]
+phis <- c(1, 1, 0, 0)
 
-all_FOI_R0 <- calculate_R0_foi_bulk(foi_data = foi_pos,
-                                    age_data = age_structure,
-                                    id_0_field = "ID_0",
-                                    foi_field = "FOI",
-                                    pop_field = "population",
-                                    u_lim = u_lim,
-                                    l_lim = l_lim,
-                                    phis = phis)
+R0 <- calculate_R0(FOI, pop, n_j, u_lim, l_lim, phis)
 
-all_FOI_R0
+R0
 
 
-# with multiple combinations of infectiousness --------------------------------
+# ~ R0 increases as the virus has only two attempts at producing a given force of infection.
 
 
-w_1 <- 0.45
-w_2 <- 0.85
-w_3 <- 0.15
+# -----------------------------------------------------------------------------
 
-sym_2x_asym_comb <- calculate_infectiousness_sym_2x_asym(w_1, w_2, w_3)
+#now we assume that all infections are infeectious but symptomatic infections are twice as infectious as asymptomatic ones.
+# This requires to know the proportion of primary. secondary, tertiary and quaternary infectionsa which are asymptomatic.
+# we source this value for these parameters from
 
-infectiousness_combs <- list(c(1, 1, 0, 0),
-                             c(1, 1, 1, 1),
-                             sym_2x_asym_comb)
+prop_sym_parms <- c(0.45, 0.85, 0.15)
 
-all_phis_R0 <- calculate_R0_infectiouss_bulk(phi_combs = infectiousness_combs,
-                                             FOI = FOI,
-                                             N = pop,
-                                             n_j = n_j,
-                                             u_lim = u_lim,
-                                             l_lim = l_lim)
+phis <- calculate_infectiousness_sym_2x_asym(prop_sym_parms)
 
-all_phis_R0
+R0 <- calculate_R0(FOI, pop, n_j, u_lim, l_lim, phis)
 
-
-# with multiple FOI AND combinations of infectiousness ------------------------
-
-
-all_phis_and_FOI_R0 <- calculate_R0_foi_and_infectiouss_bulk(foi_data = foi_pos,
-                                                             phi_combs = infectiousness_combs,
-                                                             age_data = age_structure,
-                                                             id_0_field = "ID_0",
-                                                             foi_field = "FOI",
-                                                             pop_field = "population",
-                                                             u_lim = u_lim,
-                                                             l_lim = l_lim)
-
-all_phis_and_FOI_R0
-
-
-
+R0
 
 # calculate cases -------------------------------------------------------------
 
@@ -121,9 +90,7 @@ table3[table3[, "cell"] == 300000,"1"]
 FOI <- 0.01995189
 n_j <- age_structure[age_structure$ID_0 == 185, 2:ncol(age_structure)]
 pop <- 432
-gamma_1 <- 0.45
-rho <- 0.85
-gamma_3 <- 0.15
+
 
 sym_to_asym_ratios <- list(gamma_1, rho, gamma_3, gamma_3)
 
