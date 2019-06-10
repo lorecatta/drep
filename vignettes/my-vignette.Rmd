@@ -51,6 +51,28 @@ library(drep)
 
 <br>
 
+# Simulated data 
+
+To convert Force of Infection into R_0 we need:
+
+* the age structure of the human population 
+* the relative infectiousness of the four dengue infections. 
+
+
+We assume that the population is divided up into 20 age groups. We then define the following parameters:
+
+1.`l_lim` and `u_lim` are numeric vectors representing lower and upper age limits of each of the 20 age groups defining the country demographic structure.  
+
+2. `phis` is the numeric vector of the infectiousness of primary, secondary and tertiary dengue infections. Quaternary infections are assumed to have the same infectiousness as tertiary infections. 
+
+```{r}
+l_lim <- seq(0, 95, 5)
+u_lim <- seq(5, 100, 5)
+phis <- c(1, 1, 1, 1)
+```
+
+
+
 # Datasets
 
 The `foi` dataset contains force of infection estimates for different locations in the world.
