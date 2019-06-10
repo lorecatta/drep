@@ -57,7 +57,6 @@ Calculate the *R*<sub>0</sub>
 
 ``` r
 R0 <- calculate_R0(FOI, pop, n_j, u_lim, l_lim, phis)
-
 R0
-#> [1] 3.034422
+#> [1] 2.692759
 ```
