@@ -1,55 +1,59 @@
+# drep
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-drep
-====
+> Calculation of the Dengue REProduction number from Force of Infection
 
-<!-- badges: start -->
-<!-- badges: end -->
-The goal of drep is to ...
+This package allows calculation of the Dengue Reproduction number, $R_{0}$, from 
+Force of Infection using the at-equilibrium number of primary, secondary, tertiary 
+and quaternary infections in a population and their relative infectiousness. 
+This is done assuming that Dengue transmission is at equilibrium. 
 
-Installation
-------------
+## Installation
 
-You can install the released version of drep from [CRAN](https://CRAN.R-project.org) with:
+You can install the development version of the package using `devtools`. First install `devtools`, if you don't already have it.
 
-``` r
-install.packages("drep")
+```{r include = TRUE, eval = FALSE}
+install.packages("devtools")
+library(devtools)
 ```
 
-And the development version from [GitHub](https://github.com/) with:
+Then, in a fresh R session, install the `drep` package.
 
-``` r
-# install.packages("devtools")
+```{r include = TRUE, eval = FALSE}
 devtools::install_github("mrc-ide/drep")
-```
-
-Example
--------
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
 library(drep)
-## basic example code
+```
+## Example
+
+Define some parameters
+
+* lower and upper age limits (`l_lim` and `u_lim`) of the country age groups
+* relative infectiousness of the four dengue infections (`phis`)
+
+```{r}
+l_lim <- seq(0, 95, 5)
+u_lim <- seq(5, 100, 5)
+phis <- c(1, 1, 1, 1)
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+Simulate some data
 
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+* number of age groups in the human population (`age_groups`)
+* proportion of individuals in eah age gorup (`n_j`)
+* total human population of the country (`pop`)
+* the Force of Infection estimate (`FOI`)
+
+```{r}
+age_groups <- 20
+x <- sample(1:50, age_groups, replace = TRUE)
+n_j <- x / sum(x)
+pop <- 500000
+FOI <- 0.0235
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
+Calculate the R<sub>0</sub>
 
-You can also embed plots, for example:
+```{r}
+R0 <- calculate_R0(FOI, pop, n_j, u_lim, l_lim, phis)
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!
+R0
+```
