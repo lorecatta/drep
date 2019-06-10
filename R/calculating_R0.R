@@ -122,6 +122,8 @@ incidences_to_numbers <- function(incidences, N, n_j) {
 #' @return Numeric.
 #'
 #' @export
+
+
 calculate_R0 <- function(FOI, N, n_j, u_lim, l_lim, phis) {
 
   incids <- calculate_incidences(FOI, u_lim, l_lim)
