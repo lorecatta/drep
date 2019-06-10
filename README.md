@@ -2,7 +2,7 @@
 
 > Calculation of the Dengue REProduction number from Force of Infection
 
-This package allows calculation of the Dengue Reproduction number, R~0~, from 
+This package allows calculation of the Dengue Reproduction number, $R_{0}$, from 
 Force of Infection using the at-equilibrium number of primary, secondary, tertiary 
 and quaternary infections in a population and their relative infectiousness. 
 This is done assuming that Dengue transmission is at equilibrium. 
