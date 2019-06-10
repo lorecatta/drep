@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-`drep` allows calculation of the Dengue Reproduction number, $R_{0}$, from 
+`drep` allows calculation of the Dengue Reproduction number, $R_0$, from 
 Force of Infection using the at-equilibrium number of primary, secondary, tertiary 
 and quaternary infections in a population and their relative infectiousness. 
 This is done assuming that Dengue transmission is at equilibrium. 
@@ -65,7 +65,7 @@ pop <- 500000
 FOI <- 0.0235
 ```
 
-Calculate the R<sub>0</sub>
+Calculate the $R_0$
 
 ```{r}
 R0 <- calculate_R0(FOI, pop, n_j, u_lim, l_lim, phis)

@@ -53,11 +53,11 @@ pop <- 500000
 FOI <- 0.0235
 ```
 
-Calculate the R<sub>0</sub>
+Calculate the *R*<sub>0</sub>
 
 ``` r
 R0 <- calculate_R0(FOI, pop, n_j, u_lim, l_lim, phis)
 
 R0
-#> [1] 2.815126
+#> [1] 3.034422
 ```
