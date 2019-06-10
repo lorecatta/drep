@@ -7,7 +7,7 @@ Force of Infection using the at-equilibrium number of primary, secondary, tertia
 and quaternary infections in a population and their relative infectiousness. 
 This is done assuming that Dengue transmission is at equilibrium. 
 
-# Installation
+## Installation
 
 You can install the development version of the package using `devtools`. First install `devtools`, if you don't already have it.
 
@@ -22,7 +22,7 @@ Then, in a fresh R session, install the `drep` package.
 devtools::install_github("mrc-ide/drep")
 library(drep)
 ```
-# Example
+## Example
 
 Define some parameters
 
