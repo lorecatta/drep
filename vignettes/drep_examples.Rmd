@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(drep)
+library(kableExtra)
 ```
 
 # Introduction
@@ -94,7 +95,7 @@ The $R_0$ can be calculated using the `calculate_R0` function. The `calculate_R0
 * `f_j`: a numeric vector of the proportions of individuals in each age gorup
 * `l_lim`: a numeric vector of the lower limits of the country age groups
 * `u_lim`: a numeric vector of the upper limits of the age groups
-* `phis`: a numeric vector of the relative infectiousness of primary, secondary and tertiary dengue infections. Quaternary infections are assumed to have the same infectiousness as tertiary infections.
+* `phis`: a numeric vector of the relative infectiousness of primary, secondary, tertiary and quaternary dengue infections. 
 
 ```{r}
 R0 <- calculate_R0(FOI, pop, f_j, u_lim, l_lim, phis)
@@ -126,7 +127,9 @@ The dataset contains nine variables.
 Information on the demographic structure of the population to which the original force of infection estimate refers is needed to convert force of infection into reproduction number. The `age_structure` dataset contains the country-level proportion of individuals in 20 5-year age groups (0-99) from 2015, sourced from the United Nation Department of Economic and Social Affairs. Each age group proportion is a different variable. The other important variable is `ID_0`, which represents the country unique identifier. 
 
 ```{r, echo = FALSE, results = 'asis'}
-knitr::kable(head(age_structure, 10), row.names = FALSE)
+kableExtra::kable(head(age_structure, 10)) %>%
+  kable_styling(bootstrap_options = "striped", full_width = FALSE)
+#knitr::kable(head(age_structure, 10), row.names = FALSE)
 ```
 
 For the purpose of this example, we pick the fourth data point, i.e. a `caseReport` estimate from Brazil.
@@ -166,11 +169,15 @@ R0
 
 The $R_0$ value increases relative to when using same weights because the virus has only two attempts at generating a given force of infection, so it has to have a higher $R_0$.
 
-Finally let's assume that all infections are infeectious but symptomatic infections are twice as infectious as asymptomatic ones. This requires to know the proportion of primary. secondary, tertiary and quaternary infectionsa which are asymptomatic. We source the values of these parameters from Ferguson et al. 2016[https://science.sciencemag.org/content/353/6303/1033] and use the function `calculate_infectiousness_sym_2x_asym` to calculate the relative infectiousness of the four dengue infections.
+Finally let's assume that all four infections are infectious but symptomatic infections are twice as infectious as asymptomatic ones. This requires knowledge of the proportion of primary. secondary, tertiary and quaternary infections which are asymptomatic. We source the values of these parameters from [Ferguson et al. 2016](https://science.sciencemag.org/content/353/6303/1033) and put them in a vector.
 
 ```{r} 
-prop_sym_parms <- c(0.45, 0.85, 0.15)
+prop_sym_parms <- c(0.45, 0.85, 0.15, 0.15)
+```
 
+We can use the function `calculate_infectiousness_sym_2x_asym` to calculate the relative infectiousness of the four dengue infections from the proportion of primary. secondary, tertiary and quaternary infectionsa which are asymptomatic.
+
+```{r}
 phis <- calculate_infectiousness_sym_2x_asym(prop_sym_parms)
 
 R0 <- calculate_R0(FOI, pop, n_j, u_lim, l_lim, phis)
