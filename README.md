@@ -20,7 +20,7 @@ u_lim <- seq(5, 100, 5)
 phis <- c(1, 1, 1, 1)
 ```
 
-Simulate some data 
+Simulate some data
 
 * number of age groups in the human population (`age_groups`)
 * proportion of individuals in eah age gorup (`n_j`)
@@ -35,7 +35,7 @@ pop <- 500000
 FOI <- 0.0235
 ```
 
-Calculate the R_0
+Calculate the R<sub>0</sub>
 
 ```{r}
 R0 <- calculate_R0(FOI, pop, n_j, u_lim, l_lim, phis)
