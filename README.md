@@ -35,8 +35,6 @@ We make a number of assumptions:
 3.  Dengue transmission is at equilibrium
 4.  Force of infection is constant through time
 
-<br>
-
 Example
 -------
 
@@ -86,5 +84,5 @@ The *R*<sub>0</sub> can be calculated using the `calculate_R0` function. The `ca
 ``` r
 R0 <- drep::calculate_R0(FOI, pop, f_j, u_lim, l_lim, phis)
 R0
-#> [1] 2.419873
+#> [1] 2.641205
 ```
