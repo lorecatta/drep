@@ -1170,18 +1170,140 @@ lambda
 pop_size &lt;-<span class="st"> </span>drep<span class="op">::</span>foi[<span class="dv">4</span>, <span class="st">"population"</span>]
 pop_size
 <span class="co">#&gt; [1] 6947167</span></code></pre></div>
-<p>Look up the country age structure.</p>
+<p>Extract the country age structure and have look at it.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">age_s_data &lt;-<span class="st"> </span>drep<span class="op">::</span>age_structure
-n_j &lt;-<span class="st"> </span>age_s_data[age_s_data<span class="op">$</span>ID_<span class="dv">0</span> <span class="op">==</span><span class="st"> </span>id_<span class="dv">0</span>, <span class="dv">2</span><span class="op">:</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">ncol</a></span>(age_s_data)]
-n_j
-<span class="co">#&gt;      band_0_4   band_5_9 band_10_14 band_15_19 band_20_24 band_25_29</span>
-<span class="co">#&gt; 24 0.07232487 0.07413395 0.08382891 0.08402617 0.08020112 0.08371824</span>
-<span class="co">#&gt;    band_30_34 band_35_39 band_40_44 band_45_49 band_50_54 band_55_59</span>
-<span class="co">#&gt; 24 0.08571978 0.07836316 0.06889915 0.06347671 0.05939184 0.04859026</span>
-<span class="co">#&gt;    band_60_64 band_65_69 band_70_74 band_75_79  band_80_84  band_85_89</span>
-<span class="co">#&gt; 24 0.03890974 0.02873364 0.02013568 0.01473249 0.008641263 0.004469784</span>
-<span class="co">#&gt;     band_90_94   band_95_99</span>
-<span class="co">#&gt; 24 0.001428984 0.0002742494</span></code></pre></div>
+n_j &lt;-<span class="st"> </span>age_s_data[age_s_data<span class="op">$</span>ID_<span class="dv">0</span> <span class="op">==</span><span class="st"> </span>id_<span class="dv">0</span>, <span class="dv">2</span><span class="op">:</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">ncol</a></span>(age_s_data)]</code></pre></div>
+<table class="table table table-striped">
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+band_0_4
+</th>
+<th style="text-align:right;">
+band_5_9
+</th>
+<th style="text-align:right;">
+band_10_14
+</th>
+<th style="text-align:right;">
+band_15_19
+</th>
+<th style="text-align:right;">
+band_20_24
+</th>
+<th style="text-align:right;">
+band_25_29
+</th>
+<th style="text-align:right;">
+band_30_34
+</th>
+<th style="text-align:right;">
+band_35_39
+</th>
+<th style="text-align:right;">
+band_40_44
+</th>
+<th style="text-align:right;">
+band_45_49
+</th>
+<th style="text-align:right;">
+band_50_54
+</th>
+<th style="text-align:right;">
+band_55_59
+</th>
+<th style="text-align:right;">
+band_60_64
+</th>
+<th style="text-align:right;">
+band_65_69
+</th>
+<th style="text-align:right;">
+band_70_74
+</th>
+<th style="text-align:right;">
+band_75_79
+</th>
+<th style="text-align:right;">
+band_80_84
+</th>
+<th style="text-align:right;">
+band_85_89
+</th>
+<th style="text-align:right;">
+band_90_94
+</th>
+<th style="text-align:right;">
+band_95_99
+</th>
+</tr></thead>
+<tbody><tr>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:right;">
+0.0723249
+</td>
+<td style="text-align:right;">
+0.0741339
+</td>
+<td style="text-align:right;">
+0.0838289
+</td>
+<td style="text-align:right;">
+0.0840262
+</td>
+<td style="text-align:right;">
+0.0802011
+</td>
+<td style="text-align:right;">
+0.0837182
+</td>
+<td style="text-align:right;">
+0.0857198
+</td>
+<td style="text-align:right;">
+0.0783632
+</td>
+<td style="text-align:right;">
+0.0688992
+</td>
+<td style="text-align:right;">
+0.0634767
+</td>
+<td style="text-align:right;">
+0.0593918
+</td>
+<td style="text-align:right;">
+0.0485903
+</td>
+<td style="text-align:right;">
+0.0389097
+</td>
+<td style="text-align:right;">
+0.0287336
+</td>
+<td style="text-align:right;">
+0.0201357
+</td>
+<td style="text-align:right;">
+0.0147325
+</td>
+<td style="text-align:right;">
+0.0086413
+</td>
+<td style="text-align:right;">
+0.0044698
+</td>
+<td style="text-align:right;">
+0.001429
+</td>
+<td style="text-align:right;">
+0.0002742
+</td>
+</tr></tbody>
+</table>
 <p>Lest’s also define the lower and upper age limits (<code>l_lim</code> and <code>u_lim</code>) of the country age groups amnd the infectiousness weights (<code>phis</code>)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n_age_groups &lt;-<span class="st"> </span><span class="dv">20</span>
 l_lim &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(<span class="dv">0</span>, <span class="dv">95</span>, <span class="dt">length.out =</span> n_age_groups)
