@@ -3,4 +3,7 @@ pkgdown: 1.3.0
 pkgdown_sha: ~
 articles:
   drep_examples: drep_examples.html
+urls:
+  reference: https://mrc-ide.github.io/drep//reference
+  article: https://mrc-ide.github.io/drep//articles
 

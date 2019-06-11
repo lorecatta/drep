@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://mrc-ide.github.io/drep//index.html</loc>
+  </url>
+  <url>
+    <loc>https://mrc-ide.github.io/drep//reference/calculate_cases.html</loc>
+  </url>
+  <url>
+    <loc>https://mrc-ide.github.io/drep//reference/calculate_incidences.html</loc>
+  </url>
+  <url>
+    <loc>https://mrc-ide.github.io/drep//reference/calculate_infectiousness_sym_2x_asym.html</loc>
+  </url>
+  <url>
+    <loc>https://mrc-ide.github.io/drep//reference/calculate_R0.html</loc>
+  </url>
+  <url>
+    <loc>https://mrc-ide.github.io/drep//reference/hello.html</loc>
+  </url>
+  <url>
+    <loc>https://mrc-ide.github.io/drep//reference/incidences_to_numbers.html</loc>
+  </url>
+  <url>
+    <loc>https://mrc-ide.github.io/drep//articles/drep_examples.html</loc>
+  </url>
+</urlset>
