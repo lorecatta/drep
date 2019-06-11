@@ -78,11 +78,11 @@ The *R*<sub>0</sub> can be calculated using the `calculate_R0` function. The `ca
 -   `pop`: a numeric value representing the total human population of the country
 -   `f_j`: a numeric vector of the proportions of individuals in each age gorup
 -   `l_lim`: a numeric vector of the lower limits of the country age groups
--   `u_lim`: a numeric vector of the upper limits of the age groups
+-   `u_lim`: a numeric vector of the upper limits of the country age groups
 -   `phis`: a numeric vector of the relative infectiousness of primary, secondary, tertiary and quaternary dengue infections.
 
 ``` r
 R0 <- drep::calculate_R0(FOI, pop, f_j, u_lim, l_lim, phis)
 R0
-#> [1] 2.705893
+#> [1] 2.559932
 ```
