@@ -38,7 +38,7 @@ We make a number of assumptions:
 Example
 -------
 
-This is a basic example which shows you how to to convert Force of Infection into R\_0. To do this we need:
+This is a basic example which shows you how to to convert Force of Infection into *R*<sub>0</sub>. To do this we need:
 
 -   the age structure of the human population
 -   the relative infectiousness of the four dengue infections.
@@ -84,5 +84,5 @@ The *R*<sub>0</sub> can be calculated using the `calculate_R0` function. The `ca
 ``` r
 R0 <- drep::calculate_R0(FOI, pop, f_j, u_lim, l_lim, phis)
 R0
-#> [1] 2.641205
+#> [1] 2.705893
 ```

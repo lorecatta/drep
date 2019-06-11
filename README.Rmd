@@ -50,7 +50,7 @@ We make a number of assumptions:
 
 ## Example
 
-This is a basic example which shows you how to to convert Force of Infection into R_0. To do this we need:
+This is a basic example which shows you how to to convert Force of Infection into $R_0$. To do this we need:
 
 * the age structure of the human population 
 * the relative infectiousness of the four dengue infections. 
