@@ -55,6 +55,7 @@ For the purpose of this example, we pick the fourth data point, i.e. a `caseRepo
 
 ```{r}
 lambda <- drep::foi[4, "FOI"] # a point from Brazil
+lambda
 ```
 
 The `ID_0` of the point selected from the `foi` dataset (`lambda`) is needed to be able to look up the correct demographic structure from the `age_structure` dataset. The `population` of the data point will also be needed when calculating the $R_0$. 
@@ -62,6 +63,7 @@ The `ID_0` of the point selected from the `foi` dataset (`lambda`) is needed to 
 ```{r}
 id_0 <- drep::foi[4, "ID_0"]
 pop_size <- drep::foi[4, "population"]
+pop_size
 ```
 
 Look up the country age structure. 
@@ -69,6 +71,7 @@ Look up the country age structure.
 ```{r}
 age_s_data <- drep::age_structure
 n_j <- age_s_data[age_s_data$ID_0 == id_0, 2:ncol(age_s_data)]
+n_j
 ```
 
 Lest's also define the lower and upper age limits (`l_lim` and `u_lim`) of the country age groups amnd the infectiousness weights (`phis`)  

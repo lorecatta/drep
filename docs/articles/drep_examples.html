@@ -1162,13 +1162,26 @@ band_95_99
 </tbody>
 </table>
 <p>For the purpose of this example, we pick the fourth data point, i.e. a <code>caseReport</code> estimate from Brazil.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lambda &lt;-<span class="st"> </span>drep<span class="op">::</span>foi[<span class="dv">4</span>, <span class="st">"FOI"</span>] <span class="co"># a point from Brazil</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lambda &lt;-<span class="st"> </span>drep<span class="op">::</span>foi[<span class="dv">4</span>, <span class="st">"FOI"</span>] <span class="co"># a point from Brazil</span>
+lambda
+<span class="co">#&gt; [1] 0.06159744</span></code></pre></div>
 <p>The <code>ID_0</code> of the point selected from the <code>foi</code> dataset (<code>lambda</code>) is needed to be able to look up the correct demographic structure from the <code>age_structure</code> dataset. The <code>population</code> of the data point will also be needed when calculating the <span class="math inline">\(R_0\)</span>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">id_<span class="dv">0</span> &lt;-<span class="st"> </span>drep<span class="op">::</span>foi[<span class="dv">4</span>, <span class="st">"ID_0"</span>]
-pop_size &lt;-<span class="st"> </span>drep<span class="op">::</span>foi[<span class="dv">4</span>, <span class="st">"population"</span>]</code></pre></div>
+pop_size &lt;-<span class="st"> </span>drep<span class="op">::</span>foi[<span class="dv">4</span>, <span class="st">"population"</span>]
+pop_size
+<span class="co">#&gt; [1] 6947167</span></code></pre></div>
 <p>Look up the country age structure.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">age_s_data &lt;-<span class="st"> </span>drep<span class="op">::</span>age_structure
-n_j &lt;-<span class="st"> </span>age_s_data[age_s_data<span class="op">$</span>ID_<span class="dv">0</span> <span class="op">==</span><span class="st"> </span>id_<span class="dv">0</span>, <span class="dv">2</span><span class="op">:</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">ncol</a></span>(age_s_data)]</code></pre></div>
+n_j &lt;-<span class="st"> </span>age_s_data[age_s_data<span class="op">$</span>ID_<span class="dv">0</span> <span class="op">==</span><span class="st"> </span>id_<span class="dv">0</span>, <span class="dv">2</span><span class="op">:</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">ncol</a></span>(age_s_data)]
+n_j
+<span class="co">#&gt;      band_0_4   band_5_9 band_10_14 band_15_19 band_20_24 band_25_29</span>
+<span class="co">#&gt; 24 0.07232487 0.07413395 0.08382891 0.08402617 0.08020112 0.08371824</span>
+<span class="co">#&gt;    band_30_34 band_35_39 band_40_44 band_45_49 band_50_54 band_55_59</span>
+<span class="co">#&gt; 24 0.08571978 0.07836316 0.06889915 0.06347671 0.05939184 0.04859026</span>
+<span class="co">#&gt;    band_60_64 band_65_69 band_70_74 band_75_79  band_80_84  band_85_89</span>
+<span class="co">#&gt; 24 0.03890974 0.02873364 0.02013568 0.01473249 0.008641263 0.004469784</span>
+<span class="co">#&gt;     band_90_94   band_95_99</span>
+<span class="co">#&gt; 24 0.001428984 0.0002742494</span></code></pre></div>
 <p>Lest’s also define the lower and upper age limits (<code>l_lim</code> and <code>u_lim</code>) of the country age groups amnd the infectiousness weights (<code>phis</code>)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n_age_groups &lt;-<span class="st"> </span><span class="dv">20</span>
 l_lim &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(<span class="dv">0</span>, <span class="dv">95</span>, <span class="dt">length.out =</span> n_age_groups)
