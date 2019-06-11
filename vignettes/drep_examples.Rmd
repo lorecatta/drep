@@ -25,7 +25,7 @@ library(kableExtra)
 
 This vignette explains how to use `drep` to compute the Dengue reproduction from Force of Infection using real data and under different assumptions regarding the relative infectiousness of the number of primary, secondary, tertiary and quaternary infections at endemic equlibrium.  
 
-## Real data example
+## Real FoI data 
 
 Let's now look at some real data. The `foi` dataset contains force of infection estimates for different locations in the world and it is available [here](https://mrcdata.dide.ic.ac.uk/_dengue/dengue.php).
 
@@ -39,9 +39,9 @@ The dataset contains nine variables.
 * `type` is a character string describing wheather the data was derived from a serology study (`serology`) or a case surveillance study (`caseReport`).
 * `longitude` and `latitude` are the numeric geographic coordinates of the data points.
 * `ISO` is a character string describing the ISO **3166-1 alpha-3** country code.
-* `ID_0` and `ID_1` are integers representing the GADM administrative units unique identifiers [http://gadm.org/]. 
+* `ID_0` and `ID_1` are integers representing the GADM administrative units unique identifiers sourced from [here](http://gadm.org/). 
 * `FOI` is the force of infection estimate
-* `population` is the Level 1 administrative unit population according to 2015 Landscan data [http://web.ornl.gov/sci/landscan/]
+* `population` is the Level 1 administrative unit population according to 2015 [Landscan data](http://web.ornl.gov/sci/landscan/)
 
 Information on the demographic structure of the population to which the original force of infection estimate refers is needed to convert force of infection into reproduction number. The `age_structure` dataset contains the country-level proportion of individuals in 20 5-year age groups (0-99) from 2015, sourced from the United Nation Department of Economic and Social Affairs. Each age group proportion is a different variable. The other important variable is `ID_0`, which represents the country unique identifier. 
 
@@ -93,7 +93,9 @@ R0 <- drep::calculate_R0(lambda, pop_size, n_j, u_lim, l_lim, phis)
 R0
 ```
 
-Now we assume that only primary and secondary infections are infectious and therefore contribute to transmission. This implies that tertiary and secondary infections are not infectious.
+## Varying infectiousness
+
+Now we explore the case when primary to quaternary numbers of infections have different relative infectiousness. First, we assume that only primary and secondary infections are infectious and therefore contribute to transmission. This implies that tertiary and secondary infections are not infectious.
 
 ```{r}
 phis <- c(1, 1, 0, 0)
@@ -104,7 +106,7 @@ R0
 
 The $R_0$ value increases relative to when using same weights because the virus has only two attempts at generating a given force of infection, so it has to have a higher $R_0$.
 
-Finally let's assume that all four infections are infectious but symptomatic infections are twice as infectious as asymptomatic ones. This requires knowledge of the proportion of primary. secondary, tertiary and quaternary infections which are asymptomatic. We source the values of these parameters from [Ferguson et al. 2016](https://science.sciencemag.org/content/353/6303/1033) and put them in a vector.
+Second, let's assume that all four infections are infectious but symptomatic infections are twice as infectious as asymptomatic ones. This requires knowledge of the proportion of primary. secondary, tertiary and quaternary infections which are asymptomatic. We source the values of these parameters from [Ferguson et al. 2016](https://science.sciencemag.org/content/353/6303/1033) and put them in a vector.
 
 ```{r} 
 prop_sym_parms <- c(0.45, 0.85, 0.15, 0.15)

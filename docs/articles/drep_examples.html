@@ -97,9 +97,9 @@
 <a href="#introduction" class="anchor"></a>Introduction</h2>
 <p>This vignette explains how to use <code>drep</code> to compute the Dengue reproduction from Force of Infection using real data and under different assumptions regarding the relative infectiousness of the number of primary, secondary, tertiary and quaternary infections at endemic equlibrium.</p>
 </div>
-<div id="real-data-example" class="section level2">
+<div id="real-foi-data" class="section level2">
 <h2 class="hasAnchor">
-<a href="#real-data-example" class="anchor"></a>Real data example</h2>
+<a href="#real-foi-data" class="anchor"></a>Real FoI data</h2>
 <p>Let’s now look at some real data. The <code>foi</code> dataset contains force of infection estimates for different locations in the world and it is available <a href="https://mrcdata.dide.ic.ac.uk/_dengue/dengue.php">here</a>.</p>
 <table class="table">
 <thead><tr>
@@ -435,11 +435,12 @@ BRA
 <li>
 <code>ISO</code> is a character string describing the ISO <strong>3166-1 alpha-3</strong> country code.</li>
 <li>
-<code>ID_0</code> and <code>ID_1</code> are integers representing the GADM administrative units unique identifiers [<a href="http://gadm.org/" class="uri">http://gadm.org/</a>].</li>
+<code>ID_0</code> and <code>ID_1</code> are integers representing the GADM administrative units unique identifiers sourced from <a href="http://gadm.org/">here</a>.</li>
 <li>
 <code>FOI</code> is the force of infection estimate</li>
 <li>
-<code>population</code> is the Level 1 administrative unit population according to 2015 Landscan data [<a href="http://web.ornl.gov/sci/landscan/" class="uri">http://web.ornl.gov/sci/landscan/</a>]</li>
+<code>population</code> is the Level 1 administrative unit population according to 2015 <a href="http://web.ornl.gov/sci/landscan/">Landscan data</a>
+</li>
 </ul>
 <p>Information on the demographic structure of the population to which the original force of infection estimate refers is needed to convert force of infection into reproduction number. The <code>age_structure</code> dataset contains the country-level proportion of individuals in 20 5-year age groups (0-99) from 2015, sourced from the United Nation Department of Economic and Social Affairs. Each age group proportion is a different variable. The other important variable is <code>ID_0</code>, which represents the country unique identifier.</p>
 <table class="table table table-striped">
@@ -1313,14 +1314,18 @@ phis &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocume
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">R0 &lt;-<span class="st"> </span>drep<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/drep/topics/calculate_R0">calculate_R0</a></span>(lambda, pop_size, n_j, u_lim, l_lim, phis)
 R0
 <span class="co">#&gt; [1] 4.068688</span></code></pre></div>
-<p>Now we assume that only primary and secondary infections are infectious and therefore contribute to transmission. This implies that tertiary and secondary infections are not infectious.</p>
+</div>
+<div id="varying-infectiousness" class="section level2">
+<h2 class="hasAnchor">
+<a href="#varying-infectiousness" class="anchor"></a>Varying infectiousness</h2>
+<p>Now we explore the case when primary to quaternary numbers of infections have different relative infectiousness. First, we assume that only primary and secondary infections are infectious and therefore contribute to transmission. This implies that tertiary and secondary infections are not infectious.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">phis &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>)
 
 R0 &lt;-<span class="st"> </span>drep<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/drep/topics/calculate_R0">calculate_R0</a></span>(lambda, pop_size, n_j, u_lim, l_lim, phis)
 R0
 <span class="co">#&gt; [1] 8.173763</span></code></pre></div>
 <p>The <span class="math inline">\(R_0\)</span> value increases relative to when using same weights because the virus has only two attempts at generating a given force of infection, so it has to have a higher <span class="math inline">\(R_0\)</span>.</p>
-<p>Finally let’s assume that all four infections are infectious but symptomatic infections are twice as infectious as asymptomatic ones. This requires knowledge of the proportion of primary. secondary, tertiary and quaternary infections which are asymptomatic. We source the values of these parameters from <a href="https://science.sciencemag.org/content/353/6303/1033">Ferguson et al. 2016</a> and put them in a vector.</p>
+<p>Second, let’s assume that all four infections are infectious but symptomatic infections are twice as infectious as asymptomatic ones. This requires knowledge of the proportion of primary. secondary, tertiary and quaternary infections which are asymptomatic. We source the values of these parameters from <a href="https://science.sciencemag.org/content/353/6303/1033">Ferguson et al. 2016</a> and put them in a vector.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prop_sym_parms &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.45</span>, <span class="fl">0.85</span>, <span class="fl">0.15</span>, <span class="fl">0.15</span>)</code></pre></div>
 <p>We can use the function <code>calculate_infectiousness_sym_2x_asym</code> to calculate the relative infectiousness of the four dengue infections from the proportion of primary. secondary, tertiary and quaternary infectionsa which are asymptomatic.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">phis &lt;-<span class="st"> </span>drep<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/drep/topics/calculate_infectiousness_sym_2x_asym">calculate_infectiousness_sym_2x_asym</a></span>(prop_sym_parms)
@@ -1340,7 +1345,8 @@ R0
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#introduction">Introduction</a></li>
-      <li><a href="#real-data-example">Real data example</a></li>
+      <li><a href="#real-foi-data">Real FoI data</a></li>
+      <li><a href="#varying-infectiousness">Varying infectiousness</a></li>
       </ul>
 </div>
       </div>
