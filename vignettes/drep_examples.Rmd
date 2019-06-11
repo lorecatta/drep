@@ -23,13 +23,13 @@ opts_chunk$set(collapse = TRUE)
 opts_chunk$set(echo = FALSE)
 ```
 
-# Introduction
+## Introduction
 
 This vignette explains how to use `drep` to compute the Dengue reproduction from Force of Infection using real data. It will also show how to calculate the reprodution number under different assumptions regarding the relative infectiousness of the number of primary, secondary, tertiary and quaternary infections at endemic equlibrium.  
 
-# Real data example
+## Real data example
 
-Let's now look at some real data. The `foi` dataset contains force of infection estimates for different locations in the world and it is available [here](https://mrcdata.dide.ic.ac.uk/_dengue/dengue.php)
+Let's now look at some real data. The `foi` dataset contains force of infection estimates for different locations in the world and it is available [here](https://mrcdata.dide.ic.ac.uk/_dengue/dengue.php).
 
 ```{r, echo = FALSE, results = 'asis'}
 knitr::kable(head(drep::foi, 10), row.names = FALSE)
