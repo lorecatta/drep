@@ -23,7 +23,7 @@ library(kableExtra)
 
 ## Introduction
 
-This vignette explains how to use `drep` to compute the Dengue reproduction from Force of Infection using real data. It will also show how to calculate the reprodution number under different assumptions regarding the relative infectiousness of the number of primary, secondary, tertiary and quaternary infections at endemic equlibrium.  
+This vignette explains how to use `drep` to compute the Dengue reproduction from Force of Infection using real data and under different assumptions regarding the relative infectiousness of the number of primary, secondary, tertiary and quaternary infections at endemic equlibrium.  
 
 ## Real data example
 
@@ -36,7 +36,7 @@ knitr::kable(head(drep::foi, 10), row.names = FALSE)
 The dataset contains nine variables.
 
 * `data_id` is an integer which represents the data point unique identifier 
-* `type` is a character string describing wheather the data was collected through a serology study (`serology`) or a case surveillance system (`caseReport`).
+* `type` is a character string describing wheather the data was derived from a serology study (`serology`) or a case surveillance study (`caseReport`).
 * `longitude` and `latitude` are the numeric geographic coordinates of the data points.
 * `ISO` is a character string describing the ISO **3166-1 alpha-3** country code.
 * `ID_0` and `ID_1` are integers representing the GADM administrative units unique identifiers [http://gadm.org/]. 
