@@ -2,8 +2,8 @@ Package: drep
 Type: Package
 Title: Dengue reproduction number calculation
 Version: 0.1.0
-Author: Lorenzo Cattarino
-Maintainer: Lorenzo Cattarino <l.cattarino@imperial.ac.uk>
+Authors@R: person("Lorenzo", "Cattarino", role = c("aut", "cre"),
+                  email = "l.cattarino@imperial.ac.uk")
 Description: The package provides a set of functions to calculate the 
     reproduction number (R0) of Dengue. The calculation uses the force 
     of infection, the age structure of the population and the
@@ -17,3 +17,5 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://github.com/mrc-ide/drep
+BugReports: https://github.com/mrc-ide/drep/issues
