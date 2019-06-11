@@ -59,7 +59,7 @@ FOI <- 0.0235
 phis <- c(1, 1, 1, 1)
 ```
 
-We then Simulate some data, including
+We then simulate some data, including
 
 -   the lower and upper age limits (`l_lim` and `u_lim`) of the country age groups
 -   the number of individuals in each age group (`n_j`)
@@ -84,5 +84,5 @@ The *R*<sub>0</sub> can be calculated using the `calculate_R0` function. The `ca
 ``` r
 R0 <- drep::calculate_R0(FOI, pop, f_j, u_lim, l_lim, phis)
 R0
-#> [1] 2.559932
+#> [1] 2.762567
 ```

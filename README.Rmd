@@ -71,7 +71,7 @@ FOI <- 0.0235
 phis <- c(1, 1, 1, 1)
 ```
 
-We then Simulate some data, including
+We then simulate some data, including
 
 * the lower and upper age limits (`l_lim` and `u_lim`) of the country age groups 
 * the number of individuals in each age group (`n_j`) 
