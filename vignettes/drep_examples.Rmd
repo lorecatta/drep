@@ -16,11 +16,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r options, include = FALSE, message = FALSE, warning = FALSE, error = FALSE}
+```{r, include = FALSE}
 library(knitr)
 library(kableExtra)
-opts_chunk$set(collapse = TRUE)
-opts_chunk$set(echo = FALSE)
 ```
 
 ## Introduction
@@ -89,7 +87,7 @@ R0 <- drep::calculate_R0(lambda, pop_size, n_j, u_lim, l_lim, phis)
 R0
 ```
 
-Now we assume that only primary and secondary infections are infectious and therefore contribute to transmission. This implies that if a tertiary or a secondary infections are not infectious.
+Now we assume that only primary and secondary infections are infectious and therefore contribute to transmission. This implies that tertiary and secondary infections are not infectious.
 
 ```{r}
 phis <- c(1, 1, 0, 0)
