@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate the incidence of primary, secondary, tertiary and quaternary
- dengue infections. — calculate_incidences • drep</title>
+<title>Changelog • drep</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -31,14 +30,7 @@
 
 
 
-<meta property="og:title" content="Calculate the incidence of primary, secondary, tertiary and quaternary
- dengue infections. — calculate_incidences" />
-
-<meta property="og:description" content="calculate_incidences calculates the incidence of primary, secondary,
-tertiary and quaternary dengue infections in a population, for a given
-force of infection. Incidence is the probability that someone has a
-primary (or secondary, etc..) dengue infection in a particular age group." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Changelog" />
 
 
 
@@ -55,7 +47,7 @@ primary (or secondary, etc..) dengue infection in a particular age group." />
   </head>
 
   <body>
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -119,73 +111,20 @@ primary (or secondary, etc..) dengue infection in a particular age group." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate the incidence of primary, secondary, tertiary and quaternary
- dengue infections.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mrc-ide/drep/blob/master/R/calculating_R0.R'><code>R/calculating_R0.R</code></a></small>
-    <div class="hidden name"><code>calculate_incidences.Rd</code></div>
+      <h1>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/mrc-ide/drep/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="ref-description">
-    
-    <p><code>calculate_incidences</code> calculates the incidence of primary, secondary,
-tertiary and quaternary dengue infections in a population, for a given
-force of infection. <em>Incidence</em> is the probability that someone has a
-primary (or secondary, etc..) dengue infection in a particular age group.</p>
-    
-    </div>
-
-    <pre class="usage"><span class='fu'>calculate_incidences</span>(<span class='no'>FOI</span>, <span class='no'>u_lim</span>, <span class='no'>l_lim</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>FOI</th>
-      <td><p>The force of infection value. Numeric.</p></td>
-    </tr>
-    <tr>
-      <th>u_lim</th>
-      <td><p>A numeric vector of the upper age limits of the population age
-groups.</p></td>
-    </tr>
-    <tr>
-      <th>l_lim</th>
-      <td><p>A numeric vector of the lower age limits of the population age
-groups.</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A list containing four different numeric vectors with the incidence
- of primary, secondary, tertiary and quaternary infections in each age group.</p>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>#Assumes population is divided in 5-year age groups</span>
-
-<span class='no'>age_groups</span> <span class='kw'>&lt;-</span> <span class='fl'>20</span>
-<span class='co'># a force of infection value</span>
-<span class='no'>a_FOI</span> <span class='kw'>&lt;-</span> <span class='fl'>0.031</span>
-<span class='co'># the lower limits of the age groups</span>
-<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>95</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='no'>age_groups</span>)
-<span class='co'># the upper limits of the age groups</span>
-<span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq</a></span>(<span class='fl'>5</span>, <span class='fl'>100</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='no'>age_groups</span>)
-<span class='co'># run</span>
-<span class='fu'>calculate_incidences</span>(<span class='no'>FOI</span>, <span class='no'>a</span>, <span class='no'>b</span>)</div><div class='output co'>#&gt; <span class='error'>Error in calculate_incidences(FOI, a, b): object 'FOI' not found</span></div><div class='input'>
-</div></pre>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+    <div id="tocnav">
+      <h2>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+      </ul>
+    </div>
   </div>
+
 </div>
 
       <footer>
