@@ -77,7 +77,7 @@ kableExtra::kable(n_j) %>%
   kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
 
-Lest's also define the lower and upper age limits (`l_lim` and `u_lim`) of the country age groups amnd the infectiousness weights (`phis`)  
+Lest's also define the lower and upper age limits (`l_lim` and `u_lim`) of the country age groups and the infectiousness weights (`phis`)  
 
 ```{r} 
 n_age_groups <- 20
