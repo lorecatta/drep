@@ -19,3 +19,5 @@ Suggests:
 VignetteBuilder: knitr
 URL: https://github.com/mrc-ide/drep
 BugReports: https://github.com/mrc-ide/drep/issues
+Imports: 
+    kableExtra
