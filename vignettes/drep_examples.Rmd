@@ -65,7 +65,7 @@ pop_size <- drep::foi[4, "population"]
 pop_size
 ```
 
-Extract the country age structure and have look at it. 
+Extract the country age structure and have a look at it. 
 
 ```{r}
 age_s_data <- drep::age_structure
