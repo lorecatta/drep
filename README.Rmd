@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
 # drep
 
 <!-- badges: start -->
+[![Travis build status](https://travis-ci.org/mrc-ide/drep.svg?branch=master)](https://travis-ci.org/mrc-ide/drep)
 <!-- badges: end -->
 
 `drep` allows calculation of the reproduction number ($R_0$) of the dengue virus from 
