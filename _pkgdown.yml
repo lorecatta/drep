@@ -31,6 +31,5 @@ reference:
   - '`calculate_incidences`'
   - '`calculate_infectiousness_sym_2x_asym`'
   - '`calculate_R0`'
-  - '`hello`'
   - '`incidences_to_numbers`'
 
