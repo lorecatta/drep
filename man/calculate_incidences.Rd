@@ -27,16 +27,16 @@ force of infection. \emph{Incidence} is the probability that someone has a
 primary (or secondary, etc..) dengue infection in a particular age group.
 }
 \examples{
-#Assumes population is divided in 5-year age groups
+#Assumes human population divided in 5-year age groups and 20 age groups
 
 age_groups <- 20
 # a force of infection value
-a_FOI <- 0.031
+a_FOI_value <- 0.031
 # the lower limits of the age groups
 a <- seq(0, 95, length.out = age_groups)
 # the upper limits of the age groups
 b <- seq(5, 100, length.out = age_groups)
 # run
-calculate_incidences(FOI, a, b)
+calculate_incidences(a_FOI_value, a, b)
 
 }
