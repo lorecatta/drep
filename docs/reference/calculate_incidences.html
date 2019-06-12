@@ -162,17 +162,40 @@ groups.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>#Assumes population is divided in 5-year age groups</span>
+    <pre class="examples"><div class='input'><span class='co'>#Assumes human population divided in 5-year age groups and 20 age groups</span>
 
 <span class='no'>age_groups</span> <span class='kw'>&lt;-</span> <span class='fl'>20</span>
 <span class='co'># a force of infection value</span>
-<span class='no'>a_FOI</span> <span class='kw'>&lt;-</span> <span class='fl'>0.031</span>
+<span class='no'>a_FOI_value</span> <span class='kw'>&lt;-</span> <span class='fl'>0.031</span>
 <span class='co'># the lower limits of the age groups</span>
 <span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>95</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='no'>age_groups</span>)
 <span class='co'># the upper limits of the age groups</span>
 <span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq</a></span>(<span class='fl'>5</span>, <span class='fl'>100</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='no'>age_groups</span>)
 <span class='co'># run</span>
-<span class='fu'>calculate_incidences</span>(<span class='no'>FOI</span>, <span class='no'>a</span>, <span class='no'>b</span>)</div><div class='output co'>#&gt; <span class='error'>Error in calculate_incidences(FOI, a, b): object 'FOI' not found</span></div><div class='input'>
+<span class='fu'>calculate_incidences</span>(<span class='no'>a_FOI_value</span>, <span class='no'>a</span>, <span class='no'>b</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt;  [1] 2.310278e-02 1.242801e-02 6.685579e-03 3.596470e-03 1.934701e-03
+#&gt;  [6] 1.040762e-03 5.598720e-04 3.011800e-04 1.620181e-04 8.715674e-05
+#&gt; [11] 4.688549e-05 2.522179e-05 1.356792e-05 7.298787e-06 3.926342e-06
+#&gt; [16] 2.112154e-06 1.136221e-06 6.112240e-07 3.288045e-07 1.768786e-07
+#&gt; 
+#&gt; [[2]]
+#&gt;  [1] 5.064645e-03 9.432246e-03 9.287397e-03 7.642670e-03 5.773734e-03
+#&gt;  [6] 4.150161e-03 2.888463e-03 1.965831e-03 1.316298e-03 8.706506e-04
+#&gt; [11] 5.704684e-04 3.710171e-04 2.398732e-04 1.543439e-04 9.892365e-05
+#&gt; [16] 6.319977e-05 4.026949e-05 2.560211e-05 1.624696e-05 1.029425e-05
+#&gt; 
+#&gt; [[3]]
+#&gt;  [1] 0.0005282896 0.0025022306 0.0043856867 0.0054760960 0.0057893022
+#&gt;  [6] 0.0055499962 0.0049919627 0.0042951163 0.0035779531 0.0029088321
+#&gt; [11] 0.0023208074 0.0018244702 0.0014174413 0.0010907564 0.0008328516
+#&gt; [16] 0.0006318662 0.0004768475 0.0003582756 0.0002681963 0.0002001447
+#&gt; 
+#&gt; [[4]]
+#&gt;  [1] 2.125221e-05 2.311566e-04 7.037075e-04 1.322897e-03 1.950394e-03
+#&gt;  [6] 2.489095e-03 2.890088e-03 3.141387e-03 3.253967e-03 3.250373e-03
+#&gt; [11] 3.156956e-03 2.999242e-03 2.799563e-03 2.576158e-03 2.343133e-03
+#&gt; [16] 2.110866e-03 1.886598e-03 1.675062e-03 1.479059e-03 1.299956e-03
+#&gt; </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
