@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 
 ```{r, include = FALSE}
 library(knitr)
+library(kableExtra)
 ```
 
 ## Introduction
