@@ -23,7 +23,7 @@ library(kableExtra)
 
 ## Introduction
 
-This vignette explains how to use `drep` to compute the Dengue reproduction from Force of Infection using real data and under different assumptions regarding the relative infectiousness of the number of primary, secondary, tertiary and quaternary infections at endemic equlibrium.  
+This vignette explains how to use `drep` to compute the dengue reproduction from force of infection using real data and under different assumptions regarding the relative infectiousness of the number of primary, secondary, tertiary and quaternary infections at endemic equlibrium.  
 
 ## Real FoI data 
 
