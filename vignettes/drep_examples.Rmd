@@ -18,7 +18,6 @@ knitr::opts_chunk$set(
 
 ```{r, include = FALSE}
 library(knitr)
-library(kableExtra)
 ```
 
 ## Introduction
@@ -47,7 +46,7 @@ Information on the demographic structure of the population to which the original
 
 ```{r, echo = FALSE, results = 'asis'}
 kableExtra::kable(head(drep::age_structure, 10)) %>%
-  kable_styling(bootstrap_options = "striped", full_width = FALSE)
+  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
 
 For the purpose of this example, we pick the fourth data point, i.e. a `caseReport` estimate from Brazil.
@@ -74,7 +73,7 @@ n_j <- age_s_data[age_s_data$ID_0 == id_0, 2:ncol(age_s_data)]
 
 ```{r, echo = FALSE, results = 'asis'}
 kableExtra::kable(n_j) %>%
-  kable_styling(bootstrap_options = "striped", full_width = FALSE)
+  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
 
 Lest's also define the lower and upper age limits (`l_lim` and `u_lim`) of the country age groups and the infectiousness weights (`phis`)  
