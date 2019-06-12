@@ -3,10 +3,9 @@
 
 # calculate_incidences
 
-#' \code{calculate_incidences} calculates the incidence of primary, secondary,
-#' tertiary and quaternary dengue infections in a population, for a given
-#' force of infection. \emph{Incidence} is the probability that someone has a
-#' primary (or secondary, etc..) dengue infection in a particular age group.
+#' \code{calculate_incidences} calculates the per-capita incidence rates of primary,
+#' secondary, tertiary and quaternary dengue infections in individuals of a
+#' particular age group, given a force of infection.
 #'
 #' @title Calculate the incidence of primary, secondary, tertiary and quaternary
 #'  dengue infections.
