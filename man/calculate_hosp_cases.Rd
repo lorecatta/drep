@@ -9,7 +9,8 @@ calculate_hosp_cases(FOI, n_j, u_lim, l_lim, parms, weights_vec)
 \arguments{
 \item{FOI}{The force of infection value. Numeric.}
 
-\item{n_j}{A numeric vector of the number of individuals in each age group.}
+\item{n_j}{A numeric vector of the number of individuals in each age group
+in the human population.}
 
 \item{u_lim}{A numeric vector of the upper age limits of the population age
 groups.}

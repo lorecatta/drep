@@ -10,7 +10,8 @@ incidences_to_numbers(incidences, n_j)
 \item{incidences}{A numeric vector of the incidence rates of primary, secondary,
 tertiary or quaternary dengue infections in each age group.}
 
-\item{n_j}{A numeric vector of the number of individuals in each age group.}
+\item{n_j}{A numeric vector of the number of individuals in each age group
+in the human population.}
 }
 \value{
 Numeric.
