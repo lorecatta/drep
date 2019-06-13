@@ -2,6 +2,8 @@
 
 export(calculate_R0)
 export(calculate_cases)
+export(calculate_hosp_cases)
 export(calculate_incidences)
+export(calculate_infections)
 export(calculate_infectiousness_sym_2x_asym)
 export(incidences_to_numbers)
