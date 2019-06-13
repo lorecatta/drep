@@ -15,8 +15,8 @@ tertiary/quaternary infections which are symptomatic.}
 Numeric.
 }
 \description{
-\code{calculate_infectiousness_sym_2x_asym} calculates the infectiousness of
-primary, secondary, tertiary and quaternary assuming that symptomatic infections
-are twice as infecious as asymptomatic ones.
-Infectiousness of secondary infectious is 1.
+\code{calculate_infectiousness_sym_2x_asym} calculates the infectiousness values
+of primary, secondary, tertiary and quaternary assuming that symptomatic
+infections are twice as infecious as asymptomatic ones. The infectiousness of
+secondary infectious equals 1.
 }
