@@ -4,21 +4,20 @@
 \alias{incidences_to_numbers}
 \title{Convert incidences into numbers.}
 \usage{
-incidences_to_numbers(incidences, N, n_j)
+incidences_to_numbers(incidences, n_j)
 }
 \arguments{
-\item{incidences}{A numeric vector of the incidence of primary, secondary,
-tertiary and quaternary dengue infections.}
+\item{incidences}{A numeric vector of the incidence rates of primary, secondary,
+tertiary or quaternary dengue infections in each age group.}
 
-\item{N}{Population size. Numeric.}
-
-\item{n_j}{A numeric vector of the proportions of individuals in each age
-group.}
+\item{n_j}{A numeric vector of the number of individuals in each age group.}
 }
 \value{
 Numeric.
 }
 \description{
-\code{incidences_to_numbers} calculates the \emph{number} of people
-(infected or displaying disease symptoms) from \emph{incidence} estimates.
+\code{incidences_to_numbers} calculates the \emph{numbers} of people from different
+age groups experiencing their primary, secondary, tertiary or quaternary
+dengue infection, from estimates of the incidence \emph{rates} of primary, secondary,
+tertiary or quaternary infections in each age group.
 }

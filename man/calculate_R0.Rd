@@ -4,15 +4,12 @@
 \alias{calculate_R0}
 \title{Calculate the Dengue reproduction number (\eqn{R_0})}
 \usage{
-calculate_R0(FOI, N, n_j, u_lim, l_lim, phis)
+calculate_R0(FOI, n_j, u_lim, l_lim, phis)
 }
 \arguments{
 \item{FOI}{The force of infection value. Numeric.}
 
-\item{N}{Population size. Numeric.}
-
-\item{n_j}{A numeric vector of the proportions of individuals in each age
-group.}
+\item{n_j}{A numeric vector of the number of individuals in each age group.}
 
 \item{u_lim}{A numeric vector of the upper age limits of the population age
 groups.}
@@ -21,7 +18,7 @@ groups.}
 groups.}
 
 \item{phis}{A numeric vector of the relative infectiousness
-of each of the four dengue infections.}
+of primary, secondary, tertiary and quaternary dengue infections.}
 }
 \value{
 Numeric.
