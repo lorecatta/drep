@@ -74,29 +74,26 @@ calculate_incidences <- function(FOI, u_lim, l_lim) {
 
 # incidences_to_numbers
 
-#' \code{incidences_to_numbers} calculates the \emph{number} of people
-#' (infected or displaying disease symptoms) from \emph{incidence} estimates.
+#' \code{incidences_to_numbers} calculates the \emph{numbers} of people from different
+#' age groups experiencing their primary, secondary, tertiary or quaternary
+#' dengue infection, from estimates of the incidence \emph{rates} of primary, secondary,
+#' tertiary or quaternary infections in each age group.
 #'
 #' @title Convert incidences into numbers.
 #'
-#' @param incidences A numeric vector of the incidence of primary, secondary,
-#' tertiary and quaternary dengue infections.
+#' @param incidences A numeric vector of the incidence rates of primary, secondary,
+#' tertiary or quaternary dengue infections in each age group.
 #'
-#' @param n_j A numeric vector of the proportions of individuals in each age
-#'  group.
-#'
-#' @param N Population size. Numeric.
+#' @param n_j A numeric vector of the number of individuals in each age group.
 #'
 #' @return Numeric.
 #'
 #' @export
 
 
-incidences_to_numbers <- function(incidences, N, n_j) {
+incidences_to_numbers <- function(incidences, n_j) {
 
-  ret <- incidences * N * n_j * 4
-
-  sum(ret)
+  incidences * n_j
 
 }
 
@@ -116,20 +113,24 @@ incidences_to_numbers <- function(incidences, N, n_j) {
 #' @inheritParams incidences_to_numbers
 #'
 #' @param phis A numeric vector of the relative infectiousness
-#'   of each of the four dengue infections.
+#'   of primary, secondary, tertiary and quaternary dengue infections.
 #'
 #' @return Numeric.
 #'
 #' @export
 
 
-calculate_R0 <- function(FOI, N, n_j, u_lim, l_lim, phis) {
+calculate_R0 <- function(FOI, n_j, u_lim, l_lim, phis) {
 
   incids <- calculate_incidences(FOI, u_lim, l_lim)
 
-  infs <- vapply(incids, incidences_to_numbers, numeric(1), N, n_j)
+  infection_numbers_j <- lapply(incids, incidences_to_numbers, n_j)
 
-  FOI * N * 4 / (sum(infs * phis))
+  total_infection_numbers <- vapply(infection_numbers_j, sum, numeric(1))
+
+  N <- 1 # pop size
+
+  FOI * N / (sum(total_infection_numbers * phis))
 
 }
 
