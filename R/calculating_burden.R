@@ -36,7 +36,7 @@ calculate_infections <- function(FOI,
 # calculate_cases
 
 #' \code{calculate_cases} calculates the number of annual dengue symptomatic
-#' infections (\enph{cases}) in a human population, given a force of infection.
+#' infections (\emph{cases}) in a human population, given a force of infection.
 #'
 #' @title Calculate the number of dengue cases.
 #'
@@ -81,7 +81,7 @@ calculate_cases <- function(FOI,
 # calculate_hosp_cases
 
 #' \code{calculate_hosp_cases} calculates the number of annual dengue symptomatic
-#' infections (\enph{cases}) requiring hospitalization in a human population,
+#' infections (\emph{cases}) requiring hospitalization in a human population,
 #' given a force of infection.
 #'
 #' @title Calculate the number of dengue hospitalized cases.
