@@ -2,7 +2,7 @@
 title: "Burden estimation"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Burden estimation}
+  %\VignetteIndexEntry{burden}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -18,7 +18,20 @@ knitr::opts_chunk$set(
 library(drep)
 ```
 
+## Introduction
+
+This vignette explains how to use `drep` to translate an estimate of the force of infection of dengue to the corresponding number of infections, symptomatic infections ($_cases_$) and symptomatic infections requiring hospitalization ($_hospitalized_cases_$). To do this we need:
+
 The `population` of the data point will also be needed when calculating the $R_0$.
+
+We first consider the fourth data point from the `foi` dataset (see [vignette](https://mrc-ide.github.io/drep/articles/burden.html)), i.e. a `caseReport` force of infection estimate from Brazil:
+
+```{r}
+lambda <- drep::foi[4, "FOI"]
+lambda
+```
+
+We extract the population of that data point:
 
 ```{r}
 id_0 <- drep::foi[4, "ID_0"]
@@ -26,3 +39,23 @@ pop_size <- drep::foi[4, "population"]
 pop_size
 ```
 
+We can then calculate the total annual number of infections which correspnds to `lambda`:
+
+```{r}
+n_infections <- calculate_infections(FOI, n_j, u_lim, l_lim, pop_size)
+n_infections
+```
+
+the number of cases:
+
+```{r}
+n_cases <- calculate_cases(FOI, n_j, u_lim, l_lim, pop_size)
+n_cases
+```
+
+and the number of hopsitalized cases:
+
+```{r}
+n_h_cases <- calculate_hosp_cases(FOI, n_j, u_lim, l_lim, pop_size)
+n_h_cases
+```

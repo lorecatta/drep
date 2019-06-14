@@ -4,12 +4,12 @@
 \alias{calculate_infections}
 \title{Calculate the number of dengue infections.}
 \usage{
-calculate_infections(FOI, n_j, u_lim, l_lim)
+calculate_infections(FOI, n_j, u_lim, l_lim, N)
 }
 \arguments{
 \item{FOI}{The force of infection value. Numeric.}
 
-\item{n_j}{A numeric vector of the number of individuals in each age group
+\item{n_j}{A numeric vector of the proportion of individuals in each age group
 in the human population.}
 
 \item{u_lim}{A numeric vector of the upper age limits of the population age
@@ -17,6 +17,8 @@ groups.}
 
 \item{l_lim}{A numeric vector of the lower age limits of the population age
 groups.}
+
+\item{N}{Size of human population. NUmeric.}
 }
 \value{
 Numeric.

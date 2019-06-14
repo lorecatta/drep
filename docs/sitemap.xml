@@ -10,7 +10,13 @@
     <loc>https://mrc-ide.github.io/drep//reference/calculate_cases.html</loc>
   </url>
   <url>
+    <loc>https://mrc-ide.github.io/drep//reference/calculate_hosp_cases.html</loc>
+  </url>
+  <url>
     <loc>https://mrc-ide.github.io/drep//reference/calculate_incidences.html</loc>
+  </url>
+  <url>
+    <loc>https://mrc-ide.github.io/drep//reference/calculate_infections.html</loc>
   </url>
   <url>
     <loc>https://mrc-ide.github.io/drep//reference/calculate_infectiousness_sym_2x_asym.html</loc>
@@ -22,12 +28,12 @@
     <loc>https://mrc-ide.github.io/drep//reference/foi.html</loc>
   </url>
   <url>
-    <loc>https://mrc-ide.github.io/drep//reference/hello.html</loc>
-  </url>
-  <url>
     <loc>https://mrc-ide.github.io/drep//reference/incidences_to_numbers.html</loc>
   </url>
   <url>
-    <loc>https://mrc-ide.github.io/drep//articles/drep_examples.html</loc>
+    <loc>https://mrc-ide.github.io/drep//articles/burden.html</loc>
+  </url>
+  <url>
+    <loc>https://mrc-ide.github.io/drep//articles/drep.html</loc>
   </url>
 </urlset>

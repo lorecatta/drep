@@ -78,6 +78,9 @@ in a population and their relative infectiousness." />
   </a>
 </li>
 <li>
+  <a href="../articles/drep.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -88,7 +91,7 @@ in a population and their relative infectiousness." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/drep_examples.html">Varying infectiousness</a>
+      <a href="../articles/burden.html">Burden estimation</a>
     </li>
   </ul>
 </li>
@@ -129,7 +132,7 @@ in a population and their relative infectiousness.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>calculate_R0</span>(<span class='no'>FOI</span>, <span class='no'>N</span>, <span class='no'>n_j</span>, <span class='no'>u_lim</span>, <span class='no'>l_lim</span>, <span class='no'>phis</span>)</pre>
+    <pre class="usage"><span class='fu'>calculate_R0</span>(<span class='no'>FOI</span>, <span class='no'>n_j</span>, <span class='no'>u_lim</span>, <span class='no'>l_lim</span>, <span class='no'>phis</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -139,13 +142,9 @@ in a population and their relative infectiousness.</p>
       <td><p>The force of infection value. Numeric.</p></td>
     </tr>
     <tr>
-      <th>N</th>
-      <td><p>Population size. Numeric.</p></td>
-    </tr>
-    <tr>
       <th>n_j</th>
-      <td><p>A numeric vector of the proportions of individuals in each age
-group.</p></td>
+      <td><p>A numeric vector of the proportion of individuals in each age group
+in the human population.</p></td>
     </tr>
     <tr>
       <th>u_lim</th>
@@ -160,7 +159,7 @@ groups.</p></td>
     <tr>
       <th>phis</th>
       <td><p>A numeric vector of the relative infectiousness
-of each of the four dengue infections.</p></td>
+of primary, secondary, tertiary and quaternary dengue infections.</p></td>
     </tr>
     </table>
     

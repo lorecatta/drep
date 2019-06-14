@@ -10,6 +10,8 @@
 #'
 #' @inheritParams calculate_R0
 #'
+#' @param N Size of human population. NUmeric.
+#'
 #' @return Numeric.
 #'
 #' @export
@@ -18,7 +20,8 @@
 calculate_infections <- function(FOI,
                                  n_j,
                                  u_lim,
-                                 l_lim){
+                                 l_lim,
+                                 N){
 
   incids <- calculate_incidences(FOI, u_lim, l_lim)
 
@@ -26,7 +29,7 @@ calculate_infections <- function(FOI,
 
   total_infection_number <- vapply(infection_numbers_j, sum, numeric(1))
 
-  sum(total_infection_number) * 4
+  sum(total_infection_number) * 4 * N
 
 }
 
@@ -42,6 +45,8 @@ calculate_infections <- function(FOI,
 #'
 #' @inheritParams calculate_R0
 #'
+#' @inheritParams calculate_infections
+#'
 #' @param weights_vec A numeric vector of the proportions of primary, secondary,
 #' tertiary and quaternary infections which are symptomatic.
 #'
@@ -54,7 +59,8 @@ calculate_cases <- function(FOI,
                             n_j,
                             u_lim,
                             l_lim,
-                            weights_vec){
+                            weights_vec,
+                            N){
 
   gamma_1 <- weights_vec[1]
   rho <- weights_vec[2]
@@ -71,7 +77,7 @@ calculate_cases <- function(FOI,
 
   case_number_j <- incidences_to_numbers(tot_incid_rate_j, n_j)
 
-  sum(case_number_j) * 4
+  sum(case_number_j) * 4 * N
 
 }
 
@@ -88,8 +94,9 @@ calculate_cases <- function(FOI,
 #'
 #' @inheritParams calculate_R0
 #'
-#' @param weights_vec A numeric vector of the proportions of primary, secondary,
-#' tertiary and quaternary infections which are symptomatic.
+#' @inheritParams calculate_infections
+#'
+#' @inheritParams calculate_cases
 #'
 #' @param parms A numeric vector of the proportions of primary, secondary and
 #' tertiary and quaternary infections requiring hospitalization.
@@ -104,7 +111,8 @@ calculate_hosp_cases <- function(FOI,
                                  u_lim,
                                  l_lim,
                                  parms,
-                                 weights_vec){
+                                 weights_vec,
+                                 N){
 
   gamma_1 <- weights_vec[1]
   rho <- weights_vec[2]
@@ -125,6 +133,6 @@ calculate_hosp_cases <- function(FOI,
 
   case_number_j <- incidences_to_numbers(tot_incid_rate_j, n_j)
 
-  sum(case_number_j) * 4
+  sum(case_number_j) * 4 * N
 
 }

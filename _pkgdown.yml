@@ -20,8 +20,10 @@ navbar:
     articles:
       text: Articles
       menu:
-      - text: drep_examples
+      - text: drep
         href: articles/drep_examples.html
+      - text: burden
+        href: articles/burden.html
 
 reference:
 - title: All functions

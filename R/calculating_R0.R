@@ -84,7 +84,7 @@ calculate_incidences <- function(FOI, u_lim, l_lim) {
 #' @param incidences A numeric vector of the incidence rates of primary, secondary,
 #' tertiary or quaternary dengue infections in each age group.
 #'
-#' @param n_j A numeric vector of the number of individuals in each age group
+#' @param n_j A numeric vector of the proportion of individuals in each age group
 #' in the human population.
 #'
 #' @return Numeric.

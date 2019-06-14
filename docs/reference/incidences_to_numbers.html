@@ -32,8 +32,10 @@
 
 <meta property="og:title" content="Convert incidences into numbers. — incidences_to_numbers" />
 
-<meta property="og:description" content="incidences_to_numbers calculates the number of people
-(infected or displaying disease symptoms) from incidence estimates." />
+<meta property="og:description" content="incidences_to_numbers calculates the numbers of people from different
+age groups experiencing their primary, secondary, tertiary or quaternary
+dengue infection, from estimates of the incidence rates of primary, secondary,
+tertiary or quaternary infections in each age group." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -77,6 +79,9 @@
   </a>
 </li>
 <li>
+  <a href="../articles/drep.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -87,7 +92,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/drep_examples.html">Varying infectiousness</a>
+      <a href="../articles/burden.html">Burden estimation</a>
     </li>
   </ul>
 </li>
@@ -122,29 +127,27 @@
 
     <div class="ref-description">
     
-    <p><code>incidences_to_numbers</code> calculates the <em>number</em> of people
-(infected or displaying disease symptoms) from <em>incidence</em> estimates.</p>
+    <p><code>incidences_to_numbers</code> calculates the <em>numbers</em> of people from different
+age groups experiencing their primary, secondary, tertiary or quaternary
+dengue infection, from estimates of the incidence <em>rates</em> of primary, secondary,
+tertiary or quaternary infections in each age group.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>incidences_to_numbers</span>(<span class='no'>incidences</span>, <span class='no'>N</span>, <span class='no'>n_j</span>)</pre>
+    <pre class="usage"><span class='fu'>incidences_to_numbers</span>(<span class='no'>incidences</span>, <span class='no'>n_j</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>incidences</th>
-      <td><p>A numeric vector of the incidence of primary, secondary,
-tertiary and quaternary dengue infections.</p></td>
-    </tr>
-    <tr>
-      <th>N</th>
-      <td><p>Population size. Numeric.</p></td>
+      <td><p>A numeric vector of the incidence rates of primary, secondary,
+tertiary or quaternary dengue infections in each age group.</p></td>
     </tr>
     <tr>
       <th>n_j</th>
-      <td><p>A numeric vector of the proportions of individuals in each age
-group.</p></td>
+      <td><p>A numeric vector of the proportion of individuals in each age group
+in the human population.</p></td>
     </tr>
     </table>
     
