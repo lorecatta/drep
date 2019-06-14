@@ -4,7 +4,7 @@ author: "Lorenzo Cattarino"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{drep_examples}
+  %\VignetteIndexEntry{drep}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
