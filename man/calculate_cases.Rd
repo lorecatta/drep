@@ -26,5 +26,5 @@ Numeric.
 }
 \description{
 \code{calculate_cases} calculates the number of annual dengue symptomatic
-infections (\enph{cases}) in a human population, given a force of infection.
+infections (\emph{cases}) in a human population, given a force of infection.
 }
