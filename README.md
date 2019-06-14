@@ -4,7 +4,7 @@ drep
 ====
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/mrc-ide/drep.svg?branch=master)](https://travis-ci.org/mrc-ide/drep) <!-- badges: end -->
+[![Travis build status](https://travis-ci.org/mrc-ide/drep.svg?branch=master)](https://travis-ci.org/mrc-ide/drep) [![Codecov test coverage](https://codecov.io/gh/mrc-ide/drep/branch/master/graph/badge.svg)](https://codecov.io/gh/mrc-ide/drep?branch=master) <!-- badges: end -->
 
 `drep` allows calculation of the reproduction number (*R*<sub>0</sub>) of the dengue virus from force of infection using the at-equilibrium number of primary, secondary, tertiary and quaternary infections in a population and their relative infectiousness. This is done assuming that dengue transmission is at equilibrium.
 
@@ -82,5 +82,5 @@ The *R*<sub>0</sub> can be calculated using the `calculate_R0` function. The `ca
 ``` r
 R0 <- drep::calculate_R0(FOI, f_j, u_lim, l_lim, phis)
 R0
-#> [1] 2.843375
+#> [1] 2.761299
 ```
