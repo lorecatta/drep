@@ -43,7 +43,7 @@ The dataset contains nine variables.
 * `FOI` is the force of infection estimate
 * `population` is the Level 1 administrative unit population according to 2015 [Landscan data](http://web.ornl.gov/sci/landscan/)
 
-Information on the demographic structure of the population to which the original force of infection estimate refers is needed to convert force of infection into reproduction number. The `age_structure` dataset contains the country-level proportion of individuals in twenty 5-year age groups (0-99) from 2015, sourced from the United Nation Department of Economic and Social Affairs [link](https://population.un.org/wpp/Download/Standard/Population/). Each age group proportion is a different variable. The other important variable is `ID_0`, which represents the country unique identifier. 
+Information on the demographic structure of the population to which the original force of infection estimate refers is needed to convert force of infection into reproduction number. The `age_structure` dataset contains the country-level **number** of individuals in twenty 5-year age groups (0-99) from 2015, sourced from the United Nation Department of Economic and Social Affairs [link](https://population.un.org/wpp/Download/Standard/Population/). The number in each age group is a different variable. The other important variable is `ID_0`, which represents the country unique identifier. 
 
 ```{r, echo = FALSE, results = 'asis'}
 kableExtra::kable(head(drep::age_structure, 10)) %>%
@@ -57,27 +57,22 @@ lambda <- drep::foi[4, "FOI"] # a point from Brazil
 lambda
 ```
 
-The `ID_0` of the point selected from the `foi` dataset (`lambda`) is needed to be able to look up the correct demographic structure from the `age_structure` dataset. The `population` of the data point will also be needed when calculating the $R_0$. 
+The `ID_0` of the point selected from the `foi` dataset (`lambda`) is needed to be able to look up the correct demographic structure from the `age_structure` dataset.  
 
 ```{r}
 id_0 <- drep::foi[4, "ID_0"]
-pop_size <- drep::foi[4, "population"]
-pop_size
-```
-
-Extract the country age structure and have a look at it. 
-
-```{r}
 age_s_data <- drep::age_structure
 n_j <- age_s_data[age_s_data$ID_0 == id_0, 2:ncol(age_s_data)]
 ```
+
+The age astructure for `lambda` looks like this:
 
 ```{r, echo = FALSE, results = 'asis'}
 kableExtra::kable(n_j) %>%
   kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
 
-Lest's also define the lower and upper age limits (`l_lim` and `u_lim`) of the country age groups and the infectiousness weights (`phis`)  
+Lets's also define the lower and upper age limits (`l_lim` and `u_lim`) of the country age groups and the infectiousness weights (`phis`)  
 
 ```{r} 
 n_age_groups <- 20
@@ -89,7 +84,7 @@ phis <- c(1, 1, 1, 1)
 Now we can compute the $R_0$:
 
 ```{r}
-R0 <- drep::calculate_R0(lambda, pop_size, n_j, u_lim, l_lim, phis)
+R0 <- drep::calculate_R0(lambda, n_j, u_lim, l_lim, phis)
 R0
 ```
 
@@ -100,7 +95,7 @@ Now we explore the case when primary to quaternary numbers of infections have di
 ```{r}
 phis <- c(1, 1, 0, 0)
 
-R0 <- drep::calculate_R0(lambda, pop_size, n_j, u_lim, l_lim, phis)
+R0 <- drep::calculate_R0(lambda, n_j, u_lim, l_lim, phis)
 R0
 ```
 
@@ -123,6 +118,6 @@ phis
 Now the reproduction number is
 
 ```{r}
-R0 <- drep::calculate_R0(lambda, pop_size, n_j, u_lim, l_lim, phis)
+R0 <- drep::calculate_R0(lambda, n_j, u_lim, l_lim, phis)
 R0
 ```
