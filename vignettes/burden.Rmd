@@ -17,3 +17,12 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(drep)
 ```
+
+The `population` of the data point will also be needed when calculating the $R_0$.
+
+```{r}
+id_0 <- drep::foi[4, "ID_0"]
+pop_size <- drep::foi[4, "population"]
+pop_size
+```
+
