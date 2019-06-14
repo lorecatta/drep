@@ -10,6 +10,8 @@ Description: The package provides a set of functions to calculate the
     number of primary, secondary, tertiary and quaternary dengue 
     infections at endemic equilibrium. 
 License: MIT + file LICENSE
+Depends:
+    R (>= 2.10)
 Encoding: UTF-8
 LazyData: TRUE
 RoxygenNote: 6.1.1
