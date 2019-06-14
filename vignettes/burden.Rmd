@@ -42,20 +42,20 @@ pop_size
 We can then calculate the total annual number of infections which correspnds to `lambda`:
 
 ```{r}
-n_infections <- calculate_infections(FOI, n_j, u_lim, l_lim, pop_size)
+n_infections <- calculate_infections(lambda, n_j, u_lim, l_lim, pop_size)
 n_infections
 ```
 
 the number of cases:
 
 ```{r}
-n_cases <- calculate_cases(FOI, n_j, u_lim, l_lim, pop_size)
+n_cases <- calculate_cases(lambda, n_j, u_lim, l_lim, pop_size)
 n_cases
 ```
 
 and the number of hopsitalized cases:
 
 ```{r}
-n_h_cases <- calculate_hosp_cases(FOI, n_j, u_lim, l_lim, pop_size)
+n_h_cases <- calculate_hosp_cases(lambda, n_j, u_lim, l_lim, pop_size)
 n_h_cases
 ```
