@@ -47,7 +47,6 @@ This is a basic example which shows you how to to convert force of infection int
 We assume that the population is divided up into 20 age groups and define the following parameters:
 
 -   number of age groups in the country human population (`n_age_groups`)
--   total human population of the country (`pop`)
 -   the force of infection estimate (`FOI`)
 -   the relative infectiousness of the four dengue infections (`phis`)
 
@@ -63,7 +62,6 @@ phis <- c(1, 1, 1, 1)
 We then simulate some data, including
 
 -   the lower and upper age limits (`l_lim` and `u_lim`) of the country age groups
--   the number of individuals in each age group (`n_j`)
 -   the proportion of individuals in each age gorup (`f_j`)
 
 ``` r
@@ -76,14 +74,13 @@ f_j <- n_j / sum(n_j)
 The *R*<sub>0</sub> can be calculated using the `calculate_R0` function. The `calculate_R0` function takes six arguments:
 
 -   `FOI`: a numeric value of the force of infection estimate, which represents the average estimate per serotype
--   `pop`: a numeric value representing the total human population of the country
 -   `f_j`: a numeric vector of the proportions of individuals in each age group
 -   `l_lim`: a numeric vector of the lower limits of the country age groups
 -   `u_lim`: a numeric vector of the upper limits of the country age groups
 -   `phis`: a numeric vector of the relative infectiousness of the numbers of primary, secondary, tertiary and quaternary dengue infections.
 
 ``` r
-R0 <- drep::calculate_R0(FOI, pop, f_j, u_lim, l_lim, phis)
+R0 <- drep::calculate_R0(FOI, f_j, u_lim, l_lim, phis)
 R0
-#> [1] 2.542465
+#> [1] 2.843375
 ```
