@@ -39,6 +39,20 @@ pop_size <- drep::foi[4, "population"]
 pop_size
 ```
 
+We then define some paramaters:
+
+* the lower and upper age limits (`l_lim` and `u_lim`) of the country age groups;
+* the proportions of primary, secondary, and tertiary/quaternary infections which are symptomatic (`sym_weights`);
+* the proportions of primary, secondary, and tertiary/quaternary cases which require hospitalization (`hosp_weights`);
+
+```{r}
+n_age_groups <- 20
+l_lim <- seq(0, 95, length.out = n_age_groups)
+u_lim <- seq(5, 100, length.out = n_age_groups)
+sym_weights <- c(0.45, 0.85, 0.15)
+hosp_weights <- c(0.04, 0.1, 0.04)
+```
+
 We can then calculate the total annual number of infections which correspnds to `lambda`:
 
 ```{r}
@@ -49,13 +63,13 @@ n_infections
 the number of cases:
 
 ```{r}
-n_cases <- calculate_cases(lambda, n_j, u_lim, l_lim, pop_size)
+n_cases <- calculate_cases(lambda, n_j, u_lim, l_lim, sym_weights, pop_size)
 n_cases
 ```
 
 and the number of hopsitalized cases:
 
 ```{r}
-n_h_cases <- calculate_hosp_cases(lambda, n_j, u_lim, l_lim, pop_size)
+n_h_cases <- calculate_hosp_cases(lambda, n_j, u_lim, l_lim, hosp_weights, sym_weights, pop_size)
 n_h_cases
 ```
