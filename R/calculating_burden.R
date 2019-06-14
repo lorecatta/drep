@@ -118,9 +118,9 @@ calculate_hosp_cases <- function(FOI,
   rho <- weights_vec[2]
   gamma_3 <- weights_vec[3]
 
-  Q_1 <- parms$Q_1
-  Q_2 <- parms$Q_2
-  Q_3 <- parms$Q_3
+  Q_1 <- parms[1]
+  Q_2 <- parms[2]
+  Q_3 <- parms[3]
 
   incids <- calculate_incidences(FOI, u_lim, l_lim)
 
