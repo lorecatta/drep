@@ -16,10 +16,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(drep)
-```
-
 ## Introduction
 
 This vignette explains how to use `drep` to translate an estimate of the force of infection of dengue to the corresponding number of infections, symptomatic infections (*cases*) and symptomatic infections requiring hospitalization (*hospitalized cases*). To do this we need:
@@ -60,20 +56,20 @@ hosp_weights <- c(0.04, 0.1, 0.04)
 We can then calculate the total annual number of infections which correspnds to `lambda`:
 
 ```{r}
-n_infections <- calculate_infections(lambda, n_j, u_lim, l_lim, pop_size)
+n_infections <- drep::calculate_infections(lambda, n_j, u_lim, l_lim, pop_size)
 n_infections
 ```
 
 the number of cases:
 
 ```{r}
-n_cases <- calculate_cases(lambda, n_j, u_lim, l_lim, sym_weights, pop_size)
+n_cases <- drep::calculate_cases(lambda, n_j, u_lim, l_lim, sym_weights, pop_size)
 n_cases
 ```
 
 and the number of hopsitalized cases:
 
 ```{r}
-n_h_cases <- calculate_hosp_cases(lambda, n_j, u_lim, l_lim, hosp_weights, sym_weights, pop_size)
+n_h_cases <- drep::calculate_hosp_cases(lambda, n_j, u_lim, l_lim, hosp_weights, sym_weights, pop_size)
 n_h_cases
 ```
