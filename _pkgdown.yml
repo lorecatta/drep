@@ -21,7 +21,7 @@ navbar:
       text: Articles
       menu:
       - text: drep
-        href: articles/drep_examples.html
+        href: articles/drep.html
       - text: burden
         href: articles/burden.html
 
@@ -34,4 +34,6 @@ reference:
   - '`calculate_infectiousness_sym_2x_asym`'
   - '`calculate_R0`'
   - '`incidences_to_numbers`'
+  - '`calculate_infections`'
+  - '`calculate_hosp_cases`'
 
