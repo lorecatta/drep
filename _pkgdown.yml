@@ -1,27 +1,21 @@
 url: https://mrc-ide.github.io/drep/
 
 navbar:
-  structure:
-    left:
-    - home
-    - reference
-    - articles
-    - news
-    right: github
-  components:
-    home:
+  title: drep
+  left:
+    - href: index.html
       icon: fa-home fa-lg
-      href: index.html
-    reference:
-      text: Reference
+    - text: Reference
       href: reference/index.html
-    articles:
-      text: Articles
+    - text: Articles
       menu:
       - text: Varying infectiousness
         href: articles/drep.html
       - text: Estimating burden
         href: articles/burden.html
+    - text: News
+      href: news/index.html
+  right: github
 
 reference:
 - title: All functions
