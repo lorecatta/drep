@@ -18,9 +18,9 @@ navbar:
     articles:
       text: Articles
       menu:
-      - text: drep
+      - text: Varying infectiousness
         href: articles/drep.html
-      - text: burden
+      - text: Estimating burden
         href: articles/burden.html
 
 reference:
