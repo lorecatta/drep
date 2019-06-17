@@ -2,6 +2,7 @@ url: https://mrc-ide.github.io/drep/
 
 navbar:
   title: drep
+  type: inverse
   left:
     - href: index.html
       icon: fa-home fa-lg
@@ -16,5 +17,5 @@ navbar:
     - text: News
       href: news/index.html
   right:
-    - href: https://github.com/mrc-ide/drep
     - icon: fa-github
+    - href: https://github.com/mrc-ide/drep
