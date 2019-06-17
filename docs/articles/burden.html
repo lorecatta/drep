@@ -84,7 +84,9 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Burden estimation</h1>
+                        <h4 class="author">Lorenzo Cattarino</h4>
             
+            <h4 class="date">2019-06-17</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mrc-ide/drep/blob/master/vignettes/burden.Rmd"><code>vignettes/burden.Rmd</code></a></small>
       <div class="hidden name"><code>burden.Rmd</code></div>
@@ -93,7 +95,6 @@
 
     
     
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(drep)</code></pre></div>
 <div id="introduction" class="section level2">
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
@@ -121,15 +122,15 @@ u_lim &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocum
 sym_weights &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.45</span>, <span class="fl">0.85</span>, <span class="fl">0.15</span>)
 hosp_weights &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.04</span>, <span class="fl">0.1</span>, <span class="fl">0.04</span>)</code></pre></div>
 <p>We can then calculate the total annual number of infections which correspnds to <code>lambda</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n_infections &lt;-<span class="st"> </span><span class="kw"><a href="../reference/calculate_infections.html">calculate_infections</a></span>(lambda, n_j, u_lim, l_lim, pop_size)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n_infections &lt;-<span class="st"> </span>drep<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/drep/topics/calculate_infections">calculate_infections</a></span>(lambda, n_j, u_lim, l_lim, pop_size)
 n_infections
 <span class="co">#&gt; [1] 420703.4</span></code></pre></div>
 <p>the number of cases:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n_cases &lt;-<span class="st"> </span><span class="kw"><a href="../reference/calculate_cases.html">calculate_cases</a></span>(lambda, n_j, u_lim, l_lim, sym_weights, pop_size)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n_cases &lt;-<span class="st"> </span>drep<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/drep/topics/calculate_cases">calculate_cases</a></span>(lambda, n_j, u_lim, l_lim, sym_weights, pop_size)
 n_cases
 <span class="co">#&gt; [1] 168757</span></code></pre></div>
 <p>and the number of hopsitalized cases:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n_h_cases &lt;-<span class="st"> </span><span class="kw"><a href="../reference/calculate_hosp_cases.html">calculate_hosp_cases</a></span>(lambda, n_j, u_lim, l_lim, hosp_weights, sym_weights, pop_size)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n_h_cases &lt;-<span class="st"> </span>drep<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/drep/topics/calculate_hosp_cases">calculate_hosp_cases</a></span>(lambda, n_j, u_lim, l_lim, hosp_weights, sym_weights, pop_size)
 n_h_cases
 <span class="co">#&gt; [1] 12210.72</span></code></pre></div>
 </div>
