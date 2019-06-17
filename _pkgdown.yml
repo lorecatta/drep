@@ -6,7 +6,6 @@ navbar:
     - home
     - reference
     - articles
-    - tutorials
     - news
     right: github
   components:
