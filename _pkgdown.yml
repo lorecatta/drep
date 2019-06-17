@@ -15,17 +15,6 @@ navbar:
         href: articles/burden.html
     - text: News
       href: news/index.html
-  right: github
-
-reference:
-- title: All functions
-  desc: ~
-  contents:
-  - '`calculate_cases`'
-  - '`calculate_incidences`'
-  - '`calculate_infectiousness_sym_2x_asym`'
-  - '`calculate_R0`'
-  - '`incidences_to_numbers`'
-  - '`calculate_infections`'
-  - '`calculate_hosp_cases`'
-
+  right:
+    - href: https://github.com/mrc-ide/drep
+    - icon: fa-github
