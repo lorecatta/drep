@@ -20,7 +20,7 @@ library(drep)
 
 ## Introduction
 
-This vignette explains how to use `drep` to translate an estimate of the force of infection of dengue to the corresponding number of infections, symptomatic infections ($_cases_$) and symptomatic infections requiring hospitalization ($_hospitalized_cases_$). To do this we need:
+This vignette explains how to use `drep` to translate an estimate of the force of infection of dengue to the corresponding number of infections, symptomatic infections (*cases*) and symptomatic infections requiring hospitalization (*hospitalized cases*). To do this we need:
 
 The `population` of the data point will also be needed when calculating the $R_0$.
 
@@ -31,12 +31,14 @@ lambda <- drep::foi[4, "FOI"]
 lambda
 ```
 
-We extract the population of that data point:
+We extract the population of that data point (`pop_size`) and the age structure (`n_j`):
 
 ```{r}
 id_0 <- drep::foi[4, "ID_0"]
 pop_size <- drep::foi[4, "population"]
-pop_size
+id_0 <- drep::foi[4, "ID_0"]
+age_s_data <- drep::age_structure
+n_j <- age_s_data[age_s_data$ID_0 == id_0, 2:ncol(age_s_data)]
 ```
 
 We then define some paramaters:
