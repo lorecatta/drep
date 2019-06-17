@@ -34,7 +34,8 @@ We extract the population of that data point (`pop_size`) and the age structure 
 ```{r}
 id_0 <- drep::foi[4, "ID_0"]
 pop_size <- drep::foi[4, "population"]
-id_0 <- drep::foi[4, "ID_0"]
+pop_size
+
 age_s_data <- drep::age_structure
 n_j <- age_s_data[age_s_data$ID_0 == id_0, 2:ncol(age_s_data)]
 ```

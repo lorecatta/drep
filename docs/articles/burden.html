@@ -110,7 +110,9 @@ lambda
 <p>We extract the population of that data point (<code>pop_size</code>) and the age structure (<code>n_j</code>):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">id_<span class="dv">0</span> &lt;-<span class="st"> </span>drep<span class="op">::</span>foi[<span class="dv">4</span>, <span class="st">"ID_0"</span>]
 pop_size &lt;-<span class="st"> </span>drep<span class="op">::</span>foi[<span class="dv">4</span>, <span class="st">"population"</span>]
-id_<span class="dv">0</span> &lt;-<span class="st"> </span>drep<span class="op">::</span>foi[<span class="dv">4</span>, <span class="st">"ID_0"</span>]
+pop_size
+<span class="co">#&gt; [1] 6947167</span>
+
 age_s_data &lt;-<span class="st"> </span>drep<span class="op">::</span>age_structure
 n_j &lt;-<span class="st"> </span>age_s_data[age_s_data<span class="op">$</span>ID_<span class="dv">0</span> <span class="op">==</span><span class="st"> </span>id_<span class="dv">0</span>, <span class="dv">2</span><span class="op">:</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">ncol</a></span>(age_s_data)]</code></pre></div>
 <p>We then define some paramaters:</p>
