@@ -1,5 +1,7 @@
 ---
 title: "Burden estimation"
+author: "Lorenzo Cattarino"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{burden}
