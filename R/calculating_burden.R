@@ -161,6 +161,8 @@ get_age_band_bounds <- function(tags) {
 
   age_band_tags_split_num_mat <- do.call("rbind", age_band_tags_split_num)
 
+  age_band_tags_split_num_mat[, 3] <- age_band_tags_split_num_mat[, 3] + 1
+
   age_band_tags_split_num_mat[, 2:3]
 
 }

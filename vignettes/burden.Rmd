@@ -22,39 +22,45 @@ This vignette explains how to use `drep` to translate an estimate of the force o
 
 The `population` of the data point will also be needed when calculating the $R_0$.
 
-We first consider the fourth data point from the `foi` dataset (see [vignette](https://mrc-ide.github.io/drep/articles/burden.html)), i.e. a `caseReport` force of infection estimate from Brazil:
+We first consider a data point from the `foi` dataset (see [vignette](https://mrc-ide.github.io/drep/articles/burden.html)), i.e. a `caseReport` force of infection estimate from Brazil:
 
 ```{r}
-lambda <- drep::foi[4, "FOI"]
+ind <- 75
+lambda <- drep::foi[ind, "FOI"]
 lambda
 ```
 
 We extract the population of that data point (`pop_size`) and the age structure (`n_j`):
 
 ```{r}
-id_0 <- drep::foi[4, "ID_0"]
-pop_size <- drep::foi[4, "population"]
+id_0 <- drep::foi[ind, "ID_0"]
+pop_size <- drep::foi[ind, "population"]
 pop_size
 
 age_s_data <- drep::age_structure
 n_j <- age_s_data[age_s_data$ID_0 == id_0, 2:ncol(age_s_data)]
 ```
 
-We then define some paramaters:
-
-* the lower and upper age limits (`l_lim` and `u_lim`) of the country age groups;
-* the proportions of primary, secondary, and tertiary/quaternary infections which are symptomatic (`sym_weights`);
-* the proportions of primary, secondary, and tertiary/quaternary cases which require hospitalization (`hosp_weights`);
+We then extract the lower and upper age limits (`l_lim` and `u_lim`) of the country age groups using the `get_age_band_bounds` function 
 
 ```{r}
-n_age_groups <- 20
-l_lim <- seq(0, 95, length.out = n_age_groups)
-u_lim <- seq(5, 100, length.out = n_age_groups)
+age_band_tgs <- grep("band", names(age_s_data), value = TRUE)
+age_band_bnds <- drep::get_age_band_bounds(age_band_tgs)
+l_lim <- age_band_bnds[, 1]
+u_lim <- age_band_bnds[, 2]
+```
+
+We also need to define some paramaters including:
+
+* the proportions of primary, secondary, and tertiary/quaternary infections which are symptomatic (`sym_weights`)
+* the proportions of primary, secondary, and tertiary/quaternary cases which require hospitalization (`hosp_weights`)
+
+```{r}
 sym_weights <- c(0.45, 0.85, 0.15)
 hosp_weights <- c(0.04, 0.1, 0.04)
 ```
 
-We can then calculate the total annual number of infections which correspnds to `lambda`:
+We can now calculate the total annual number of infections which correspond to `lambda`:
 
 ```{r}
 n_infections <- drep::calculate_infections(lambda, n_j, u_lim, l_lim, pop_size)
