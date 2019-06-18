@@ -6,7 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • drep</title>
+<title><code>get_age_band_bounds</code> returns the lower and upper limits of an age group
+character string of the format e.g. <code>band_X_Y</code>, where X and Y represent
+the age limits. — get_age_band_bounds • drep</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +32,14 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="<code>get_age_band_bounds</code> returns the lower and upper limits of an age group
+character string of the format e.g. <code>band_X_Y</code>, where X and Y represent
+the age limits. — get_age_band_bounds" />
+
+<meta property="og:description" content="get_age_band_bounds returns the lower and upper limits of an age group
+character string of the format e.g. band_X_Y, where X and Y represent
+the age limits." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -47,7 +56,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -115,100 +124,48 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1><code>get_age_band_bounds</code> returns the lower and upper limits of an age group
+character string of the format e.g. <code>band_X_Y</code>, where X and Y represent
+the age limits.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mrc-ide/drep/blob/master/R/calculating_burden.R'><code>R/calculating_burden.R</code></a></small>
+    <div class="hidden name"><code>get_age_band_bounds.Rd</code></div>
     </div>
 
-    <table class="ref-index">
-
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="age_structure.html">age_structure</a></code> </p>
-        </td>
-        <td><p>Country age structures</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calculate_cases.html">calculate_cases()</a></code> </p>
-        </td>
-        <td><p>Calculate the number of dengue cases.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calculate_hosp_cases.html">calculate_hosp_cases()</a></code> </p>
-        </td>
-        <td><p>Calculate the number of dengue hospitalized cases.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calculate_incidences.html">calculate_incidences()</a></code> </p>
-        </td>
-        <td><p>Calculate the incidence of primary, secondary, tertiary and quaternary
- dengue infections.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calculate_infections.html">calculate_infections()</a></code> </p>
-        </td>
-        <td><p>Calculate the number of dengue infections.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calculate_infectiousness_sym_2x_asym.html">calculate_infectiousness_sym_2x_asym()</a></code> </p>
-        </td>
-        <td><p>Calculate infectiousness when symptomatic infections are twice as
- infectious as asymptomatic ones.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calculate_R0.html">calculate_R0()</a></code> </p>
-        </td>
-        <td><p>Calculate the Dengue reproduction number (\(R_0\))</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="foi.html">foi</a></code> </p>
-        </td>
-        <td><p>Geolocated force of infection estimates of dengue</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_age_band_bounds.html">get_age_band_bounds()</a></code> </p>
-        </td>
-        <td><p><code>get_age_band_bounds</code> returns the lower and upper limits of an age group
+    <div class="ref-description">
+    
+    <p><code>get_age_band_bounds</code> returns the lower and upper limits of an age group
 character string of the format e.g. <code>band_X_Y</code>, where X and Y represent
-the age limits.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="incidences_to_numbers.html">incidences_to_numbers()</a></code> </p>
-        </td>
-        <td><p>Convert incidences into numbers.</p></td>
-      </tr>
-    </tbody>
-    </table>
-  </div>
+the age limits.</p>
+    
+    </div>
 
+    <pre class="usage"><span class='fu'>get_age_band_bounds</span>(<span class='no'>tags</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>tags</th>
+      <td><p>Character string of the age group</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Numeric.</p>
+    
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
-    </ul>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
+
   </div>
 </div>
 

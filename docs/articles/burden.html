@@ -101,43 +101,52 @@
 <div id="introduction" class="section level2">
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
-<p>This vignette explains how to use <code>drep</code> to translate an estimate of the force of infection of dengue to the corresponding number of infections, symptomatic infections (<em>cases</em>) and symptomatic infections requiring hospitalization (<em>hospitalized cases</em>). To do this we need:</p>
-<p>The <code>population</code> of the data point will also be needed when calculating the <span class="math inline">\(R_0\)</span>.</p>
-<p>We first consider the fourth data point from the <code>foi</code> dataset (see <a href="https://mrc-ide.github.io/drep/articles/burden.html">vignette</a>), i.e. a <code>caseReport</code> force of infection estimate from Brazil:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lambda &lt;-<span class="st"> </span>drep<span class="op">::</span>foi[<span class="dv">4</span>, <span class="st">"FOI"</span>]
+<p>This vignette explains how to use <code>drep</code> to translate an estimate of the force of infection of dengue to the corresponding number of infections, symptomatic infections (<em>cases</em>) and symptomatic infections requiring hospitalization (<em>hospitalized cases</em>). Our definition of <em>symptomatic</em> includes any mild febbrile symptom.</p>
+</div>
+<div id="calculation-of-number-of-infections" class="section level2">
+<h2 class="hasAnchor">
+<a href="#calculation-of-number-of-infections" class="anchor"></a>Calculation of number of infections</h2>
+<p>We first consider a data point from the <code>foi</code> dataset (see <a href="https://mrc-ide.github.io/drep/articles/burden.html">vignette</a>), i.e. a <code>caseReport</code> force of infection estimate from Brazil:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ind &lt;-<span class="st"> </span><span class="dv">75</span>
+lambda &lt;-<span class="st"> </span>drep<span class="op">::</span>foi[ind, <span class="st">"FOI"</span>]
 lambda
 <span class="co">#&gt; [1] 0.06159744</span></code></pre></div>
 <p>We extract the population of that data point (<code>pop_size</code>) and the age structure (<code>n_j</code>):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">id_<span class="dv">0</span> &lt;-<span class="st"> </span>drep<span class="op">::</span>foi[<span class="dv">4</span>, <span class="st">"ID_0"</span>]
-pop_size &lt;-<span class="st"> </span>drep<span class="op">::</span>foi[<span class="dv">4</span>, <span class="st">"population"</span>]
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">id_<span class="dv">0</span> &lt;-<span class="st"> </span>drep<span class="op">::</span>foi[ind, <span class="st">"ID_0"</span>]
+pop_size &lt;-<span class="st"> </span>drep<span class="op">::</span>foi[ind, <span class="st">"population"</span>]
 pop_size
-<span class="co">#&gt; [1] 6947167</span>
+<span class="co">#&gt; [1] 4934713</span>
 
 age_s_data &lt;-<span class="st"> </span>drep<span class="op">::</span>age_structure
 n_j &lt;-<span class="st"> </span>age_s_data[age_s_data<span class="op">$</span>ID_<span class="dv">0</span> <span class="op">==</span><span class="st"> </span>id_<span class="dv">0</span>, <span class="dv">2</span><span class="op">:</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">ncol</a></span>(age_s_data)]</code></pre></div>
-<p>We then define some paramaters:</p>
-<ul>
-<li>the lower and upper age limits (<code>l_lim</code> and <code>u_lim</code>) of the country age groups;</li>
-<li>the proportions of primary, secondary, and tertiary/quaternary infections which are symptomatic (<code>sym_weights</code>);</li>
-<li>the proportions of primary, secondary, and tertiary/quaternary cases which require hospitalization (<code>hosp_weights</code>);</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n_age_groups &lt;-<span class="st"> </span><span class="dv">20</span>
-l_lim &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(<span class="dv">0</span>, <span class="dv">95</span>, <span class="dt">length.out =</span> n_age_groups)
-u_lim &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(<span class="dv">5</span>, <span class="dv">100</span>, <span class="dt">length.out =</span> n_age_groups)
-sym_weights &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.45</span>, <span class="fl">0.85</span>, <span class="fl">0.15</span>)
-hosp_weights &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.04</span>, <span class="fl">0.1</span>, <span class="fl">0.04</span>)</code></pre></div>
-<p>We can then calculate the total annual number of infections which correspnds to <code>lambda</code>:</p>
+<p>We then extract the lower and upper age limits (<code>l_lim</code> and <code>u_lim</code>) of the country age groups using the <code>get_age_band_bounds</code> function</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">age_band_tgs &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">grep</a></span>(<span class="st">"band"</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(age_s_data), <span class="dt">value =</span> <span class="ot">TRUE</span>)
+age_band_bnds &lt;-<span class="st"> </span>drep<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/drep/topics/get_age_band_bounds">get_age_band_bounds</a></span>(age_band_tgs)
+l_lim &lt;-<span class="st"> </span>age_band_bnds[, <span class="dv">1</span>]
+u_lim &lt;-<span class="st"> </span>age_band_bnds[, <span class="dv">2</span>]</code></pre></div>
+<p>We can now calculate the total annual number of infections which correspond to <code>lambda</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n_infections &lt;-<span class="st"> </span>drep<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/drep/topics/calculate_infections">calculate_infections</a></span>(lambda, n_j, u_lim, l_lim, pop_size)
 n_infections
-<span class="co">#&gt; [1] 420703.4</span></code></pre></div>
-<p>the number of cases:</p>
+<span class="co">#&gt; [1] 298834.1</span></code></pre></div>
+</div>
+<div id="calculation-of-number-of-mild-cases-and-cases-requiring-hospitalization" class="section level2">
+<h2 class="hasAnchor">
+<a href="#calculation-of-number-of-mild-cases-and-cases-requiring-hospitalization" class="anchor"></a>Calculation of number of mild cases and cases requiring hospitalization</h2>
+<p>To calculate the number of cases and hospitalized cases, we need to define some additional paramaters including:</p>
+<ul>
+<li>the proportions of primary, secondary, and tertiary/quaternary infections which are symptomatic (<code>sym_weights</code>)</li>
+<li>the proportions of primary, secondary, and tertiary/quaternary cases which require hospitalization (<code>hosp_weights</code>)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sym_weights &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.45</span>, <span class="fl">0.85</span>, <span class="fl">0.15</span>)
+hosp_weights &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.04</span>, <span class="fl">0.1</span>, <span class="fl">0.04</span>)</code></pre></div>
+<p>Now we can calculate the number of cases:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n_cases &lt;-<span class="st"> </span>drep<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/drep/topics/calculate_cases">calculate_cases</a></span>(lambda, n_j, u_lim, l_lim, sym_weights, pop_size)
 n_cases
-<span class="co">#&gt; [1] 168757</span></code></pre></div>
+<span class="co">#&gt; [1] 119871.5</span></code></pre></div>
 <p>and the number of hopsitalized cases:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n_h_cases &lt;-<span class="st"> </span>drep<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/drep/topics/calculate_hosp_cases">calculate_hosp_cases</a></span>(lambda, n_j, u_lim, l_lim, hosp_weights, sym_weights, pop_size)
 n_h_cases
-<span class="co">#&gt; [1] 12210.72</span></code></pre></div>
+<span class="co">#&gt; [1] 8673.519</span></code></pre></div>
 </div>
   </div>
 
@@ -147,6 +156,8 @@ n_h_cases
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#calculation-of-number-of-infections">Calculation of number of infections</a></li>
+      <li><a href="#calculation-of-number-of-mild-cases-and-cases-requiring-hospitalization">Calculation of number of mild cases and cases requiring hospitalization</a></li>
       </ul>
 </div>
       </div>
