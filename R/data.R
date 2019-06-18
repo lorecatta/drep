@@ -3,7 +3,7 @@
 #' A dataset containing the values and other attributes of > 580
 #' force of infection estimates of dengue. The variables are as follows:
 #'
-#' @format A data frame with 693 rows and 11 variables:
+#' @format A data frame with 382 rows and 11 variables:
 #' \describe{
 #'    \item{data_id}{unique identifier}
 #'    \item{type}{type of study where the force of infection estimate was sourced from (serology, caseReport, pseudoAbsence)}
@@ -15,7 +15,6 @@
 #'    \item{ID_0}{GADM administrative unit level 0 code}
 #'    \item{ID_1}{GADM administrative unit level 1 code}
 #'    \item{FOI}{force of infection estimate (0.00000000--0.06159744)}
-#'    \item{R0_1}{reproduction number assuming onlyt primary and secondayr infections are asymptomatic}
 #'    \item{population}{size of the human population in level 1 adm unit}
 #'  }
 #' @references \url{https://mrcdata.dide.ic.ac.uk/_dengue/dengue.php}
