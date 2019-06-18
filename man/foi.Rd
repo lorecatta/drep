@@ -4,12 +4,14 @@
 \name{foi}
 \alias{foi}
 \title{Geolocated force of infection estimates of dengue}
-\format{A data frame with 583 rows and 9 variables:
+\format{A data frame with 382 rows and 11 variables:
 \describe{
    \item{data_id}{unique identifier}
    \item{type}{type of study where the force of infection estimate was sourced from (serology, caseReport, pseudoAbsence)}
+   \item{date}{date of the study}
    \item{longitude}{longitude of the location of the study}
    \item{latitude}{latitude of the location of the study}
+   \item{country}{country where the study was carried out}
    \item{ISO}{3-digits country code}
    \item{ID_0}{GADM administrative unit level 0 code}
    \item{ID_1}{GADM administrative unit level 1 code}
