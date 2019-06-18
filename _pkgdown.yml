@@ -1,19 +1,20 @@
 url: https://mrc-ide.github.io/drep/
 
 navbar:
+  title: "drep"
   type: inverse
   left:
     - href: index.html
       icon: fa-home fa-lg
-    - text: Reference
+    - text: "Functions"
       href: reference/index.html
-    - text: Articles
+    - text: "Articles"
       menu:
-      - text: Varying infectiousness
+      - text: "Varying infectiousness"
         href: articles/drep.html
-      - text: Estimating burden
+      - text: "Estimating burden"
         href: articles/burden.html
-    - text: News
+    - text: "News"
       href: news/index.html
   right:
     - icon: fa-github
