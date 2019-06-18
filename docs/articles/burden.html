@@ -119,7 +119,7 @@ pop_size
 
 age_s_data &lt;-<span class="st"> </span>drep<span class="op">::</span>age_structure
 n_j &lt;-<span class="st"> </span>age_s_data[age_s_data<span class="op">$</span>ID_<span class="dv">0</span> <span class="op">==</span><span class="st"> </span>id_<span class="dv">0</span>, <span class="dv">2</span><span class="op">:</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">ncol</a></span>(age_s_data)]</code></pre></div>
-<p>We then extract the lower and upper age limits (<code>l_lim</code> and <code>u_lim</code>) of the country age groups using the <code>get_age_band_bounds</code> function</p>
+<p>We then extract the lower and upper age limits (<code>l_lim</code> and <code>u_lim</code>) of the country age groups</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">age_band_tgs &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">grep</a></span>(<span class="st">"band"</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(age_s_data), <span class="dt">value =</span> <span class="ot">TRUE</span>)
 age_band_bnds &lt;-<span class="st"> </span>drep<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/drep/topics/get_age_band_bounds">get_age_band_bounds</a></span>(age_band_tgs)
 l_lim &lt;-<span class="st"> </span>age_band_bnds[, <span class="dv">1</span>]

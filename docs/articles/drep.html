@@ -140,15 +140,6 @@ ID_1
 FOI
 </th>
 <th style="text-align:right;">
-R0_1
-</th>
-<th style="text-align:right;">
-R0_2
-</th>
-<th style="text-align:right;">
-R0_3
-</th>
-<th style="text-align:right;">
 population
 </th>
 </tr></thead>
@@ -183,15 +174,6 @@ AUS
 </td>
 <td style="text-align:right;">
 0.0029469
-</td>
-<td style="text-align:right;">
-1.161586
-</td>
-<td style="text-align:right;">
-1.118194
-</td>
-<td style="text-align:right;">
-1.352029
 </td>
 <td style="text-align:right;">
 4404819
@@ -229,15 +211,6 @@ BGD
 0.0010849
 </td>
 <td style="text-align:right;">
-1.034973
-</td>
-<td style="text-align:right;">
-1.031119
-</td>
-<td style="text-align:right;">
-1.287515
-</td>
-<td style="text-align:right;">
 6383673
 </td>
 </tr>
@@ -271,15 +244,6 @@ BGD
 </td>
 <td style="text-align:right;">
 0.0032006
-</td>
-<td style="text-align:right;">
-1.122763
-</td>
-<td style="text-align:right;">
-1.093269
-</td>
-<td style="text-align:right;">
-1.331571
 </td>
 <td style="text-align:right;">
 6383673
@@ -317,15 +281,6 @@ BGD
 0.0024820
 </td>
 <td style="text-align:right;">
-1.090416
-</td>
-<td style="text-align:right;">
-1.071944
-</td>
-<td style="text-align:right;">
-1.314053
-</td>
-<td style="text-align:right;">
 6383673
 </td>
 </tr>
@@ -359,15 +314,6 @@ BGD
 </td>
 <td style="text-align:right;">
 0.0021704
-</td>
-<td style="text-align:right;">
-1.077156
-</td>
-<td style="text-align:right;">
-1.062766
-</td>
-<td style="text-align:right;">
-1.307204
 </td>
 <td style="text-align:right;">
 6383673
@@ -405,15 +351,6 @@ BGD
 0.0421643
 </td>
 <td style="text-align:right;">
-4.383889
-</td>
-<td style="text-align:right;">
-2.526167
-</td>
-<td style="text-align:right;">
-3.250514
-</td>
-<td style="text-align:right;">
 22309197
 </td>
 </tr>
@@ -447,15 +384,6 @@ BGD
 </td>
 <td style="text-align:right;">
 0.0016834
-</td>
-<td style="text-align:right;">
-1.057425
-</td>
-<td style="text-align:right;">
-1.048504
-</td>
-<td style="text-align:right;">
-1.297516
 </td>
 <td style="text-align:right;">
 22309197
@@ -493,15 +421,6 @@ BGD
 0.0020200
 </td>
 <td style="text-align:right;">
-1.070931
-</td>
-<td style="text-align:right;">
-1.058352
-</td>
-<td style="text-align:right;">
-1.304076
-</td>
-<td style="text-align:right;">
 22309197
 </td>
 </tr>
@@ -537,15 +456,6 @@ BGD
 0.0306195
 </td>
 <td style="text-align:right;">
-3.258467
-</td>
-<td style="text-align:right;">
-2.052987
-</td>
-<td style="text-align:right;">
-2.597951
-</td>
-<td style="text-align:right;">
 22309197
 </td>
 </tr>
@@ -579,15 +489,6 @@ BGD
 </td>
 <td style="text-align:right;">
 0.0025753
-</td>
-<td style="text-align:right;">
-1.094482
-</td>
-<td style="text-align:right;">
-1.074702
-</td>
-<td style="text-align:right;">
-1.316197
 </td>
 <td style="text-align:right;">
 22309197
@@ -1333,12 +1234,13 @@ band_95_99
 </tr>
 </tbody>
 </table>
-<p>For the purpose of this example, we pick the fourth data point, i.e. a <code>caseReport</code> estimate from Brazil.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lambda &lt;-<span class="st"> </span>drep<span class="op">::</span>foi[<span class="dv">4</span>, <span class="st">"FOI"</span>] <span class="co"># a point from Brazil</span>
+<p>For the purpose of this example, we pick a <code>caseReport</code> estimate from Brazil.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ind &lt;-<span class="st"> </span><span class="dv">75</span>
+lambda &lt;-<span class="st"> </span>drep<span class="op">::</span>foi[ind, <span class="st">"FOI"</span>] <span class="co"># a point from Brazil</span>
 lambda
-<span class="co">#&gt; [1] 0.00248199</span></code></pre></div>
+<span class="co">#&gt; [1] 0.06159744</span></code></pre></div>
 <p>The <code>ID_0</code> of the point selected from the <code>foi</code> dataset (<code>lambda</code>) is needed to be able to look up the correct demographic structure from the <code>age_structure</code> dataset.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">id_<span class="dv">0</span> &lt;-<span class="st"> </span>drep<span class="op">::</span>foi[<span class="dv">4</span>, <span class="st">"ID_0"</span>]
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">id_<span class="dv">0</span> &lt;-<span class="st"> </span>drep<span class="op">::</span>foi[ind, <span class="st">"ID_0"</span>]
 age_s_data &lt;-<span class="st"> </span>drep<span class="op">::</span>age_structure
 n_j &lt;-<span class="st"> </span>age_s_data[age_s_data<span class="op">$</span>ID_<span class="dv">0</span> <span class="op">==</span><span class="st"> </span>id_<span class="dv">0</span>, <span class="dv">2</span><span class="op">:</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">ncol</a></span>(age_s_data)]</code></pre></div>
 <p>The age astructure for <code>lambda</code> looks like this:</p>
@@ -1409,79 +1311,81 @@ band_95_99
 </tr></thead>
 <tbody><tr>
 <td style="text-align:left;">
-14
+24
 </td>
 <td style="text-align:right;">
-0.0952301
+0.0723249
 </td>
 <td style="text-align:right;">
-0.0973234
+0.0741339
 </td>
 <td style="text-align:right;">
-0.1019262
+0.0838289
 </td>
 <td style="text-align:right;">
-0.1001373
+0.0840262
 </td>
 <td style="text-align:right;">
-0.0945903
+0.0802011
 </td>
 <td style="text-align:right;">
-0.0898384
+0.0837182
 </td>
 <td style="text-align:right;">
-0.0837138
+0.0857198
 </td>
 <td style="text-align:right;">
-0.0736883
+0.0783632
 </td>
 <td style="text-align:right;">
-0.0615756
+0.0688992
 </td>
 <td style="text-align:right;">
-0.0557181
+0.0634767
 </td>
 <td style="text-align:right;">
-0.0452578
+0.0593918
 </td>
 <td style="text-align:right;">
-0.0312506
+0.0485903
 </td>
 <td style="text-align:right;">
-0.0200511
+0.0389097
 </td>
 <td style="text-align:right;">
-0.0177341
+0.0287336
 </td>
 <td style="text-align:right;">
-0.013622
+0.0201357
 </td>
 <td style="text-align:right;">
-0.0089385
+0.0147325
 </td>
 <td style="text-align:right;">
-0.0054786
+0.0086413
 </td>
 <td style="text-align:right;">
-0.0026896
+0.0044698
 </td>
 <td style="text-align:right;">
-0.0009939
+0.001429
 </td>
 <td style="text-align:right;">
-0.0002423
+0.0002742
 </td>
 </tr></tbody>
 </table>
-<p>Lets’s also define the lower and upper age limits (<code>l_lim</code> and <code>u_lim</code>) of the country age groups and the infectiousness weights (<code>phis</code>)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n_age_groups &lt;-<span class="st"> </span><span class="dv">20</span>
-l_lim &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(<span class="dv">0</span>, <span class="dv">95</span>, <span class="dt">length.out =</span> n_age_groups)
-u_lim &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(<span class="dv">5</span>, <span class="dv">100</span>, <span class="dt">length.out =</span> n_age_groups)
-phis &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</code></pre></div>
+<p>We then extract the lower and upper age limits (<code>l_lim</code> and <code>u_lim</code>) of the country age groups using the <code>get_age_band_bounds</code> function</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">age_band_tgs &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">grep</a></span>(<span class="st">"band"</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(age_s_data), <span class="dt">value =</span> <span class="ot">TRUE</span>)
+age_band_bnds &lt;-<span class="st"> </span>drep<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/drep/topics/get_age_band_bounds">get_age_band_bounds</a></span>(age_band_tgs)
+l_lim &lt;-<span class="st"> </span>age_band_bnds[, <span class="dv">1</span>]
+u_lim &lt;-<span class="st"> </span>age_band_bnds[, <span class="dv">2</span>]</code></pre></div>
+<p>Lets’s also define the infectiousness weights (<code>phis</code>)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">phis &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</code></pre></div>
 <p>Now we can compute the <span class="math inline">\(R_0\)</span>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">R0 &lt;-<span class="st"> </span>drep<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/drep/topics/calculate_R0">calculate_R0</a></span>(lambda, n_j, u_lim, l_lim, phis)
 R0
-<span class="co">#&gt; [1] 1.071944</span></code></pre></div>
+<span class="co">#&gt; [1] 4.068688</span></code></pre></div>
 </div>
 <div id="varying-infectiousness" class="section level2">
 <h2 class="hasAnchor">
@@ -1491,7 +1395,7 @@ R0
 
 R0 &lt;-<span class="st"> </span>drep<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/drep/topics/calculate_R0">calculate_R0</a></span>(lambda, n_j, u_lim, l_lim, phis)
 R0
-<span class="co">#&gt; [1] 1.090416</span></code></pre></div>
+<span class="co">#&gt; [1] 8.173763</span></code></pre></div>
 <p>The <span class="math inline">\(R_0\)</span> value increases relative to when using same weights because the virus has only two attempts at generating a given force of infection, so it has to have a higher <span class="math inline">\(R_0\)</span>.</p>
 <p>Second, let’s assume that all four infections are infectious but symptomatic infections are twice as infectious as asymptomatic ones. This requires knowledge of the proportion of primary. secondary, tertiary and quaternary infections which are asymptomatic. We source the values of these parameters from <a href="https://science.sciencemag.org/content/353/6303/1033">Ferguson et al. 2016</a> and put them in a vector.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prop_sym_parms &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.45</span>, <span class="fl">0.85</span>, <span class="fl">0.15</span>, <span class="fl">0.15</span>)</code></pre></div>
@@ -1503,7 +1407,7 @@ phis
 <p>Now the reproduction number is</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">R0 &lt;-<span class="st"> </span>drep<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/drep/topics/calculate_R0">calculate_R0</a></span>(lambda, n_j, u_lim, l_lim, phis)
 R0
-<span class="co">#&gt; [1] 1.314053</span></code></pre></div>
+<span class="co">#&gt; [1] 5.372142</span></code></pre></div>
 </div>
   </div>
 
