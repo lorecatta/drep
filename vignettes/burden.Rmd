@@ -18,9 +18,9 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-This vignette explains how to use `drep` to translate an estimate of the force of infection of dengue to the corresponding number of infections, symptomatic infections (*cases*) and symptomatic infections requiring hospitalization (*hospitalized cases*). To do this we need:
+This vignette explains how to use `drep` to translate an estimate of the force of infection of dengue to the corresponding number of infections, symptomatic infections (*cases*) and symptomatic infections requiring hospitalization (*hospitalized cases*). Our definition of *symptomatic* includes any mild febbrile symptom.
 
-The `population` of the data point will also be needed when calculating the $R_0$.
+## Calculation of number of infections
 
 We first consider a data point from the `foi` dataset (see [vignette](https://mrc-ide.github.io/drep/articles/burden.html)), i.e. a `caseReport` force of infection estimate from Brazil:
 
@@ -56,6 +56,8 @@ We can now calculate the total annual number of infections which correspond to `
 n_infections <- drep::calculate_infections(lambda, n_j, u_lim, l_lim, pop_size)
 n_infections
 ```
+
+## Calculation of number of cases and cases requiring hospitalization
 
 To calculate the number of cases and hospitalized cases, we need to define some additional paramaters including:
 
