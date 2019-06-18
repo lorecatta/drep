@@ -76,7 +76,7 @@ n_cases <- drep::calculate_cases(lambda, n_j, u_lim, l_lim, sym_weights, pop_siz
 n_cases
 ```
 
-and the number of hopsitalized cases:
+and the number of hospitalized cases:
 
 ```{r}
 n_h_cases <- drep::calculate_hosp_cases(lambda, n_j, u_lim, l_lim, hosp_weights, sym_weights, pop_size)
