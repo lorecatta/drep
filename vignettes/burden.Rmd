@@ -57,7 +57,7 @@ n_infections <- drep::calculate_infections(lambda, n_j, u_lim, l_lim, pop_size)
 n_infections
 ```
 
-## Calculation of number of cases and cases requiring hospitalization
+## Calculation of number of mild cases and cases requiring hospitalization
 
 To calculate the number of cases and hospitalized cases, we need to define some additional paramaters including:
 
