@@ -136,3 +136,31 @@ calculate_hosp_cases <- function(FOI,
   sum(case_number_j) * 4 * N
 
 }
+
+
+# -----------------------------------------------------------------------------
+
+# get_age_band_bounds
+
+#' \code{get_age_band_bounds} returns the lower and upper limits of an age group
+#' character string of the format e.g. \code{band_X_Y}, where X and Y represent
+#' the age limits.
+#'
+#' @param tags Character string of the age group
+#'
+#' @return Numeric.
+#'
+#' @export
+
+
+get_age_band_bounds <- function(tags) {
+
+  age_band_tags_split <- strsplit(tags, "[^0-9]+")
+
+  age_band_tags_split_num <- lapply(age_band_tags_split, as.numeric)
+
+  age_band_tags_split_num_mat <- do.call("rbind", age_band_tags_split_num)
+
+  age_band_tags_split_num_mat[, 2:3]
+
+}
