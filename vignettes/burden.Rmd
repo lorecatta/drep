@@ -41,7 +41,7 @@ age_s_data <- drep::age_structure
 n_j <- age_s_data[age_s_data$ID_0 == id_0, 2:ncol(age_s_data)]
 ```
 
-We then extract the lower and upper age limits (`l_lim` and `u_lim`) of the country age groups using the `get_age_band_bounds` function 
+We then extract the lower and upper age limits (`l_lim` and `u_lim`) of the country age groups 
 
 ```{r}
 age_band_tgs <- grep("band", names(age_s_data), value = TRUE)

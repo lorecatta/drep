@@ -50,17 +50,18 @@ kableExtra::kable(head(drep::age_structure, 10)) %>%
   kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
 
-For the purpose of this example, we pick the fourth data point, i.e. a `caseReport` estimate from Brazil.
+For the purpose of this example, we pick a `caseReport` estimate from Brazil.
 
 ```{r}
-lambda <- drep::foi[4, "FOI"] # a point from Brazil
+ind <- 75
+lambda <- drep::foi[ind, "FOI"] # a point from Brazil
 lambda
 ```
 
 The `ID_0` of the point selected from the `foi` dataset (`lambda`) is needed to be able to look up the correct demographic structure from the `age_structure` dataset.  
 
 ```{r}
-id_0 <- drep::foi[4, "ID_0"]
+id_0 <- drep::foi[ind, "ID_0"]
 age_s_data <- drep::age_structure
 n_j <- age_s_data[age_s_data$ID_0 == id_0, 2:ncol(age_s_data)]
 ```
@@ -72,12 +73,18 @@ kableExtra::kable(n_j) %>%
   kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
 
-Lets's also define the lower and upper age limits (`l_lim` and `u_lim`) of the country age groups and the infectiousness weights (`phis`)  
+We then extract the lower and upper age limits (`l_lim` and `u_lim`) of the country age groups using the `get_age_band_bounds` function 
+
+```{r}
+age_band_tgs <- grep("band", names(age_s_data), value = TRUE)
+age_band_bnds <- drep::get_age_band_bounds(age_band_tgs)
+l_lim <- age_band_bnds[, 1]
+u_lim <- age_band_bnds[, 2]
+```
+
+Lets's also define the infectiousness weights (`phis`)  
 
 ```{r} 
-n_age_groups <- 20
-l_lim <- seq(0, 95, length.out = n_age_groups)
-u_lim <- seq(5, 100, length.out = n_age_groups)
 phis <- c(1, 1, 1, 1)
 ```
 
