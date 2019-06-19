@@ -113,7 +113,7 @@ incidences_to_numbers <- function(incidences, n_j) {
 #'
 #' @inheritParams incidences_to_numbers
 #'
-#' @param phis A numeric vector of the relative infectiousness
+#' @param phis A numeric vector of length = 4 of the relative infectiousness
 #'   of primary, secondary, tertiary and quaternary dengue infections.
 #'
 #' @return Numeric.

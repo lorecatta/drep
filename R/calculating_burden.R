@@ -47,8 +47,8 @@ calculate_infections <- function(FOI,
 #'
 #' @inheritParams calculate_infections
 #'
-#' @param weights_vec A numeric vector of the proportions of primary, secondary,
-#' tertiary and quaternary infections which are symptomatic.
+#' @param weights_vec A numeric vector of length = 4 of the proportions of
+#' primary, secondary, tertiary and quaternary infections which are symptomatic.
 #'
 #' @return Numeric.
 #'
@@ -65,6 +65,7 @@ calculate_cases <- function(FOI,
   gamma_1 <- weights_vec[1]
   rho <- weights_vec[2]
   gamma_3 <- weights_vec[3]
+  gamma_4 <- weights_vec[4]
 
   incids <- calculate_incidences(FOI, u_lim, l_lim)
 
@@ -73,7 +74,7 @@ calculate_cases <- function(FOI,
   I3_rate <- incids[[3]]
   I4_rate <- incids[[4]]
 
-  tot_incid_rate_j <- rho * I2_rate + (gamma_1 * I1_rate) + (gamma_3 * (I3_rate + I4_rate))
+  tot_incid_rate_j <- (rho * I2_rate) + (gamma_1 * I1_rate) + (gamma_3 * I3_rate) + (gamma_4 * I4_rate)
 
   case_number_j <- incidences_to_numbers(tot_incid_rate_j, n_j)
 
@@ -98,8 +99,9 @@ calculate_cases <- function(FOI,
 #'
 #' @inheritParams calculate_cases
 #'
-#' @param parms A numeric vector of the proportions of primary, secondary and
-#' tertiary and quaternary infections requiring hospitalization.
+#' @param parms A numeric vector of length = 4 of the proportions of primary,
+#' secondary, tertiary and quaternary symptomatic infections requiring
+#' hospitalization.
 #'
 #' @return Numeric.
 #'
@@ -117,10 +119,12 @@ calculate_hosp_cases <- function(FOI,
   gamma_1 <- weights_vec[1]
   rho <- weights_vec[2]
   gamma_3 <- weights_vec[3]
+  gamma_4 <- weights_vec[4]
 
   Q_1 <- parms[1]
   Q_2 <- parms[2]
   Q_3 <- parms[3]
+  Q_4 <- parms[4]
 
   incids <- calculate_incidences(FOI, u_lim, l_lim)
 
@@ -129,7 +133,7 @@ calculate_hosp_cases <- function(FOI,
   I3_rate <- incids[[3]]
   I4_rate <- incids[[4]]
 
-  tot_incid_rate_j <- Q_2 * rho * I2_rate + (Q_1 * gamma_1 * I1_rate) + (gamma_3 * Q_3 * (I3_rate + I4_rate))
+  tot_incid_rate_j <- (Q_2 * rho * I2_rate) + (Q_1 * gamma_1 * I1_rate) + (gamma_3 * Q_3 * I3_rate) + (gamma_4 * Q_4 * I4_rate)
 
   case_number_j <- incidences_to_numbers(tot_incid_rate_j, n_j)
 
