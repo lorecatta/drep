@@ -146,10 +146,10 @@ u_lim &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocum
 n_j &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sample">sample</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">50</span>, n_age_groups, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
 f_j &lt;-<span class="st"> </span>n_j <span class="op">/</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sum">sum</a></span>(n_j)
 f_j
-<span class="co">#&gt;  [1] 0.003846154 0.057692308 0.055769231 0.059615385 0.090384615</span>
-<span class="co">#&gt;  [6] 0.001923077 0.076923077 0.057692308 0.021153846 0.042307692</span>
-<span class="co">#&gt; [11] 0.046153846 0.090384615 0.032692308 0.067307692 0.003846154</span>
-<span class="co">#&gt; [16] 0.055769231 0.080769231 0.021153846 0.096153846 0.038461538</span></code></pre></div>
+<span class="co">#&gt;  [1] 0.007272727 0.058181818 0.020000000 0.061818182 0.023636364</span>
+<span class="co">#&gt;  [6] 0.067272727 0.069090909 0.016363636 0.043636364 0.047272727</span>
+<span class="co">#&gt; [11] 0.085454545 0.063636364 0.089090909 0.027272727 0.063636364</span>
+<span class="co">#&gt; [16] 0.074545455 0.049090909 0.036363636 0.009090909 0.087272727</span></code></pre></div>
 <p>The <span class="math inline">\(R_0\)</span> can be calculated using the <code>calculate_R0</code> function. The <code>calculate_R0</code> function takes six arguments:</p>
 <ul>
 <li>
@@ -165,7 +165,7 @@ f_j
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">R0 &lt;-<span class="st"> </span>drep<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/drep/topics/calculate_R0">calculate_R0</a></span>(FOI, f_j, u_lim, l_lim, phis)
 R0
-<span class="co">#&gt; [1] 2.732367</span></code></pre></div>
+<span class="co">#&gt; [1] 2.906135</span></code></pre></div>
 </div>
 </div>
   </div>

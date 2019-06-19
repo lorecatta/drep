@@ -18,7 +18,7 @@ groups.}
 \item{l_lim}{A numeric vector of the lower age limits of the population age
 groups.}
 
-\item{N}{Size of human population. NUmeric.}
+\item{N}{Size of human population. Numeric.}
 }
 \value{
 Numeric.

@@ -21,7 +21,7 @@ groups.}
 \item{weights_vec}{A numeric vector of length = 4 of the proportions of
 primary, secondary, tertiary and quaternary infections which are symptomatic.}
 
-\item{N}{Size of human population. NUmeric.}
+\item{N}{Size of human population. Numeric.}
 }
 \value{
 Numeric.
