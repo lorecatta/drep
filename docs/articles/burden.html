@@ -131,11 +131,11 @@ n_infections
 <a href="#calculation-of-number-of-mild-cases-and-cases-requiring-hospitalization" class="anchor"></a>Calculation of number of mild cases and cases requiring hospitalization</h2>
 <p>To calculate the number of cases and hospitalized cases, we need to define some additional paramaters including:</p>
 <ul>
-<li>the proportions of primary, secondary, and tertiary/quaternary infections which are symptomatic (<code>sym_weights</code>)</li>
-<li>the proportions of primary, secondary, and tertiary/quaternary cases which require hospitalization (<code>hosp_weights</code>)</li>
+<li>the proportions of primary, secondary, tertiary and quaternary infections which are symptomatic (<code>sym_weights</code>)</li>
+<li>the proportions of primary, secondary, tertiary and quaternary cases which require hospitalization (<code>hosp_weights</code>)</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sym_weights &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.45</span>, <span class="fl">0.85</span>, <span class="fl">0.15</span>)
-hosp_weights &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.04</span>, <span class="fl">0.1</span>, <span class="fl">0.04</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sym_weights &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.45</span>, <span class="fl">0.85</span>, <span class="fl">0.15</span>, <span class="fl">0.15</span>)
+hosp_weights &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.04</span>, <span class="fl">0.1</span>, <span class="fl">0.04</span>, <span class="fl">0.04</span>)</code></pre></div>
 <p>Now we can calculate the number of cases:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n_cases &lt;-<span class="st"> </span>drep<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/drep/topics/calculate_cases">calculate_cases</a></span>(lambda, n_j, u_lim, l_lim, sym_weights, pop_size)
 n_cases
