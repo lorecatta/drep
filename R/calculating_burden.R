@@ -10,7 +10,7 @@
 #'
 #' @inheritParams calculate_R0
 #'
-#' @param N Size of human population. NUmeric.
+#' @param N Size of human population. Numeric.
 #'
 #' @return Numeric.
 #'
