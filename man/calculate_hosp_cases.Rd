@@ -18,11 +18,12 @@ groups.}
 \item{l_lim}{A numeric vector of the lower age limits of the population age
 groups.}
 
-\item{parms}{A numeric vector of the proportions of primary, secondary and
-tertiary and quaternary infections requiring hospitalization.}
+\item{parms}{A numeric vector of length = 4 of the proportions of primary,
+secondary, tertiary and quaternary symptomatic infections requiring
+hospitalization.}
 
-\item{weights_vec}{A numeric vector of the proportions of primary, secondary,
-tertiary and quaternary infections which are symptomatic.}
+\item{weights_vec}{A numeric vector of length = 4 of the proportions of
+primary, secondary, tertiary and quaternary infections which are symptomatic.}
 
 \item{N}{Size of human population. NUmeric.}
 }

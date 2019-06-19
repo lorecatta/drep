@@ -18,7 +18,7 @@ groups.}
 \item{l_lim}{A numeric vector of the lower age limits of the population age
 groups.}
 
-\item{phis}{A numeric vector of the relative infectiousness
+\item{phis}{A numeric vector of length = 4 of the relative infectiousness
 of primary, secondary, tertiary and quaternary dengue infections.}
 }
 \value{
