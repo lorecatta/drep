@@ -8,5 +8,3 @@
 ^pkgdown$
 ^\.travis\.yml$
 ^codecov\.yml$
-^doc$
-^Meta$
