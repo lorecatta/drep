@@ -18,4 +18,4 @@ navbar:
       href: news/index.html
   right:
     - icon: fa-github fa-lg
-    - href: https://github.com/mrc-ide/drep
+      href: https://github.com/mrc-ide/drep
