@@ -62,12 +62,12 @@ n_infections
 
 To calculate the number of cases and hospitalized cases, we need to define some additional paramaters including:
 
-* the proportions of primary, secondary, and tertiary/quaternary infections which are symptomatic (`sym_weights`)
-* the proportions of primary, secondary, and tertiary/quaternary cases which require hospitalization (`hosp_weights`)
+* the proportions of primary, secondary, tertiary and quaternary infections which are symptomatic (`sym_weights`)
+* the proportions of primary, secondary, tertiary and quaternary cases which require hospitalization (`hosp_weights`)
 
 ```{r}
-sym_weights <- c(0.45, 0.85, 0.15)
-hosp_weights <- c(0.04, 0.1, 0.04)
+sym_weights <- c(0.45, 0.85, 0.15, 0.15)
+hosp_weights <- c(0.04, 0.1, 0.04, 0.04)
 ```
 
 Now we can calculate the number of cases:
