@@ -41,10 +41,10 @@ Example
 
 This is a basic example which shows you how to to convert force of infection into *R*<sub>0</sub>. To do this we need:
 
--   the age structure of the human population
+-   the proportion of the human population in different age groups
 -   the relative infectiousness of the four dengue infections.
 
-We assume that the population is divided up into 20 age groups and define the following parameters:
+We assume that the human population is divided up into 20 age groups and define the following parameters:
 
 -   number of age groups in the country human population (`n_age_groups`)
 -   the force of infection estimate (`FOI`)
@@ -54,7 +54,6 @@ We asssume, as a starting point, that all four infections have the same infectio
 
 ``` r
 n_age_groups <- 20
-pop <- 500000
 FOI <- 0.0235
 phis <- c(1, 1, 1, 1)
 ```
@@ -69,6 +68,11 @@ l_lim <- seq(0, 95, length.out = n_age_groups)
 u_lim <- seq(5, 100, length.out = n_age_groups)
 n_j <- sample(1:50, n_age_groups, replace = TRUE)
 f_j <- n_j / sum(n_j)
+f_j
+#>  [1] 0.06471816 0.03966597 0.01670146 0.02296451 0.03340292 0.10229645
+#>  [7] 0.07098121 0.04592902 0.05219207 0.05010438 0.04384134 0.08559499
+#> [13] 0.02296451 0.05010438 0.07306889 0.01043841 0.02087683 0.08141962
+#> [19] 0.08768267 0.02505219
 ```
 
 The *R*<sub>0</sub> can be calculated using the `calculate_R0` function. The `calculate_R0` function takes six arguments:
@@ -82,5 +86,5 @@ The *R*<sub>0</sub> can be calculated using the `calculate_R0` function. The `ca
 ``` r
 R0 <- drep::calculate_R0(FOI, f_j, u_lim, l_lim, phis)
 R0
-#> [1] 2.761299
+#> [1] 2.669677
 ```
