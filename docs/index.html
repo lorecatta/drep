@@ -123,10 +123,10 @@
 <a href="#example" class="anchor"></a>Example</h2>
 <p>This is a basic example which shows you how to to convert force of infection into <span class="math inline">\(R_0\)</span>. To do this we need:</p>
 <ul>
-<li>the age structure of the human population</li>
+<li>the proportion of the human population in different age groups</li>
 <li>the relative infectiousness of the four dengue infections.</li>
 </ul>
-<p>We assume that the population is divided up into 20 age groups and define the following parameters:</p>
+<p>We assume that the human population is divided up into 20 age groups and define the following parameters:</p>
 <ul>
 <li>number of age groups in the country human population (<code>n_age_groups</code>)</li>
 <li>the force of infection estimate (<code>FOI</code>)</li>
@@ -134,7 +134,6 @@
 </ul>
 <p>We asssume, as a starting point, that all four infections have the same infectiousness.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n_age_groups &lt;-<span class="st"> </span><span class="dv">20</span>
-pop &lt;-<span class="st"> </span><span class="dv">500000</span>
 FOI &lt;-<span class="st"> </span><span class="fl">0.0235</span>
 phis &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</code></pre></div>
 <p>We then simulate some data, including</p>
@@ -145,7 +144,12 @@ phis &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocume
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l_lim &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(<span class="dv">0</span>, <span class="dv">95</span>, <span class="dt">length.out =</span> n_age_groups)
 u_lim &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(<span class="dv">5</span>, <span class="dv">100</span>, <span class="dt">length.out =</span> n_age_groups)
 n_j &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sample">sample</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">50</span>, n_age_groups, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
-f_j &lt;-<span class="st"> </span>n_j <span class="op">/</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sum">sum</a></span>(n_j)</code></pre></div>
+f_j &lt;-<span class="st"> </span>n_j <span class="op">/</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sum">sum</a></span>(n_j)
+f_j
+<span class="co">#&gt;  [1] 0.003846154 0.057692308 0.055769231 0.059615385 0.090384615</span>
+<span class="co">#&gt;  [6] 0.001923077 0.076923077 0.057692308 0.021153846 0.042307692</span>
+<span class="co">#&gt; [11] 0.046153846 0.090384615 0.032692308 0.067307692 0.003846154</span>
+<span class="co">#&gt; [16] 0.055769231 0.080769231 0.021153846 0.096153846 0.038461538</span></code></pre></div>
 <p>The <span class="math inline">\(R_0\)</span> can be calculated using the <code>calculate_R0</code> function. The <code>calculate_R0</code> function takes six arguments:</p>
 <ul>
 <li>
@@ -161,7 +165,7 @@ f_j &lt;-<span class="st"> </span>n_j <span class="op">/</span><span class="st">
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">R0 &lt;-<span class="st"> </span>drep<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/drep/topics/calculate_R0">calculate_R0</a></span>(FOI, f_j, u_lim, l_lim, phis)
 R0
-<span class="co">#&gt; [1] 2.550901</span></code></pre></div>
+<span class="co">#&gt; [1] 2.732367</span></code></pre></div>
 </div>
 </div>
   </div>
