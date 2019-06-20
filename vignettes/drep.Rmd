@@ -109,10 +109,10 @@ R0
 
 The $R_0$ value increases relative to when using same weights because the virus has only two attempts at generating a given force of infection, so it has to have a higher $R_0$.
 
-Second, let's assume that all four infections are infectious but symptomatic infections are twice as infectious as asymptomatic ones. This requires knowledge of the proportion of primary. secondary and tertiary/quaternary infections which are asymptomatic. We source the values of these parameters from [Ferguson et al. 2016](https://science.sciencemag.org/content/353/6303/1033) and put them in a vector.
+Second, let's assume that all four infections are infectious but symptomatic infections are twice as infectious as asymptomatic ones. This requires knowledge of the proportion of primary. secondary, tertiary and quaternary infections which are symptomatic. We source the values of these parameters from [Ferguson et al. 2016](https://science.sciencemag.org/content/353/6303/1033) and put them in a vector.
 
 ```{r} 
-prop_sym_parms <- c(0.45, 0.85, 0.15)
+prop_sym_parms <- c(0.45, 0.85, 0.15, 0.15)
 ```
 
 We can use the function `calculate_infectiousness_sym_2x_asym` to calculate the relative infectiousness of the four dengue infections from the proportion of primary. secondary, tertiary and quaternary infectionsa which are asymptomatic.
