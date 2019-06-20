@@ -8,8 +8,8 @@
 calculate_infectiousness_sym_2x_asym(prop_sym_parms)
 }
 \arguments{
-\item{prop_sym_parms}{numeric vector of proportions of primary, secondary and
-tertiary/quaternary infections which are symptomatic.}
+\item{prop_sym_parms}{numeric vector of length = 4 of the proportions of
+primary, secondary, tertiary and quaternary infections which are symptomatic.}
 }
 \value{
 Numeric.

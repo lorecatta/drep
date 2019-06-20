@@ -148,8 +148,8 @@ calculate_R0 <- function(FOI, n_j, u_lim, l_lim, phis) {
 #' @title Calculate infectiousness when symptomatic infections are twice as
 #'  infectious as asymptomatic ones.
 #'
-#' @param prop_sym_parms numeric vector of proportions of primary, secondary and
-#' tertiary/quaternary infections which are symptomatic.
+#' @param prop_sym_parms numeric vector of length = 4 of the proportions of
+#' primary, secondary, tertiary and quaternary infections which are symptomatic.
 #'
 #' @return Numeric.
 #'
@@ -161,11 +161,13 @@ calculate_infectiousness_sym_2x_asym <- function(prop_sym_parms) {
   w_1 <- prop_sym_parms[1]
   w_2 <- prop_sym_parms[2]
   w_3 <- prop_sym_parms[3]
+  w_4 <- prop_sym_parms[4]
 
   phi_2 <- 1
   phi_1 <- (w_1 * 2 + (1 - w_1)) / (w_2 * 2 + (1 - w_2))
   phi_3 <- (w_3 * 2 + (1 - w_3)) / (w_2 * 2 + (1 - w_2))
+  phi_4 <- (w_4 * 2 + (1 - w_4)) / (w_2 * 2 + (1 - w_2))
 
-  c(phi_1, phi_2, phi_3, phi_3)
+  c(phi_1, phi_2, phi_3, phi_4)
 
 }
