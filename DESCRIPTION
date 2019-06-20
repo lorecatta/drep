@@ -18,7 +18,8 @@ RoxygenNote: 6.1.1
 Suggests: 
     knitr,
     rmarkdown,
-    covr
+    covr,
+    testthat (>= 2.1.0)
 VignetteBuilder: knitr
 URL: https://github.com/mrc-ide/drep
 BugReports: https://github.com/mrc-ide/drep/issues
