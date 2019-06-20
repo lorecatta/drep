@@ -1,6 +1,6 @@
 test_that("R0 and burden outputs are correct", {
 
-  correct_outputs <- read.delim(file.path("test_data", "R0_and_burden_calculation_test.txt"))
+  correct_outputs <- read.table(file.path("test_data", "R0_and_burden_calculation_test.txt"), header = TRUE)
 
   prop_sym_parms <- c(0.45, 0.85, 0.15, 0.15)
 
@@ -8,7 +8,7 @@ test_that("R0 and burden outputs are correct", {
 
   R0_1_phis <- c(1, 1, 0, 0)
   R0_2_phis <- c(1, 1, 1, 1)
-  R0_2_phis <- calculate_infectiousness_sym_2x_asym(prop_sym_parms)
+  R0_3_phis <- calculate_infectiousness_sym_2x_asym(prop_sym_parms)
 
   age_band_tgs <- grep("band", names(age_structure), value = TRUE)
   age_band_bnds <- get_age_band_bounds(age_band_tgs)
@@ -70,11 +70,11 @@ test_that("R0 and burden outputs are correct", {
 
   R0_and_burden_df <- do.call("rbind", R0_and_burden)
 
-  expect_identical(R0_and_burden_df$R0_1, correct_outputs$R0_1)
-  expect_identical(R0_and_burden_df$R0_2, correct_outputs$R0_2)
-  expect_identical(R0_and_burden_df$R0_3, correct_outputs$R0_3)
-  expect_identical(R0_and_burden_df$infections, correct_outputs$infections)
-  expect_identical(R0_and_burden_df$cases, correct_outputs$cases)
-  expect_identical(R0_and_burden_df$hosp, correct_outputs$hosp)
+  expect_equal(R0_and_burden_df[, "R0_1"], correct_outputs$R0_1, tolerance = 1e-10)
+  expect_equal(R0_and_burden_df[, "R0_2"], correct_outputs$R0_2, tolerance = 1e-10)
+  expect_equal(R0_and_burden_df[, "R0_3"], correct_outputs$R0_3, tolerance = 1e-10)
+  expect_equal(R0_and_burden_df[, "infections"], correct_outputs$infections, tolerance = 1e-10)
+  expect_equal(R0_and_burden_df[, "cases"], correct_outputs$cases, tolerance = 1e-10)
+  expect_equal(R0_and_burden_df[, "hosp"], correct_outputs$hosp, tolerance = 1e-10)
 
 })
