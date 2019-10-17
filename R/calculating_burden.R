@@ -3,14 +3,12 @@
 
 # calculate_infections
 
-#' \code{calculate_infections} calculates the number of annual dengue infections
-#' in a human population, given a force of infection.
+#' \code{calculate_infections} calculates the number of per capita annual dengue
+#' infections in a human population, given a force of infection.
 #'
-#' @title Calculate the number of dengue infections.
+#' @title Calculate the number of per capita dengue infections.
 #'
 #' @inheritParams calculate_R0
-#'
-#' @param N Size of human population. Numeric.
 #'
 #' @return Numeric.
 #'
@@ -20,8 +18,7 @@
 calculate_infections <- function(FOI,
                                  n_j,
                                  u_lim,
-                                 l_lim,
-                                 N){
+                                 l_lim){
 
   incids <- calculate_incidences(FOI, u_lim, l_lim)
 
@@ -29,7 +26,7 @@ calculate_infections <- function(FOI,
 
   total_infection_number <- vapply(infection_numbers_j, sum, numeric(1))
 
-  sum(total_infection_number) * 4 * N
+  sum(total_infection_number) * 4
 
 }
 
@@ -38,14 +35,13 @@ calculate_infections <- function(FOI,
 
 # calculate_cases
 
-#' \code{calculate_cases} calculates the number of annual dengue symptomatic
-#' infections (\emph{cases}) in a human population, given a force of infection.
+#' \code{calculate_cases} calculates the number of per capita annual dengue
+#' symptomatic infections (\emph{cases}) in a human population,
+#' given a force of infection.
 #'
-#' @title Calculate the number of dengue cases.
+#' @title Calculate the number of per capita dengue cases.
 #'
 #' @inheritParams calculate_R0
-#'
-#' @inheritParams calculate_infections
 #'
 #' @param weights_vec A numeric vector of length = 4 of the proportions of
 #' primary, secondary, tertiary and quaternary infections which are symptomatic.
@@ -59,8 +55,7 @@ calculate_cases <- function(FOI,
                             n_j,
                             u_lim,
                             l_lim,
-                            weights_vec,
-                            N){
+                            weights_vec){
 
   gamma_1 <- weights_vec[1]
   rho <- weights_vec[2]
@@ -78,7 +73,7 @@ calculate_cases <- function(FOI,
 
   case_number_j <- incidences_to_numbers(tot_incid_rate_j, n_j)
 
-  sum(case_number_j) * 4 * N
+  sum(case_number_j) * 4
 
 }
 
@@ -87,15 +82,13 @@ calculate_cases <- function(FOI,
 
 # calculate_hosp_cases
 
-#' \code{calculate_hosp_cases} calculates the number of annual dengue symptomatic
-#' infections (\emph{cases}) requiring hospitalization in a human population,
-#' given a force of infection.
+#' \code{calculate_hosp_cases} calculates the number of per capita annual dengue
+#' symptomatic infections (\emph{cases}) requiring hospitalization in a human
+#' population, given a force of infection.
 #'
-#' @title Calculate the number of dengue hospitalized cases.
+#' @title Calculate the number of per capita dengue hospitalized cases.
 #'
 #' @inheritParams calculate_R0
-#'
-#' @inheritParams calculate_infections
 #'
 #' @inheritParams calculate_cases
 #'
@@ -113,8 +106,7 @@ calculate_hosp_cases <- function(FOI,
                                  u_lim,
                                  l_lim,
                                  parms,
-                                 weights_vec,
-                                 N){
+                                 weights_vec){
 
   gamma_1 <- weights_vec[1]
   rho <- weights_vec[2]
@@ -137,7 +129,7 @@ calculate_hosp_cases <- function(FOI,
 
   case_number_j <- incidences_to_numbers(tot_incid_rate_j, n_j)
 
-  sum(case_number_j) * 4 * N
+  sum(case_number_j) * 4
 
 }
 

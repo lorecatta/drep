@@ -2,9 +2,9 @@
 % Please edit documentation in R/calculating_burden.R
 \name{calculate_cases}
 \alias{calculate_cases}
-\title{Calculate the number of dengue cases.}
+\title{Calculate the number of per capita dengue cases.}
 \usage{
-calculate_cases(FOI, n_j, u_lim, l_lim, weights_vec, N)
+calculate_cases(FOI, n_j, u_lim, l_lim, weights_vec)
 }
 \arguments{
 \item{FOI}{The force of infection value. Numeric.}
@@ -20,13 +20,12 @@ groups.}
 
 \item{weights_vec}{A numeric vector of length = 4 of the proportions of
 primary, secondary, tertiary and quaternary infections which are symptomatic.}
-
-\item{N}{Size of human population. Numeric.}
 }
 \value{
 Numeric.
 }
 \description{
-\code{calculate_cases} calculates the number of annual dengue symptomatic
-infections (\emph{cases}) in a human population, given a force of infection.
+\code{calculate_cases} calculates the number of per capita annual dengue
+symptomatic infections (\emph{cases}) in a human population,
+given a force of infection.
 }

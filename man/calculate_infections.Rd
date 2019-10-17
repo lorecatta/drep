@@ -2,9 +2,9 @@
 % Please edit documentation in R/calculating_burden.R
 \name{calculate_infections}
 \alias{calculate_infections}
-\title{Calculate the number of dengue infections.}
+\title{Calculate the number of per capita dengue infections.}
 \usage{
-calculate_infections(FOI, n_j, u_lim, l_lim, N)
+calculate_infections(FOI, n_j, u_lim, l_lim)
 }
 \arguments{
 \item{FOI}{The force of infection value. Numeric.}
@@ -17,13 +17,11 @@ groups.}
 
 \item{l_lim}{A numeric vector of the lower age limits of the population age
 groups.}
-
-\item{N}{Size of human population. Numeric.}
 }
 \value{
 Numeric.
 }
 \description{
-\code{calculate_infections} calculates the number of annual dengue infections
-in a human population, given a force of infection.
+\code{calculate_infections} calculates the number of per capita annual dengue
+infections in a human population, given a force of infection.
 }

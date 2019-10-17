@@ -2,9 +2,9 @@
 % Please edit documentation in R/calculating_burden.R
 \name{calculate_hosp_cases}
 \alias{calculate_hosp_cases}
-\title{Calculate the number of dengue hospitalized cases.}
+\title{Calculate the number of per capita dengue hospitalized cases.}
 \usage{
-calculate_hosp_cases(FOI, n_j, u_lim, l_lim, parms, weights_vec, N)
+calculate_hosp_cases(FOI, n_j, u_lim, l_lim, parms, weights_vec)
 }
 \arguments{
 \item{FOI}{The force of infection value. Numeric.}
@@ -24,14 +24,12 @@ hospitalization.}
 
 \item{weights_vec}{A numeric vector of length = 4 of the proportions of
 primary, secondary, tertiary and quaternary infections which are symptomatic.}
-
-\item{N}{Size of human population. Numeric.}
 }
 \value{
 Numeric.
 }
 \description{
-\code{calculate_hosp_cases} calculates the number of annual dengue symptomatic
-infections (\emph{cases}) requiring hospitalization in a human population,
-given a force of infection.
+\code{calculate_hosp_cases} calculates the number of per capita annual dengue
+symptomatic infections (\emph{cases}) requiring hospitalization in a human
+population, given a force of infection.
 }
