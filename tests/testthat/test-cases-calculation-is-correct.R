@@ -14,12 +14,13 @@ test_that("cases calculation is correct", {
 
                             n_j <- age_structure[which(age_structure[, "ID_0"] == ID_0), 2:ncol(age_structure)]
 
-                            calculate_cases(FOI = FOI,
+                            pc_cases <- calculate_cases(FOI = FOI,
                                             n_j = n_j,
                                             u_lim = u_lim,
                                             l_lim = l_lim,
-                                            weights_vec = prop_sym_parms,
-                                            N = population)
+                                            weights_vec = prop_sym_parms)
+
+                            pc_cases * population
                           })
 
   no_cases_vec <- unlist(no_cases)

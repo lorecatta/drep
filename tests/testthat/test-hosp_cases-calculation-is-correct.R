@@ -16,13 +16,14 @@ test_that("hospitalized cases calculation is correct", {
 
                             n_j <- age_structure[which(age_structure[, "ID_0"] == ID_0), 2:ncol(age_structure)]
 
-                            calculate_hosp_cases(FOI = FOI,
+                            pc_hcases <- calculate_hosp_cases(FOI = FOI,
                                                  n_j = n_j,
                                                  u_lim = u_lim,
                                                  l_lim = l_lim,
                                                  parms = hosp_weights,
-                                                 weights_vec = prop_sym_parms,
-                                                 N = population)
+                                                 weights_vec = prop_sym_parms)
+
+                            pc_hcases * population
                           })
 
   no_hosp_cases_vec <- unlist(no_hosp_cases)

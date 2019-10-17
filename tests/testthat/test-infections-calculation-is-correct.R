@@ -12,11 +12,12 @@ test_that("infections calculation is correct", {
 
                                  n_j <- age_structure[which(age_structure[, "ID_0"] == ID_0), 2:ncol(age_structure)]
 
-                                 calculate_infections(FOI = FOI,
+                                 pc_infections <- calculate_infections(FOI = FOI,
                                                       n_j = n_j,
                                                       u_lim = u_lim,
-                                                      l_lim = l_lim,
-                                                      N = population)
+                                                      l_lim = l_lim)
+
+                                 pc_infections * population
                                })
 
   no_infections_vec <- unlist(no_infections)
