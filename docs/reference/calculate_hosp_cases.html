@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate the number of dengue hospitalized cases. — calculate_hosp_cases • drep</title>
+<title>Calculate the number of per capita dengue hospitalized cases. — calculate_hosp_cases • drep</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,11 +30,11 @@
 
 
 
-<meta property="og:title" content="Calculate the number of dengue hospitalized cases. — calculate_hosp_cases" />
+<meta property="og:title" content="Calculate the number of per capita dengue hospitalized cases. — calculate_hosp_cases" />
 
-<meta property="og:description" content="calculate_hosp_cases calculates the number of annual dengue symptomatic
-infections (cases) requiring hospitalization in a human population,
-given a force of infection." />
+<meta property="og:description" content="calculate_hosp_cases calculates the number of per capita annual dengue
+symptomatic infections (cases) requiring hospitalization in a human
+population, given a force of infection." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -119,20 +119,20 @@ given a force of infection." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate the number of dengue hospitalized cases.</h1>
+    <h1>Calculate the number of per capita dengue hospitalized cases.</h1>
     <small class="dont-index">Source: <a href='https://github.com/mrc-ide/drep/blob/master/R/calculating_burden.R'><code>R/calculating_burden.R</code></a></small>
     <div class="hidden name"><code>calculate_hosp_cases.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><code>calculate_hosp_cases</code> calculates the number of annual dengue symptomatic
-infections (<em>cases</em>) requiring hospitalization in a human population,
-given a force of infection.</p>
+    <p><code>calculate_hosp_cases</code> calculates the number of per capita annual dengue
+symptomatic infections (<em>cases</em>) requiring hospitalization in a human
+population, given a force of infection.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>calculate_hosp_cases</span>(<span class='no'>FOI</span>, <span class='no'>n_j</span>, <span class='no'>u_lim</span>, <span class='no'>l_lim</span>, <span class='no'>parms</span>, <span class='no'>weights_vec</span>, <span class='no'>N</span>)</pre>
+    <pre class="usage"><span class='fu'>calculate_hosp_cases</span>(<span class='no'>FOI</span>, <span class='no'>n_j</span>, <span class='no'>u_lim</span>, <span class='no'>l_lim</span>, <span class='no'>parms</span>, <span class='no'>weights_vec</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -166,10 +166,6 @@ hospitalization.</p></td>
       <th>weights_vec</th>
       <td><p>A numeric vector of length = 4 of the proportions of
 primary, secondary, tertiary and quaternary infections which are symptomatic.</p></td>
-    </tr>
-    <tr>
-      <th>N</th>
-      <td><p>Size of human population. Numeric.</p></td>
     </tr>
     </table>
     
