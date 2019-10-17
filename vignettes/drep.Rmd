@@ -44,7 +44,7 @@ The dataset contains nine variables.
 * `FOI` is the force of infection estimate
 * `population` is the Level 1 administrative unit population according to 2015 [Landscan data](http://web.ornl.gov/sci/landscan/)
 
-Information on the demographic structure of the population to which the original force of infection estimate refers is needed to convert force of infection into reproduction number. The `age_structure` dataset contains the country-level **number** of individuals in twenty 5-year age groups (0-99) from 2015, sourced from the United Nation Department of Economic and Social Affairs [link](https://population.un.org/wpp/Download/Standard/Population/). The number in each age group is a different variable. The other important variable is `ID_0`, which represents the country unique identifier. 
+Information on the demographic structure of the population to which the original force of infection estimate refers is needed to convert force of infection into reproduction number. The `age_structure` dataset contains the country-level **proportion** of individuals in twenty 5-year age groups (0-99) from 2015, sourced from the United Nation Department of Economic and Social Affairs [link](https://population.un.org/wpp/Download/Standard/Population/). The proportion in each age group is a different variable. The other important variable is `ID_0`, which represents the country unique identifier. 
 
 ```{r, echo = FALSE, results = 'asis'}
 kableExtra::kable(head(drep::age_structure, 10)) %>%

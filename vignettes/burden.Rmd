@@ -51,11 +51,16 @@ l_lim <- age_band_bnds[, 1]
 u_lim <- age_band_bnds[, 2]
 ```
 
-We can now calculate the total annual number of infections which correspond to `lambda`:
+We can now calculate the number of per-capita annual infections caused by `lambda`:
 
 ```{r}
-n_infections <- drep::calculate_infections(lambda, n_j, u_lim, l_lim, pop_size)
-n_infections
+n_pc_infections <- drep::calculate_infections(lambda, n_j, u_lim, l_lim)
+```
+
+The total number of infections is then obteined by mutliplying the per-capita number by the population size 
+
+```{r}
+n_pc_infections * pop_size
 ```
 
 ## Calculation of number of mild cases and cases requiring hospitalization
@@ -70,16 +75,16 @@ prop_sym_parms <- c(0.45, 0.85, 0.15, 0.15)
 hosp_weights <- c(0.04, 0.1, 0.04, 0.04)
 ```
 
-Now we can calculate the number of cases:
+Now we can calculate the total number of annual cases:
 
 ```{r}
-n_cases <- drep::calculate_cases(lambda, n_j, u_lim, l_lim, prop_sym_parms, pop_size)
-n_cases
+n_pc_cases <- drep::calculate_cases(lambda, n_j, u_lim, l_lim, prop_sym_parms)
+n_pc_cases * pop_size
 ```
 
-and the number of hospitalized cases:
+and the totaL number of annual hospitalized cases:
 
 ```{r}
-n_h_cases <- drep::calculate_hosp_cases(lambda, n_j, u_lim, l_lim, hosp_weights, prop_sym_parms, pop_size)
-n_h_cases
+n_pc_hcases <- drep::calculate_hosp_cases(lambda, n_j, u_lim, l_lim, hosp_weights, prop_sym_parms)
+n_pc_hcases * pop_size
 ```
