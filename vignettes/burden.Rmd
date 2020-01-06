@@ -57,7 +57,7 @@ We can now calculate the number of per-capita annual infections caused by `lambd
 n_pc_infections <- drep::calculate_infections(lambda, n_j, u_lim, l_lim)
 ```
 
-The total number of infections is then obteined by mutliplying the per-capita number by the population size 
+The total number of infections is then obtained by multiplying the per-capita number by the population size 
 
 ```{r}
 n_pc_infections * pop_size

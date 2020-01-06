@@ -86,7 +86,7 @@
       <h1>Burden estimation</h1>
                         <h4 class="author">Lorenzo Cattarino</h4>
             
-            <h4 class="date">2019-10-17</h4>
+            <h4 class="date">2020-01-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mrc-ide/drep/blob/master/vignettes/burden.Rmd"><code>vignettes/burden.Rmd</code></a></small>
       <div class="hidden name"><code>burden.Rmd</code></div>
@@ -123,7 +123,7 @@ l_lim &lt;-<span class="st"> </span>age_band_bnds[, <span class="dv">1</span>]
 u_lim &lt;-<span class="st"> </span>age_band_bnds[, <span class="dv">2</span>]</code></pre></div>
 <p>We can now calculate the number of per-capita annual infections caused by <code>lambda</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n_pc_infections &lt;-<span class="st"> </span>drep<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/drep/topics/calculate_infections">calculate_infections</a></span>(lambda, n_j, u_lim, l_lim)</code></pre></div>
-<p>The total number of infections is then obteined by mutliplying the per-capita number by the population size</p>
+<p>The total number of infections is then obtained by multiplying the per-capita number by the population size</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n_pc_infections <span class="op">*</span><span class="st"> </span>pop_size
 <span class="co">#&gt; [1] 298834.1</span></code></pre></div>
 </div>
